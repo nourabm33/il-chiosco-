@@ -70,6 +70,8 @@
         <a href="#contact">Contact</a>
       </nav>
 
+      <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
+
       <a href="#contact" class="nav__cta"><span class="btn btn--gold">Prenota un tavolo</span></a>
 
       <button class="nav__toggle" id="navToggle" aria-label="Apri menu" aria-expanded="false">
@@ -411,7 +413,7 @@
           <h4>Contatti</h4>
           <p>Piazza Camillo Benso di Cavour<br />60121 Ancona (AN)</p>
           <a href="tel:+393921175714">+39 392 117 5714</a>
-          <p>07:30 – 00:00 · Ogni giorno</p>
+          <p class="i18n">07:30 – 00:00 · Ogni giorno</p>
         </div>
         <div class="footer__col">
           <h4>Esplora</h4>
@@ -422,8 +424,8 @@
         </div>
       </div>
       <div class="footer__bottom">
-        <span>© <span id="year"></span> Il Chiosco | Taste &amp; Beyond. Tutti i diritti riservati.</span>
-        <span>Piazza Cavour · Ancona, Italia</span>
+        <span>© <span id="year"></span> Il Chiosco | Taste &amp; Beyond. <span class="i18n">Tutti i diritti riservati.</span></span>
+        <span class="i18n">Piazza Cavour · Ancona, Italia</span>
       </div>
     </div>
   </footer>
@@ -438,5 +440,6 @@
 
   <script src="js/cocktails.js"></script>
   <script src="js/main.js"></script>
+  <script src="js/i18n.js"></script>
 </body>
 </html>
