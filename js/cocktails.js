@@ -103,50 +103,58 @@
       { n: "Signature 10", p: "8€", d: "Più secco del primo.", c: ["#c79ad8", "#9a5fc0"], t: "Analcolico", photo: "assets/img/cocktails/sig10.webp" }
     ],
     classici: [
-      { n: "Spritz", p: "7€", d: "Aperol · Campari · Select · Hugo.", g: "wine", c: ["#ff9a3d", "#ff6a00"], r: "#ffcf3f" },
-      { n: "Americano", p: "7€", d: "Bitter, vermouth rosso e soda.", g: "rocks", c: ["#e0564a", "#a81e18"], r: "#ff7b54" },
-      { n: "Negroni", p: "7€", d: "Gin, bitter e vermouth rosso.", g: "rocks", c: ["#c0392b", "#7a1f15"], r: "#ff7b54" },
-      { n: "Margarita", p: "8€", d: "Tequila, triple sec e lime.", g: "coupe", c: ["#eaf6c8", "#cfe89a"], r: "#bfe36b" },
-      { n: "Mojito", p: "8€", d: "Rum, lime, menta e zucchero.", g: "highball", c: ["#d8f3c4", "#a9e08a"], r: "#7ec24a" },
-      { n: "Mojito Fidel", p: "8€", d: "La nostra versione del classico cubano.", g: "highball", c: ["#c9eebb", "#8fcf6e"], r: "#7ec24a" },
-      { n: "Tommy's Mezcal", p: "10€", d: "Mezcal, lime e agave.", g: "rocks", c: ["#f3e9c8", "#dcc98e"], r: "#bfe36b" },
-      { n: "Paloma", p: "9€", d: "Tequila e pompelmo.", g: "highball", c: ["#ff9fb0", "#ff6f87"], r: "#ff7b54" },
-      { n: "Gin Tonic", p: "7€", d: "Gin e acqua tonica.", g: "balloon", c: ["#dff3ff", "#a9d8f0"], r: "#bfe36b" },
-      { n: "Vodka Tonic", p: "7€", d: "Vodka e acqua tonica.", g: "highball", c: ["#eaf6ff", "#cfeaf7"], r: "#bfe36b" },
-      { n: "Cuba Libre", p: "7€", d: "Rum, cola e lime.", g: "highball", c: ["#7a4a2b", "#3e2412"], r: "#caa15a" },
-      { n: "Campari Shakerato", p: "7€", d: "Campari shakerato, servito fresco.", g: "coupe", c: ["#e23b4e", "#a01828"], r: "#ff7b54" },
-      { n: "Piña Colada", p: "9€", d: "Rum, cocco e ananas.", g: "highball", c: ["#fff7e6", "#ffe9bf"], r: "#ffd24a" }
+      { n: "Spritz", p: "7€", d: "Aperol · Campari · Select · Hugo.", cover: "assets/img/classici/spritz.webp", c: ["#ff9a3d", "#ff6a00"] },
+      { n: "Americano", p: "7€", d: "Bitter, vermouth rosso e soda.", cover: "assets/img/classici/americano.webp", c: ["#e0564a", "#a81e18"] },
+      { n: "Negroni", p: "7€", d: "Gin, bitter e vermouth rosso.", cover: "assets/img/classici/negroni.webp", c: ["#c0392b", "#7a1f15"] },
+      { n: "Margarita", p: "8€", d: "Tequila, triple sec e lime.", cover: "assets/img/classici/margarita.webp", c: ["#eaf6c8", "#cfe89a"] },
+      { n: "Mojito", p: "8€", d: "Rum, lime, menta e zucchero.", cover: "assets/img/classici/mojito.webp", c: ["#d8f3c4", "#a9e08a"] },
+      { n: "Mojito Fidel", p: "8€", d: "La nostra versione del classico cubano.", cover: "assets/img/classici/mojito-fidel.webp", c: ["#c9eebb", "#8fcf6e"] },
+      { n: "Tommy's Mezcal", p: "10€", d: "Mezcal, lime e agave.", cover: "assets/img/classici/tommys.webp", c: ["#f3e9c8", "#dcc98e"] },
+      { n: "Paloma", p: "9€", d: "Tequila e pompelmo.", cover: "assets/img/classici/paloma.webp", c: ["#ff9fb0", "#ff6f87"] },
+      { n: "Gin Tonic", p: "7€", d: "Gin e acqua tonica.", cover: "assets/img/classici/gintonic.webp", c: ["#dff3ff", "#a9d8f0"] },
+      { n: "Vodka Tonic", p: "7€", d: "Vodka e acqua tonica.", cover: "assets/img/classici/vodkatonic.webp", c: ["#eaf6ff", "#cfeaf7"] },
+      { n: "Cuba Libre", p: "7€", d: "Rum, cola e lime.", cover: "assets/img/classici/cubalibre.webp", c: ["#7a4a2b", "#3e2412"] },
+      { n: "Campari Shakerato", p: "7€", d: "Campari shakerato, servito fresco.", cover: "assets/img/classici/campari.webp", c: ["#e23b4e", "#a01828"] },
+      { n: "Piña Colada", p: "9€", d: "Rum, cocco e ananas.", cover: "assets/img/classici/pinacolada.webp", c: ["#fff7e6", "#ffe9bf"] }
     ],
     gin: [
       { n: "Ngricca · House Gin", p: "9€", d: "Distillato a mano nelle Marche: corbezzolo del Conero, liquirizia e note erbacee della macchia mediterranea.", g: "balloon", c: ["#ff9ec4", "#e2557f"], r: "#7ec24a", t: "Best in Ancona" },
       { n: "Windspiel Premium Dry", p: "18€", d: "Germania · Elegante · Lavanda, limone, cannella.", g: "balloon", c: ["#dcd2f0", "#b9a7e0"], r: "#bda0e0" },
-      { n: "Electric Spirit Co.", p: "16€", d: "Scozia · Deciso · Pepe di Sichuan.", g: "balloon", c: ["#eef0d8", "#cfd49a"], r: "#bfe36b" },
-      { n: "Martin Miller's Original", p: "10€", d: "Inghilterra · London Dry · Buccia d'arancia.", g: "balloon", c: ["#e8f4ff", "#bfe0f5"], r: "#ffb84a" },
-      { n: "Westbourne Strength", p: "16€", d: "Inghilterra · Intenso e agrumato · Noce moscata.", g: "balloon", c: ["#fdeecb", "#e7c98c"], r: "#ffb84a" },
-      { n: "44°N Gin", p: "20€", d: "Costa Azzurra · Floreale intenso · Miele, spezie.", g: "balloon", c: ["#fff0c2", "#f0cf7a"], r: "#ffd24a" },
-      { n: "Gin Mare", p: "10€", d: "Spagna · Mediterraneo · Oliva, rosmarino, basilico.", g: "balloon", c: ["#e9f3d6", "#bcd79a"], r: "#7ec24a" },
-      { n: "Gin Hendrick's", p: "9€", d: "Scozia · Floreale delicato · Cetriolo, rosa, ginepro.", g: "balloon", c: ["#e6f6ef", "#bfe6d4"], r: "#cdeeb0" },
-      { n: "Gin Malfy Rosa", p: "9€", d: "Italia · Fresco · Pompelmo rosa, fragola, agrumi.", g: "balloon", c: ["#ffd0d8", "#ff8aa0"], r: "#ff7b8e" }
+      { n: "Electric Spirit Co.", p: "16€", d: "Scozia · Deciso · Pepe di Sichuan.", cover: "assets/img/gins/achroous.webp", c: ["#eef0d8", "#cfd49a"] },
+      { n: "Martin Miller's Original", p: "10€", d: "Inghilterra · London Dry · Buccia d'arancia.", cover: "assets/img/gins/martinmiller.webp", c: ["#e8f4ff", "#bfe0f5"] },
+      { n: "Westbourne Strength", p: "16€", d: "Inghilterra · Intenso e agrumato · Noce moscata.", cover: "assets/img/gins/westbourne.webp", c: ["#fdeecb", "#e7c98c"] },
+      { n: "44°N Gin", p: "20€", d: "Costa Azzurra · Floreale intenso · Miele, spezie.", cover: "assets/img/gins/44n.webp", c: ["#fff0c2", "#f0cf7a"] },
+      { n: "Gin Mare", p: "10€", d: "Spagna · Mediterraneo · Oliva, rosmarino, basilico.", cover: "assets/img/gins/ginmare.webp", c: ["#e9f3d6", "#bcd79a"] },
+      { n: "Gin Hendrick's", p: "9€", d: "Scozia · Floreale delicato · Cetriolo, rosa, ginepro.", cover: "assets/img/gins/hendricks.webp", c: ["#e6f6ef", "#bfe6d4"] },
+      { n: "Gin Malfy Rosa", p: "9€", d: "Italia · Fresco · Pompelmo rosa, fragola, agrumi.", cover: "assets/img/gins/malfy.webp", c: ["#ffd0d8", "#ff8aa0"] }
     ],
     birre: [
-      { n: "Forst VIP Pils — spina", p: "3€ / 5€", d: "Pils · 5.0% · Fresca e leggera, aroma raffinato.", g: "pint", c: ["#ffe9a8", "#f5c543"] },
-      { n: "Forst 1857 — 33cl", p: "4€", d: "Premium Export Lager · 4.8% · Malto chiaro, miele d'acacia.", g: "pint", c: ["#ffe09a", "#eab137"] },
-      { n: "Forst 0.0", p: "3,5€", d: "Analcolica · Oro al World Beer Awards · Fresca e bilanciata.", g: "pint", c: ["#fff0c8", "#f3d684"], t: "Analcolica" },
-      { n: "Weihenstephan Helles — 50cl", p: "5€", d: "Helles · 5.1% · Speziata, delicata e beverina.", g: "pint", c: ["#ffe6a0", "#f3c54a"] },
-      { n: "Weihenstephan Weissbier — 50cl", p: "7€", d: "Frumento · 5.4% · Banana e garofano, speziata.", g: "pint", c: ["#ffdf9e", "#e9b85a"] },
-      { n: "Hobgoblin IPA — 50cl", p: "7€", d: "English IPA · 5.3% · Floreale, frutta tropicale, agrumi.", g: "pint", c: ["#e89a4a", "#c25a1f"] }
+      { n: "Forst VIP Pils — spina", p: "3€ / 5€", d: "Pils · 5.0% · Fresca e leggera, aroma raffinato.", cover: "assets/img/beers/forst.webp", c: ["#ffe9a8", "#f5c543"] },
+      { n: "Forst 1857 — 33cl", p: "4€", d: "Premium Export Lager · 4.8% · Malto chiaro, miele d'acacia.", cover: "assets/img/beers/forst.webp", c: ["#ffe09a", "#eab137"] },
+      { n: "Forst 0.0", p: "3,5€", d: "Analcolica · Oro al World Beer Awards · Fresca e bilanciata.", cover: "assets/img/beers/forst.webp", c: ["#fff0c8", "#f3d684"], t: "Analcolica" },
+      { n: "Weihenstephan Helles — 50cl", p: "5€", d: "Helles · 5.1% · Speziata, delicata e beverina.", cover: "assets/img/beers/weihenstephan.webp", c: ["#ffe6a0", "#f3c54a"] },
+      { n: "Weihenstephan Weissbier — 50cl", p: "7€", d: "Frumento · 5.4% · Banana e garofano, speziata.", cover: "assets/img/beers/weihenstephan.webp", c: ["#ffdf9e", "#e9b85a"] },
+      { n: "Hobgoblin IPA — 50cl", p: "7€", d: "English IPA · 5.3% · Floreale, frutta tropicale, agrumi.", cover: "assets/img/beers/hobgoblin.webp", c: ["#e89a4a", "#c25a1f"] }
     ]
   };
 
   /* ---------- render ---------- */
   function card(item, key, i) {
     var gid = "lg-" + key + "-" + i;
-    var media = item.photo
-      ? '<img class="cocktail-photo" src="' + item.photo + '" alt="Cocktail ' + item.n + '" loading="lazy" />'
-      : glass(item.g, gid, item.c, item.r);
+    var media, cls;
+    if (item.cover) {
+      media = '<img class="beer-photo" src="' + item.cover + '" alt="' + item.n + '" loading="lazy" />';
+      cls = " has-cover";
+    } else if (item.photo) {
+      media = '<img class="cocktail-photo" src="' + item.photo + '" alt="Cocktail ' + item.n + '" loading="lazy" />';
+      cls = " has-photo";
+    } else {
+      media = glass(item.g, gid, item.c, item.r);
+      cls = "";
+    }
     var tag = item.t ? '<span class="tag">' + item.t + "</span>" : "";
     return '' +
-      '<article class="cocktail-card' + (item.photo ? " has-photo" : "") + ' reveal" style="transition-delay:' + (i % 4) * 0.08 + 's">' +
+      '<article class="cocktail-card' + cls + ' reveal" style="transition-delay:' + (i % 4) * 0.08 + 's">' +
       '  <div class="cocktail-card__media" style="--c1:' + item.c[0] + ';--c2:' + item.c[1] + '">' + media + '</div>' +
       '  <div class="cocktail-card__body">' +
       '    <div class="cocktail-card__top"><h4 class="cocktail-card__name">' + item.n + tag + '</h4>' +

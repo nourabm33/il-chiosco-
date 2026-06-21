@@ -276,6 +276,21 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 21px; transform: rotate(-45
 
 .menu-panel { display: none; animation: fadeUp 0.5s var(--ease); }
 .menu-panel.active { display: block; }
+
+/* Gin panel: house-gin illustration as a refined background */
+#panel-gin { position: relative; isolation: isolate; padding: 30px 26px; border-radius: 14px; overflow: hidden; }
+#panel-gin::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(19,51,40,0.62), rgba(19,51,40,0.72)),
+    url("../assets/img/gins/giolugin-bg.webp") no-repeat center top;
+  background-size: cover;
+}
+#panel-gin::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(200,163,91,0.28);
+  border-radius: 14px;
+}
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
 .menu-cat { margin-bottom: 56px; }
@@ -284,6 +299,27 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 21px; transform: rotate(-45
 .menu-cat__head h3 { font-size: 1.9rem; white-space: nowrap; }
 .menu-cat__head .rule { flex: 1; height: 1px; background: var(--line); }
 .menu-cat__note { font-size: 0.9rem; color: var(--ink-soft); font-style: italic; margin-bottom: 26px; }
+
+.menu-showcase {
+  margin: 30px 0 0; max-width: 760px;
+  border-radius: 10px; overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px rgba(19, 51, 40, 0.14);
+}
+.menu-showcase img {
+  display: block; width: 100%; height: auto;
+  transition: transform 0.7s var(--ease);
+}
+.menu-showcase:hover img { transform: scale(1.02); }
+.menu-showcase figcaption {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.05rem; color: var(--green-deep);
+  text-align: center; padding: 14px 16px;
+  border-top: 1px solid var(--line);
+}
+.section--green .menu-showcase { border-color: rgba(246,239,225,0.16); background: rgba(246,239,225,0.05); }
+.section--green .menu-showcase figcaption { color: var(--cream); border-top-color: rgba(246,239,225,0.16); }
 
 .menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 56px; }
 .menu-list--single { grid-template-columns: 1fr; max-width: 760px; }
@@ -394,6 +430,27 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 21px; transform: rotate(-45
   transform: scale(1.08) translateY(-6px) rotate(-1deg);
   filter: drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55));
 }
+/* Beer cards: real photo, elegant & static (no float) */
+.cocktail-card.has-cover .cocktail-card__media {
+  height: 300px; align-items: stretch; justify-content: stretch;
+  background: var(--green-deep);
+}
+.beer-photo {
+  position: relative; z-index: 1;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.7s var(--ease), filter 0.7s var(--ease);
+  filter: saturate(1.02);
+  will-change: transform;
+}
+.cocktail-card.has-cover .cocktail-card__media::after {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.28));
+  opacity: 1;
+}
+.cocktail-card.has-cover:hover .beer-photo {
+  transform: scale(1.06);
+  filter: saturate(1.08) brightness(1.03);
+}
+
 @keyframes cocktailFloat {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-11px) rotate(0.6deg); }
@@ -436,8 +493,9 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 21px; transform: rotate(-45
   .glass-svg { height: 128px; }
   .cocktail-card__media { height: 146px; }
   .cocktail-card.has-photo .cocktail-card__media { height: 220px; }
+  .cocktail-card.has-cover .cocktail-card__media { height: 240px; }
 }
-@media (max-width: 420px) { .cocktail-grid { grid-template-columns: 1fr; } .cocktail-card.has-photo .cocktail-card__media { height: 260px; } }
+@media (max-width: 420px) { .cocktail-grid { grid-template-columns: 1fr; } .cocktail-card.has-photo .cocktail-card__media { height: 260px; } .cocktail-card.has-cover .cocktail-card__media { height: 300px; } }
 
 /* ============================================================
    GALLERY
