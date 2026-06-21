@@ -120,13 +120,13 @@
     gin: [
       { n: "Ngricca · House Gin", p: "9€", d: "Distillato a mano nelle Marche: corbezzolo del Conero, liquirizia e note erbacee della macchia mediterranea.", g: "balloon", c: ["#ff9ec4", "#e2557f"], r: "#7ec24a", t: "Best in Ancona" },
       { n: "Windspiel Premium Dry", p: "18€", d: "Germania · Elegante · Lavanda, limone, cannella.", g: "balloon", c: ["#dcd2f0", "#b9a7e0"], r: "#bda0e0" },
-      { n: "Electric Spirit Co.", p: "16€", d: "Scozia · Deciso · Pepe di Sichuan.", g: "balloon", c: ["#eef0d8", "#cfd49a"], r: "#bfe36b" },
-      { n: "Martin Miller's Original", p: "10€", d: "Inghilterra · London Dry · Buccia d'arancia.", g: "balloon", c: ["#e8f4ff", "#bfe0f5"], r: "#ffb84a" },
-      { n: "Westbourne Strength", p: "16€", d: "Inghilterra · Intenso e agrumato · Noce moscata.", g: "balloon", c: ["#fdeecb", "#e7c98c"], r: "#ffb84a" },
-      { n: "44°N Gin", p: "20€", d: "Costa Azzurra · Floreale intenso · Miele, spezie.", g: "balloon", c: ["#fff0c2", "#f0cf7a"], r: "#ffd24a" },
-      { n: "Gin Mare", p: "10€", d: "Spagna · Mediterraneo · Oliva, rosmarino, basilico.", g: "balloon", c: ["#e9f3d6", "#bcd79a"], r: "#7ec24a" },
-      { n: "Gin Hendrick's", p: "9€", d: "Scozia · Floreale delicato · Cetriolo, rosa, ginepro.", g: "balloon", c: ["#e6f6ef", "#bfe6d4"], r: "#cdeeb0" },
-      { n: "Gin Malfy Rosa", p: "9€", d: "Italia · Fresco · Pompelmo rosa, fragola, agrumi.", g: "balloon", c: ["#ffd0d8", "#ff8aa0"], r: "#ff7b8e" }
+      { n: "Electric Spirit Co.", p: "16€", d: "Scozia · Deciso · Pepe di Sichuan.", cover: "assets/img/gins/achroous.webp", c: ["#eef0d8", "#cfd49a"] },
+      { n: "Martin Miller's Original", p: "10€", d: "Inghilterra · London Dry · Buccia d'arancia.", cover: "assets/img/gins/martinmiller.webp", c: ["#e8f4ff", "#bfe0f5"] },
+      { n: "Westbourne Strength", p: "16€", d: "Inghilterra · Intenso e agrumato · Noce moscata.", cover: "assets/img/gins/westbourne.webp", c: ["#fdeecb", "#e7c98c"] },
+      { n: "44°N Gin", p: "20€", d: "Costa Azzurra · Floreale intenso · Miele, spezie.", cover: "assets/img/gins/44n.webp", c: ["#fff0c2", "#f0cf7a"] },
+      { n: "Gin Mare", p: "10€", d: "Spagna · Mediterraneo · Oliva, rosmarino, basilico.", cover: "assets/img/gins/ginmare.webp", c: ["#e9f3d6", "#bcd79a"] },
+      { n: "Gin Hendrick's", p: "9€", d: "Scozia · Floreale delicato · Cetriolo, rosa, ginepro.", cover: "assets/img/gins/hendricks.webp", c: ["#e6f6ef", "#bfe6d4"] },
+      { n: "Gin Malfy Rosa", p: "9€", d: "Italia · Fresco · Pompelmo rosa, fragola, agrumi.", cover: "assets/img/gins/malfy.webp", c: ["#ffd0d8", "#ff8aa0"] }
     ],
     birre: [
       { n: "Forst VIP Pils — spina", p: "3€ / 5€", d: "Pils · 5.0% · Fresca e leggera, aroma raffinato.", cover: "assets/img/beers/forst.webp", c: ["#ffe9a8", "#f5c543"] },
