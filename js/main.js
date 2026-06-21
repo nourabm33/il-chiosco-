@@ -95,6 +95,25 @@
   setupTabs("food");
   setupTabs("drink");
 
+  /* ---------- "back to tabs" quick-return rows ---------- */
+  function scrollToTabs(group) {
+    var tabs = document.querySelector('.menu-tabs[data-tabs="' + group + '"]');
+    if (!tabs) return;
+    var y = tabs.getBoundingClientRect().top + (window.scrollY || window.pageYOffset) - 96;
+    window.scrollTo({ top: y, behavior: "smooth" });
+  }
+  document.querySelectorAll(".menu-panel").forEach(function (panel) {
+    var group = panel.getAttribute("data-group");
+    if (!group) return;
+    var btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "back-to-tabs";
+    btn.innerHTML = '<span class="back-to-tabs__arrow" aria-hidden="true">&#8593;</span>' +
+      '<span class="i18n">Scegli un\u2019altra categoria</span>';
+    btn.addEventListener("click", function () { scrollToTabs(group); });
+    panel.appendChild(btn);
+  });
+
   /* ---------- active nav link on scroll ---------- */
   var sections = ["home", "menu", "cocktail", "gallery", "contact"]
     .map(function (id) { return document.getElementById(id); })

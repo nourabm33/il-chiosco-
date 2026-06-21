@@ -160,6 +160,37 @@ h1, h2, h3, h4 {
 .nav__cta { display: inline-flex; }
 .nav__cta .btn { padding: 11px 22px; }
 
+/* language toggle */
+.lang-toggle {
+  margin-left: auto; margin-right: 16px;
+  font-family: var(--font-body); font-weight: 500; font-size: 0.72rem; line-height: 1;
+  letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+  color: var(--cream); background: transparent;
+  border: 1px solid rgba(246,239,225,0.45); border-radius: 30px;
+  padding: 8px 14px; transition: color 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.lang-toggle:hover { color: var(--gold); border-color: var(--gold); }
+.nav.scrolled .lang-toggle { color: var(--green-deep); border-color: var(--line); }
+.nav.scrolled .lang-toggle:hover { color: var(--gold-deep); border-color: var(--gold); }
+
+/* back-to-tabs quick-return row */
+.back-to-tabs {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  margin: 44px auto 0; width: 100%; max-width: 420px;
+  font-family: var(--font-body); font-weight: 400; font-size: 0.8rem;
+  letter-spacing: 0.14em; text-transform: uppercase; cursor: pointer;
+  color: var(--green-deep); background: transparent;
+  border: 1px solid var(--line); border-radius: 40px; padding: 14px 22px;
+  transition: color 0.3s var(--ease), border-color 0.3s var(--ease), transform 0.3s var(--ease), background 0.3s var(--ease);
+}
+.back-to-tabs:hover {
+  color: var(--gold-deep); border-color: var(--gold);
+  background: rgba(200,163,91,0.06); transform: translateY(-2px);
+}
+.back-to-tabs__arrow { font-size: 1rem; line-height: 1; }
+.section--green .back-to-tabs { color: var(--cream); border-color: rgba(246,239,225,0.32); }
+.section--green .back-to-tabs:hover { color: var(--gold); border-color: var(--gold); background: rgba(246,239,225,0.06); }
+
 /* scrolled state */
 .nav.scrolled {
   background: var(--paper);
