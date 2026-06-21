@@ -285,6 +285,27 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 21px; transform: rotate(-45
 .menu-cat__head .rule { flex: 1; height: 1px; background: var(--line); }
 .menu-cat__note { font-size: 0.9rem; color: var(--ink-soft); font-style: italic; margin-bottom: 26px; }
 
+.menu-showcase {
+  margin: 30px 0 0; max-width: 760px;
+  border-radius: 10px; overflow: hidden;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  box-shadow: 0 18px 40px rgba(19, 51, 40, 0.14);
+}
+.menu-showcase img {
+  display: block; width: 100%; height: auto;
+  transition: transform 0.7s var(--ease);
+}
+.menu-showcase:hover img { transform: scale(1.02); }
+.menu-showcase figcaption {
+  font-family: var(--font-display); font-style: italic;
+  font-size: 1.05rem; color: var(--green-deep);
+  text-align: center; padding: 14px 16px;
+  border-top: 1px solid var(--line);
+}
+.section--green .menu-showcase { border-color: rgba(246,239,225,0.16); background: rgba(246,239,225,0.05); }
+.section--green .menu-showcase figcaption { color: var(--cream); border-top-color: rgba(246,239,225,0.16); }
+
 .menu-list { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 56px; }
 .menu-list--single { grid-template-columns: 1fr; max-width: 760px; }
 
