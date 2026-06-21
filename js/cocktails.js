@@ -103,19 +103,19 @@
       { n: "Signature 10", p: "8€", d: "Più secco del primo.", c: ["#c79ad8", "#9a5fc0"], t: "Analcolico", photo: "assets/img/cocktails/sig10.webp" }
     ],
     classici: [
-      { n: "Spritz", p: "7€", d: "Aperol · Campari · Select · Hugo.", g: "wine", c: ["#ff9a3d", "#ff6a00"], r: "#ffcf3f" },
+      { n: "Spritz", p: "7€", d: "Aperol · Campari · Select · Hugo.", cover: "assets/img/classici/spritz.webp", c: ["#ff9a3d", "#ff6a00"] },
       { n: "Americano", p: "7€", d: "Bitter, vermouth rosso e soda.", g: "rocks", c: ["#e0564a", "#a81e18"], r: "#ff7b54" },
-      { n: "Negroni", p: "7€", d: "Gin, bitter e vermouth rosso.", g: "rocks", c: ["#c0392b", "#7a1f15"], r: "#ff7b54" },
-      { n: "Margarita", p: "8€", d: "Tequila, triple sec e lime.", g: "coupe", c: ["#eaf6c8", "#cfe89a"], r: "#bfe36b" },
-      { n: "Mojito", p: "8€", d: "Rum, lime, menta e zucchero.", g: "highball", c: ["#d8f3c4", "#a9e08a"], r: "#7ec24a" },
-      { n: "Mojito Fidel", p: "8€", d: "La nostra versione del classico cubano.", g: "highball", c: ["#c9eebb", "#8fcf6e"], r: "#7ec24a" },
-      { n: "Tommy's Mezcal", p: "10€", d: "Mezcal, lime e agave.", g: "rocks", c: ["#f3e9c8", "#dcc98e"], r: "#bfe36b" },
+      { n: "Negroni", p: "7€", d: "Gin, bitter e vermouth rosso.", cover: "assets/img/classici/negroni.webp", c: ["#c0392b", "#7a1f15"] },
+      { n: "Margarita", p: "8€", d: "Tequila, triple sec e lime.", cover: "assets/img/classici/margarita.webp", c: ["#eaf6c8", "#cfe89a"] },
+      { n: "Mojito", p: "8€", d: "Rum, lime, menta e zucchero.", cover: "assets/img/classici/mojito.webp", c: ["#d8f3c4", "#a9e08a"] },
+      { n: "Mojito Fidel", p: "8€", d: "La nostra versione del classico cubano.", cover: "assets/img/classici/mojito-fidel.webp", c: ["#c9eebb", "#8fcf6e"] },
+      { n: "Tommy's Mezcal", p: "10€", d: "Mezcal, lime e agave.", cover: "assets/img/classici/tommys.webp", c: ["#f3e9c8", "#dcc98e"] },
       { n: "Paloma", p: "9€", d: "Tequila e pompelmo.", g: "highball", c: ["#ff9fb0", "#ff6f87"], r: "#ff7b54" },
-      { n: "Gin Tonic", p: "7€", d: "Gin e acqua tonica.", g: "balloon", c: ["#dff3ff", "#a9d8f0"], r: "#bfe36b" },
-      { n: "Vodka Tonic", p: "7€", d: "Vodka e acqua tonica.", g: "highball", c: ["#eaf6ff", "#cfeaf7"], r: "#bfe36b" },
-      { n: "Cuba Libre", p: "7€", d: "Rum, cola e lime.", g: "highball", c: ["#7a4a2b", "#3e2412"], r: "#caa15a" },
-      { n: "Campari Shakerato", p: "7€", d: "Campari shakerato, servito fresco.", g: "coupe", c: ["#e23b4e", "#a01828"], r: "#ff7b54" },
-      { n: "Piña Colada", p: "9€", d: "Rum, cocco e ananas.", g: "highball", c: ["#fff7e6", "#ffe9bf"], r: "#ffd24a" }
+      { n: "Gin Tonic", p: "7€", d: "Gin e acqua tonica.", cover: "assets/img/classici/gintonic.webp", c: ["#dff3ff", "#a9d8f0"] },
+      { n: "Vodka Tonic", p: "7€", d: "Vodka e acqua tonica.", cover: "assets/img/classici/vodkatonic.webp", c: ["#eaf6ff", "#cfeaf7"] },
+      { n: "Cuba Libre", p: "7€", d: "Rum, cola e lime.", cover: "assets/img/classici/cubalibre.webp", c: ["#7a4a2b", "#3e2412"] },
+      { n: "Campari Shakerato", p: "7€", d: "Campari shakerato, servito fresco.", cover: "assets/img/classici/campari.webp", c: ["#e23b4e", "#a01828"] },
+      { n: "Piña Colada", p: "9€", d: "Rum, cocco e ananas.", cover: "assets/img/classici/pinacolada.webp", c: ["#fff7e6", "#ffe9bf"] }
     ],
     gin: [
       { n: "Ngricca · House Gin", p: "9€", d: "Distillato a mano nelle Marche: corbezzolo del Conero, liquirizia e note erbacee della macchia mediterranea.", g: "balloon", c: ["#ff9ec4", "#e2557f"], r: "#7ec24a", t: "Best in Ancona" },
