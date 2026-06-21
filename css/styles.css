@@ -276,6 +276,21 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 21px; transform: rotate(-45
 
 .menu-panel { display: none; animation: fadeUp 0.5s var(--ease); }
 .menu-panel.active { display: block; }
+
+/* Gin panel: house-gin illustration as a refined background */
+#panel-gin { position: relative; isolation: isolate; padding: 30px 26px; border-radius: 14px; overflow: hidden; }
+#panel-gin::before {
+  content: ""; position: absolute; inset: 0; z-index: -1;
+  background:
+    linear-gradient(180deg, rgba(19,51,40,0.62), rgba(19,51,40,0.72)),
+    url("../assets/img/gins/giolugin-bg.webp") no-repeat center top;
+  background-size: cover;
+}
+#panel-gin::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  box-shadow: inset 0 0 0 1px rgba(200,163,91,0.28);
+  border-radius: 14px;
+}
 @keyframes fadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
 
 .menu-cat { margin-bottom: 56px; }
