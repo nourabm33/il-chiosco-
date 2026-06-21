@@ -118,8 +118,8 @@
       { n: "Piña Colada", p: "9€", d: "Rum, cocco e ananas.", cover: "assets/img/classici/pinacolada.webp", c: ["#fff7e6", "#ffe9bf"] }
     ],
     gin: [
-      { n: "Ngricca · House Gin", p: "9€", d: "Distillato a mano nelle Marche: corbezzolo del Conero, liquirizia e note erbacee della macchia mediterranea.", g: "balloon", c: ["#ff9ec4", "#e2557f"], r: "#7ec24a", t: "Best in Ancona" },
-      { n: "Windspiel Premium Dry", p: "18€", d: "Germania · Elegante · Lavanda, limone, cannella.", g: "balloon", c: ["#dcd2f0", "#b9a7e0"], r: "#bda0e0" },
+      { n: "Ngricca · House Gin", p: "9€", d: "Distillato a mano nelle Marche: corbezzolo del Conero, liquirizia e note erbacee della macchia mediterranea.", cover: "assets/img/gins/giolugin.webp", c: ["#ff9ec4", "#e2557f"], t: "Best in Ancona" },
+      { n: "Windspiel Premium Dry", p: "18€", d: "Germania · Elegante · Lavanda, limone, cannella.", cover: "assets/img/gins/giolugin.webp", c: ["#dcd2f0", "#b9a7e0"] },
       { n: "Electric Spirit Co.", p: "16€", d: "Scozia · Deciso · Pepe di Sichuan.", cover: "assets/img/gins/achroous.webp", c: ["#eef0d8", "#cfd49a"] },
       { n: "Martin Miller's Original", p: "10€", d: "Inghilterra · London Dry · Buccia d'arancia.", cover: "assets/img/gins/martinmiller.webp", c: ["#e8f4ff", "#bfe0f5"] },
       { n: "Westbourne Strength", p: "16€", d: "Inghilterra · Intenso e agrumato · Noce moscata.", cover: "assets/img/gins/westbourne.webp", c: ["#fdeecb", "#e7c98c"] },
