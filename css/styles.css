@@ -394,6 +394,27 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 21px; transform: rotate(-45
   transform: scale(1.08) translateY(-6px) rotate(-1deg);
   filter: drop-shadow(0 22px 30px rgba(0, 0, 0, 0.55));
 }
+/* Beer cards: real photo, elegant & static (no float) */
+.cocktail-card.has-cover .cocktail-card__media {
+  height: 300px; align-items: stretch; justify-content: stretch;
+  background: var(--green-deep);
+}
+.beer-photo {
+  position: relative; z-index: 1;
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.7s var(--ease), filter 0.7s var(--ease);
+  filter: saturate(1.02);
+  will-change: transform;
+}
+.cocktail-card.has-cover .cocktail-card__media::after {
+  background: linear-gradient(180deg, rgba(0,0,0,0) 55%, rgba(0,0,0,0.28));
+  opacity: 1;
+}
+.cocktail-card.has-cover:hover .beer-photo {
+  transform: scale(1.06);
+  filter: saturate(1.08) brightness(1.03);
+}
+
 @keyframes cocktailFloat {
   0%, 100% { transform: translateY(0) rotate(0deg); }
   50% { transform: translateY(-11px) rotate(0.6deg); }
@@ -436,8 +457,9 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 21px; transform: rotate(-45
   .glass-svg { height: 128px; }
   .cocktail-card__media { height: 146px; }
   .cocktail-card.has-photo .cocktail-card__media { height: 220px; }
+  .cocktail-card.has-cover .cocktail-card__media { height: 240px; }
 }
-@media (max-width: 420px) { .cocktail-grid { grid-template-columns: 1fr; } .cocktail-card.has-photo .cocktail-card__media { height: 260px; } }
+@media (max-width: 420px) { .cocktail-grid { grid-template-columns: 1fr; } .cocktail-card.has-photo .cocktail-card__media { height: 260px; } .cocktail-card.has-cover .cocktail-card__media { height: 300px; } }
 
 /* ============================================================
    GALLERY

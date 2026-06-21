@@ -129,24 +129,32 @@
       { n: "Gin Malfy Rosa", p: "9€", d: "Italia · Fresco · Pompelmo rosa, fragola, agrumi.", g: "balloon", c: ["#ffd0d8", "#ff8aa0"], r: "#ff7b8e" }
     ],
     birre: [
-      { n: "Forst VIP Pils — spina", p: "3€ / 5€", d: "Pils · 5.0% · Fresca e leggera, aroma raffinato.", g: "pint", c: ["#ffe9a8", "#f5c543"] },
-      { n: "Forst 1857 — 33cl", p: "4€", d: "Premium Export Lager · 4.8% · Malto chiaro, miele d'acacia.", g: "pint", c: ["#ffe09a", "#eab137"] },
-      { n: "Forst 0.0", p: "3,5€", d: "Analcolica · Oro al World Beer Awards · Fresca e bilanciata.", g: "pint", c: ["#fff0c8", "#f3d684"], t: "Analcolica" },
-      { n: "Weihenstephan Helles — 50cl", p: "5€", d: "Helles · 5.1% · Speziata, delicata e beverina.", g: "pint", c: ["#ffe6a0", "#f3c54a"] },
-      { n: "Weihenstephan Weissbier — 50cl", p: "7€", d: "Frumento · 5.4% · Banana e garofano, speziata.", g: "pint", c: ["#ffdf9e", "#e9b85a"] },
-      { n: "Hobgoblin IPA — 50cl", p: "7€", d: "English IPA · 5.3% · Floreale, frutta tropicale, agrumi.", g: "pint", c: ["#e89a4a", "#c25a1f"] }
+      { n: "Forst VIP Pils — spina", p: "3€ / 5€", d: "Pils · 5.0% · Fresca e leggera, aroma raffinato.", cover: "assets/img/beers/forst.webp", c: ["#ffe9a8", "#f5c543"] },
+      { n: "Forst 1857 — 33cl", p: "4€", d: "Premium Export Lager · 4.8% · Malto chiaro, miele d'acacia.", cover: "assets/img/beers/forst.webp", c: ["#ffe09a", "#eab137"] },
+      { n: "Forst 0.0", p: "3,5€", d: "Analcolica · Oro al World Beer Awards · Fresca e bilanciata.", cover: "assets/img/beers/forst.webp", c: ["#fff0c8", "#f3d684"], t: "Analcolica" },
+      { n: "Weihenstephan Helles — 50cl", p: "5€", d: "Helles · 5.1% · Speziata, delicata e beverina.", cover: "assets/img/beers/weihenstephan.webp", c: ["#ffe6a0", "#f3c54a"] },
+      { n: "Weihenstephan Weissbier — 50cl", p: "7€", d: "Frumento · 5.4% · Banana e garofano, speziata.", cover: "assets/img/beers/weihenstephan.webp", c: ["#ffdf9e", "#e9b85a"] },
+      { n: "Hobgoblin IPA — 50cl", p: "7€", d: "English IPA · 5.3% · Floreale, frutta tropicale, agrumi.", cover: "assets/img/beers/hobgoblin.webp", c: ["#e89a4a", "#c25a1f"] }
     ]
   };
 
   /* ---------- render ---------- */
   function card(item, key, i) {
     var gid = "lg-" + key + "-" + i;
-    var media = item.photo
-      ? '<img class="cocktail-photo" src="' + item.photo + '" alt="Cocktail ' + item.n + '" loading="lazy" />'
-      : glass(item.g, gid, item.c, item.r);
+    var media, cls;
+    if (item.cover) {
+      media = '<img class="beer-photo" src="' + item.cover + '" alt="' + item.n + '" loading="lazy" />';
+      cls = " has-cover";
+    } else if (item.photo) {
+      media = '<img class="cocktail-photo" src="' + item.photo + '" alt="Cocktail ' + item.n + '" loading="lazy" />';
+      cls = " has-photo";
+    } else {
+      media = glass(item.g, gid, item.c, item.r);
+      cls = "";
+    }
     var tag = item.t ? '<span class="tag">' + item.t + "</span>" : "";
     return '' +
-      '<article class="cocktail-card' + (item.photo ? " has-photo" : "") + ' reveal" style="transition-delay:' + (i % 4) * 0.08 + 's">' +
+      '<article class="cocktail-card' + cls + ' reveal" style="transition-delay:' + (i % 4) * 0.08 + 's">' +
       '  <div class="cocktail-card__media" style="--c1:' + item.c[0] + ';--c2:' + item.c[1] + '">' + media + '</div>' +
       '  <div class="cocktail-card__body">' +
       '    <div class="cocktail-card__top"><h4 class="cocktail-card__name">' + item.n + tag + '</h4>' +
