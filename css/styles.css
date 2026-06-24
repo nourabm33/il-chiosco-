@@ -410,6 +410,15 @@ body.menu-open .nav__toggle span:nth-child(3) { top: 21px; transform: rotate(-45
   filter: drop-shadow(0 6px 18px rgba(0,0,0,0.35));
 }
 
+/* ---------- Gin header image ---------- */
+.gin-header {
+  margin: 0 auto 36px; max-width: 900px; text-align: center;
+}
+.gin-header__img {
+  width: 100%; height: auto; border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.25);
+}
+
 /* ============================================================
    COCKTAIL CARDS (animated)
    ============================================================ */
