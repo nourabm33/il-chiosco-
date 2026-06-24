@@ -91,16 +91,16 @@
   /* ---------- data ---------- */
   var DATA = {
     signatures: [
-      { n: "Signature 1", p: "10€", d: "Fresco, colorato, irresistibile.", c: ["#ff9a6b", "#ff5e62"], photo: "assets/img/cocktails/sig1.webp" },
-      { n: "Signature 2", p: "12€", d: "Una sorpresa: lasciati guidare dal bartender.", c: ["#a878dd", "#5b6bd6"], t: "?", photo: "assets/img/cocktails/sig2.webp" },
-      { n: "Signature 3", p: "10€", d: "Un americano in Ancona.", c: ["#e0564a", "#a81e18"], photo: "assets/img/cocktails/sig3.webp" },
-      { n: "Signature 4", p: "12€", d: "Per chi chiede qualcosa di leggero.", c: ["#fff3b0", "#ffd24a"], photo: "assets/img/cocktails/sig4.webp" },
-      { n: "Signature 5", p: "12€", d: "Brividi, massimo piacere.", c: ["#f6c66a", "#e9a23a"], photo: "assets/img/cocktails/sig5.webp" },
-      { n: "Signature 6", p: "10€", d: "Bello come un fiore, mi fai impazzire.", c: ["#6f8bff", "#3f54c8"], photo: "assets/img/cocktails/sig6.webp" },
-      { n: "Signature 7", p: "10€", d: "A mio padre.", c: ["#e06a86", "#b22f57"], photo: "assets/img/cocktails/sig7.webp" },
-      { n: "Signature 8", p: "10€", d: "Antipatico.", c: ["#ffb43d", "#e07a16"], photo: "assets/img/cocktails/sig8.webp" },
-      { n: "Signature 9", p: "8€", d: "Dolce, ma non troppo.", c: ["#ff9ec4", "#ff5fa2"], t: "Analcolico", photo: "assets/img/cocktails/sig9.webp" },
-      { n: "Signature 10", p: "8€", d: "Più secco del primo.", c: ["#c79ad8", "#9a5fc0"], t: "Analcolico", photo: "assets/img/cocktails/sig10.webp" }
+      { n: "Good Vibes", p: "10€", d: "Fresco, colorato, irresistibile.", c: ["#ff9a6b", "#ff5e62"], photo: "assets/img/cocktails/sig1.webp" },
+      { n: "The Change", p: "12€", d: "Una sorpresa: lasciati guidare dal bartender.", c: ["#a878dd", "#5b6bd6"], t: "?", photo: "assets/img/cocktails/sig2.webp" },
+      { n: "American Love", p: "10€", d: "Un americano in Ancona.", c: ["#e0564a", "#a81e18"], photo: "assets/img/cocktails/sig3.webp" },
+      { n: "Zafferoni", p: "12€", d: "Per chi chiede qualcosa di leggero.", c: ["#fff3b0", "#ffd24a"], photo: "assets/img/cocktails/sig4.webp" },
+      { n: "Fig Storm", p: "12€", d: "Brividi, massimo piacere.", c: ["#f6c66a", "#e9a23a"], photo: "assets/img/cocktails/sig5.webp" },
+      { n: "Negroni's Wife", p: "10€", d: "Bello come un fiore, mi fai impazzire.", c: ["#6f8bff", "#3f54c8"], photo: "assets/img/cocktails/sig6.webp" },
+      { n: "Daiquiri Frozen", p: "10€", d: "A mio padre.", c: ["#e06a86", "#b22f57"], photo: "assets/img/cocktails/sig7.webp" },
+      { n: "Queen G", p: "10€", d: "Antipatico.", c: ["#ffb43d", "#e07a16"], photo: "assets/img/cocktails/sig8.webp" },
+      { n: "Sun Kissed", p: "8€", d: "Dolce, ma non troppo.", c: ["#ff9ec4", "#ff5fa2"], t: "Analcolico", photo: "assets/img/cocktails/sig9.webp" },
+      { n: "Purple Mirage", p: "8€", d: "Più secco del primo.", c: ["#c79ad8", "#9a5fc0"], t: "Analcolico", photo: "assets/img/cocktails/sig10.webp" }
     ],
     classici: [
       { n: "Spritz", p: "7€", d: "Aperol · Campari · Select · Hugo.", cover: "assets/img/classici/spritz.webp", c: ["#ff9a3d", "#ff6a00"] },
