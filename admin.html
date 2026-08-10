@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="noindex" />
+  <title>Dashboard staff · Il Chiosco</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/order.css" />
+  <link rel="stylesheet" href="css/admin.css" />
+</head>
+<body class="admin-body">
+
+<header class="order-nav">
+  <a href="index.html" class="order-nav__brand">
+    <span class="mark">Il Chiosco</span>
+    <span class="sub">Dashboard staff</span>
+  </a>
+  <div class="admin-head-actions">
+    <span class="admin-pos" id="posStatus"></span>
+    <button class="btn btn--outline btn--sm" id="logoutBtn" type="button" hidden>Esci</button>
+  </div>
+</header>
+
+<section class="order-container" id="loginScreen">
+  <h1>Accesso staff</h1>
+  <p class="order-lead">Inserisci il token dello staff per vedere tavoli e ordini.</p>
+  <div class="order-manual__row">
+    <input id="tokenInput" type="password" placeholder="Token staff" autocomplete="current-password" />
+    <button class="btn btn--gold" id="loginBtn" type="button">Entra</button>
+  </div>
+  <p class="order-error" id="loginError" hidden></p>
+</section>
+
+<main class="admin-main" id="dashboard" hidden>
+  <nav class="admin-tabs">
+    <button class="menu-tab active" data-view="orders">Ordini</button>
+    <button class="menu-tab" data-view="tables">Tavoli</button>
+    <button class="menu-tab" data-view="qr">QR code</button>
+  </nav>
+
+  <section class="admin-view" id="viewOrders">
+    <div class="admin-filters">
+      <label><input type="checkbox" id="onlyOpen" checked /> Solo ordini aperti</label>
+      <span class="admin-refresh" id="refreshedAt"></span>
+    </div>
+    <div id="ordersList" class="orders-grid"></div>
+  </section>
+
+  <section class="admin-view" id="viewTables" hidden>
+    <div id="tablesGrid" class="tables-grid"></div>
+  </section>
+
+  <section class="admin-view" id="viewQr" hidden>
+    <p class="order-lead">
+      QR code generati dal server con l'indirizzo pubblico configurato
+      (<code id="qrBase"></code>). Stampali e attaccali sui tavoli.
+    </p>
+    <div id="qrGrid" class="qr-grid"></div>
+  </section>
+</main>
+
+<script src="js/admin.js"></script>
+</body>
+</html>
