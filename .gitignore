@@ -2,3 +2,7 @@
 Thumbs.db
 *.log
 node_modules/
+
+# generated table QR codes (regenerate with: cd server && npm run qr)
+assets/qr/
+.env

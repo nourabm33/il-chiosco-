@@ -1,0 +1,207 @@
+/* Il Chiosco — staff dashboard */
+
+.admin-body {
+  background: var(--cream);
+  padding-bottom: 40px;
+}
+
+.admin-head-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.admin-pos {
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  color: var(--gold);
+}
+
+.btn--sm {
+  padding: 6px 14px;
+  font-size: 13px;
+}
+
+.admin-main {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 22px 20px 40px;
+}
+
+.admin-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 18px;
+  overflow-x: auto;
+}
+
+.admin-filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  margin-bottom: 16px;
+  font-size: 14px;
+  color: var(--ink-soft);
+}
+
+.orders-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 16px;
+}
+
+.order-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 16px 18px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: var(--shadow-sm);
+  border-left: 4px solid var(--gold);
+}
+
+.order-card[data-status="in_progress"] { border-left-color: #d68910; }
+.order-card[data-status="served"] { border-left-color: var(--green); }
+.order-card[data-status="paid"] { border-left-color: #8a8a8a; opacity: 0.75; }
+.order-card[data-status="cancelled"] { border-left-color: #b03030; opacity: 0.6; }
+
+.order-card__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.order-card__table {
+  font-family: var(--font-display);
+  font-size: 24px;
+  color: var(--green-deep);
+}
+
+.order-card__code {
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.order-card__meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  font-size: 13px;
+  color: var(--ink-soft);
+}
+
+.pill {
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--cream-2);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+
+.pill--warn { background: #fdecc8; color: #8a5b00; }
+.pill--bad { background: #fdecec; color: #8c2020; }
+.pill--ok { background: #e2f0e7; color: #1c4b3c; }
+
+.order-card__lines {
+  font-size: 15px;
+}
+
+.order-card__lines div {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 3px 0;
+}
+
+.order-card__note {
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--cream);
+  font-size: 14px;
+}
+
+.order-card__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.order-card__actions button {
+  padding: 7px 12px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: #fff;
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.order-card__actions button:hover {
+  background: var(--cream-2);
+}
+
+.tables-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+  gap: 14px;
+}
+
+.table-card {
+  padding: 14px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.table-card--occupied {
+  background: var(--green-deep);
+  color: var(--cream);
+}
+
+.table-card--occupied .table-card__num { color: var(--gold); }
+
+.table-card__num {
+  font-family: var(--font-display);
+  font-size: 30px;
+  color: var(--green-deep);
+}
+
+.table-card__meta {
+  font-size: 13px;
+  opacity: 0.85;
+}
+
+.qr-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 16px;
+}
+
+.qr-card {
+  padding: 12px;
+  background: #fff;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.qr-card img {
+  width: 100%;
+  height: auto;
+}
+
+.qr-card a {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--gold-deep);
+}
+
+@media print {
+  .order-nav, .admin-tabs, .order-lead { display: none; }
+  .qr-grid { grid-template-columns: repeat(3, 1fr); }
+}
