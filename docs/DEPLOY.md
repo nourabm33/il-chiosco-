@@ -83,6 +83,28 @@ Then point the static site at the backend: set the backend URL in
 `js/config.js` (`window.IL_CHIOSCO_API = "https://<backend>"`). The staff
 dashboard is also served by the backend itself at `https://<backend>/admin`.
 
+## Table QR codes (already printed — keep them valid)
+
+The printed codes encode `<PUBLIC_BASE_URL>/order?table=N` and must keep pointing at the live
+GitHub Pages menu. GitHub Pages answers both `/order?table=N` and `/order.html?table=N`.
+
+- In production, set `PUBLIC_BASE_URL=https://nourabm33.github.io/il-chiosco-` (no trailing slash). Do
+  **not** set it to the backend URL: QR codes regenerated from the dashboard would then stop matching
+  the printed ones.
+- Before deploying (and after any change to the static site), check that every table URL is live:
+
+  ```bash
+  cd server
+  PUBLIC_BASE_URL=https://nourabm33.github.io/il-chiosco- npm run qr:check
+  # All 40 QR targets OK (https://nourabm33.github.io/il-chiosco-/order?table=1..40)
+  ```
+
+  `TABLE_COUNT` (default 40) sets how many tables are checked. The command exits non-zero and lists
+  any URL that doesn't answer 200 with the table menu.
+- To confirm a printed code, scan it with a phone. It should open
+  `https://nourabm33.github.io/il-chiosco-/order?table=<that table>` and show "Tavolo <n>".
+- Don't reprint: `npm run qr` is only needed for new tables.
+
 ## Local development
 
 ```bash
@@ -105,6 +127,9 @@ npm test && npm run lint
 - **Till / POS** — `POS_DRIVER=simulation` until the technician provides the
   protocol. Simulated releases are always labelled "Simulato · non inviato
   alla cassa", never "Inviato alla cassa".
+
+The waiters' app is **Comandi – Cassa in Cloud**. What its API and Kitchen Monitor can and cannot do,
+with sources and technician questions: [CASSA-IN-CLOUD.md](CASSA-IN-CLOUD.md).
 
 ### Questions for the waiter-app / till technician
 
@@ -158,4 +183,5 @@ All calls need `Authorization: Bearer <session token>` from
 - [ ] Customer page `/order?table=N` shows the menu only and "Per ordinare,
       rivolgiti al cameriere."; `POST /api/orders` returns 410.
 - [ ] With `POS_DRIVER=simulation`, nothing anywhere says "Inviato alla cassa".
+- [ ] `npm run qr:check` passes against the live site (see Table QR codes).
 - [ ] The existing waiter app and till still work exactly as before.

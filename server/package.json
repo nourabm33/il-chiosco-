@@ -13,6 +13,7 @@
     "migrate": "node scripts/migrate.js",
     "seed": "node scripts/seed.js",
     "qr": "node scripts/generate-qr.js",
+    "qr:check": "node scripts/check-qr-urls.js",
     "staff:add": "node scripts/create-staff.js",
     "demo:orders": "node scripts/demo-orders.js",
     "test": "node --test test/",
