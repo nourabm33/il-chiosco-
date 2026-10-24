@@ -20,29 +20,72 @@
     <span class="sub">Dashboard staff</span>
   </a>
   <div class="admin-head-actions">
-    <span class="admin-pos" id="posStatus"></span>
+    <span class="admin-live" id="liveStatus" hidden></span>
+    <span class="admin-user" id="userName"></span>
     <button class="btn btn--outline btn--sm" id="logoutBtn" type="button" hidden>Esci</button>
   </div>
 </header>
 
 <section class="order-container" id="loginScreen">
   <h1>Accesso staff</h1>
-  <p class="order-lead">Inserisci il token dello staff per vedere tavoli e ordini.</p>
-  <div class="order-manual__row">
-    <input id="tokenInput" type="password" placeholder="Token staff" autocomplete="current-password" />
-    <button class="btn btn--gold" id="loginBtn" type="button">Entra</button>
-  </div>
+  <p class="order-lead">Accedi con il tuo nome utente e la tua password personale.</p>
+  <form class="admin-login" id="loginForm">
+    <input id="usernameInput" type="text" placeholder="Nome utente" autocomplete="username" autocapitalize="none" required />
+    <input id="passwordInput" type="password" placeholder="Password" autocomplete="current-password" required />
+    <button class="btn btn--gold" id="loginBtn" type="submit">Entra</button>
+  </form>
   <p class="order-error" id="loginError" hidden></p>
 </section>
 
 <main class="admin-main" id="dashboard" hidden>
+  <div class="sim-banner" id="simBanner" hidden>
+    <strong>Modalità simulazione.</strong>
+    Gli ordini rilasciati dalla coda <u>non</u> vengono inviati alla cassa. Il collegamento
+    con la cassa sarà attivato quando il tecnico fornirà i dettagli di integrazione.
+  </div>
+
   <nav class="admin-tabs">
-    <button class="menu-tab active" data-view="orders">Ordini</button>
+    <button class="menu-tab active" data-view="queue">Coda</button>
+    <button class="menu-tab" data-view="orders">Ordini</button>
     <button class="menu-tab" data-view="tables">Tavoli</button>
-    <button class="menu-tab" data-view="qr">QR code</button>
+    <button class="menu-tab" data-view="qr" data-manager hidden>QR code</button>
   </nav>
 
-  <section class="admin-view" id="viewOrders">
+  <section class="admin-view" id="viewQueue">
+    <div class="queue-panel">
+      <div class="queue-stats">
+        <div class="queue-stat"><span class="queue-stat__value" id="statWaiting">0</span><span>in attesa</span></div>
+        <div class="queue-stat"><span class="queue-stat__value" id="statMode">—</span><span>modalità</span></div>
+        <div class="queue-stat"><span class="queue-stat__value" id="statNext">—</span><span>prossimo rilascio</span></div>
+      </div>
+
+      <div class="queue-controls" id="queueControls">
+        <div class="mode-switch" role="group" aria-label="Modalità coda">
+          <button type="button" data-mode="normal">Normale</button>
+          <button type="button" data-mode="busy">Busy</button>
+          <button type="button" data-mode="pause">Pausa</button>
+        </div>
+        <label class="interval-field">
+          Intervallo Busy
+          <input id="intervalInput" type="number" min="0.5" max="30" step="0.5" inputmode="decimal" />
+          <span>min</span>
+          <button class="btn btn--outline btn--sm" id="intervalSave" type="button">Salva</button>
+        </label>
+        <button class="btn btn--gold btn--sm" id="releaseNextBtn" type="button">Rilascia il prossimo ora</button>
+      </div>
+      <p class="queue-readonly" id="queueReadonly" hidden>Solo un responsabile può cambiare la modalità o rilasciare ordini.</p>
+      <p class="queue-feedback" id="queueFeedback" role="status" hidden></p>
+      <p class="queue-help" id="modeHelp"></p>
+    </div>
+
+    <h2 class="admin-h2">In coda</h2>
+    <div id="queueList" class="queue-list"></div>
+
+    <h2 class="admin-h2">Rilasciati di recente</h2>
+    <div id="recentList" class="queue-list"></div>
+  </section>
+
+  <section class="admin-view" id="viewOrders" hidden>
     <div class="admin-filters">
       <label><input type="checkbox" id="onlyOpen" checked /> Solo ordini aperti</label>
       <span class="admin-refresh" id="refreshedAt"></span>
@@ -51,18 +94,26 @@
   </section>
 
   <section class="admin-view" id="viewTables" hidden>
+    <div class="table-legend">
+      <span><i class="dot dot--yellow"></i>In inserimento</span>
+      <span><i class="dot dot--orange"></i>In coda</span>
+      <span><i class="dot dot--green"></i>Inviato alla cassa</span>
+      <span><i class="dot dot--sim"></i>Simulato (non inviato)</span>
+      <span><i class="dot dot--red"></i>Invio fallito</span>
+    </div>
     <div id="tablesGrid" class="tables-grid"></div>
   </section>
 
   <section class="admin-view" id="viewQr" hidden>
     <p class="order-lead">
       QR code generati dal server con l'indirizzo pubblico configurato
-      (<code id="qrBase"></code>). Stampali e attaccali sui tavoli.
+      (<code id="qrBase"></code>). Aprono il menu del tavolo: stampali e attaccali sui tavoli.
     </p>
     <div id="qrGrid" class="qr-grid"></div>
   </section>
 </main>
 
+<script src="js/config.js"></script>
 <script src="js/admin.js"></script>
 </body>
 </html>

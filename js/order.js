@@ -1,183 +1,63 @@
 /* ============================================================
-   Il Chiosco — table ordering (customer side)
-   Flow: QR (?table=N) or camera scan → menu from the API → cart
-         → order → live status.
+   Il Chiosco — table menu (customer side, browse only)
+   The table QR opens /order?table=N. Orders are taken by the
+   waiter; this page only shows the menu and prices.
+   Menu source: the backend (/api/menu) when reachable, otherwise
+   the static product list shipped with the site.
    ============================================================ */
 (function () {
   "use strict";
 
-  var API = "/api";
-  var state = { table: null, menu: [], cart: {}, order: null, poll: null };
+  var API = (window.IL_CHIOSCO_API || "") + "/api";
+  var STATIC_MENU = "server/data/products.json";
+  var state = { menu: [], category: null, lang: "it", table: null };
 
   var el = function (id) { return document.getElementById(id); };
   var money = function (cents) {
     return (cents / 100).toFixed(2).replace(".", ",") + " €";
   };
 
-  function show(screenId) {
-    ["screenScan", "screenMenu", "screenReview", "screenDone"].forEach(function (id) {
-      el(id).hidden = id !== screenId;
-    });
-    window.scrollTo(0, 0);
-  }
-
-  function fail(node, message) {
-    node.textContent = message;
-    node.hidden = !message;
-  }
-
-  function api(path, options) {
-    return fetch(API + path, options).then(function (res) {
-      return res.json().catch(function () { return {}; }).then(function (body) {
-        if (!res.ok) throw new Error((body.error && body.error.message) || "Errore di rete");
-        return body;
-      });
-    });
-  }
-
-  /* ---------------- table detection ---------------- */
-  function tableFromUrl() {
-    var value = new URLSearchParams(window.location.search).get("table");
-    var number = parseInt(value, 10);
-    return Number.isInteger(number) && number > 0 ? number : null;
-  }
-
-  /** Accepts both a bare number and a full /order?table=N URL from the QR. */
-  function tableFromScan(text) {
-    if (!text) return null;
-    var direct = text.match(/[?&]table=(\d+)/);
-    if (direct) return parseInt(direct[1], 10);
-    if (/^\d{1,3}$/.test(text.trim())) return parseInt(text.trim(), 10);
-    return null;
-  }
-
-  function useTable(number) {
-    return api("/tables/" + number).then(function (table) {
-      state.table = table.tableNumber;
-      var badge = el("tableBadge");
-      badge.textContent = "Tavolo " + table.tableNumber;
-      badge.hidden = false;
-      stopScanner();
-      return loadMenu();
-    });
-  }
-
-  /* ---------------- camera scanning ---------------- */
-  var scan = { stream: null, raf: null, detector: null };
-
-  function stopScanner() {
-    if (scan.raf) cancelAnimationFrame(scan.raf);
-    scan.raf = null;
-    if (scan.stream) scan.stream.getTracks().forEach(function (t) { t.stop(); });
-    scan.stream = null;
-    el("scanner").hidden = true;
-  }
-
-  function startScanner() {
-    fail(el("scanError"), "");
-    if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
-      fail(el("scanError"), "La fotocamera non è disponibile su questo dispositivo. Inserisci il numero del tavolo qui sotto.");
-      return;
-    }
-    navigator.mediaDevices
-      .getUserMedia({ video: { facingMode: { ideal: "environment" } } })
-      .then(function (stream) {
-        scan.stream = stream;
-        var video = el("scanVideo");
-        video.srcObject = stream;
-        el("scanner").hidden = false;
-        el("startScanBtn").textContent = "Inquadra il QR…";
-        return video.play();
-      })
-      .then(function () {
-        if (window.BarcodeDetector) {
-          scan.detector = new window.BarcodeDetector({ formats: ["qr_code"] });
-        }
-        tick();
-      })
-      .catch(function () {
-        fail(el("scanError"), "Permesso fotocamera negato. Puoi inserire il numero del tavolo qui sotto.");
-        stopScanner();
-      });
-  }
-
-  function handleScanText(text) {
-    var number = tableFromScan(text);
-    if (!number) return false;
-    useTable(number).catch(function (err) { fail(el("scanError"), err.message); });
-    return true;
-  }
-
-  function tick() {
-    var video = el("scanVideo");
-    if (!scan.stream || video.readyState !== video.HAVE_ENOUGH_DATA) {
-      scan.raf = requestAnimationFrame(tick);
-      return;
-    }
-    if (scan.detector) {
-      scan.detector
-        .detect(video)
-        .then(function (codes) {
-          if (!(codes.length && handleScanText(codes[0].rawValue))) {
-            scan.raf = requestAnimationFrame(tick);
-          }
-        })
-        .catch(function () {
-          scan.detector = null;
-          scan.raf = requestAnimationFrame(tick);
-        });
-      return;
-    }
-    // jsQR fallback for browsers without BarcodeDetector (notably iOS Safari).
-    var canvas = el("scanCanvas");
-    var ctx = canvas.getContext("2d", { willReadFrequently: true });
-    canvas.width = video.videoWidth;
-    canvas.height = video.videoHeight;
-    ctx.drawImage(video, 0, 0, canvas.width, canvas.height);
-    var image = ctx.getImageData(0, 0, canvas.width, canvas.height);
-    var found = window.jsQR ? window.jsQR(image.data, image.width, image.height) : null;
-    if (!(found && handleScanText(found.data))) scan.raf = requestAnimationFrame(tick);
-  }
-
-  /* ---------------- menu ---------------- */
-  function loadMenu() {
-    show("screenMenu");
-    return api("/menu").then(function (data) {
-      state.menu = data.categories;
-      renderTabs();
-      renderMenu();
-    });
-  }
-
-  var CATEGORY_LABELS = {
-    alba: "Alba",
-    mezzogiorno: "Mezzogiorno",
-    bibite: "Soft drink & Drink",
-    cocktail: "Cocktail & Drinks",
+  var TEXT = {
+    it: {
+      title: "Menu al tavolo",
+      notice: "Per ordinare, rivolgiti al cameriere.",
+      loading: "Caricamento menu…",
+      empty: "Nessun prodotto disponibile.",
+      error: "Il menu non è disponibile al momento. Chiedi pure al cameriere.",
+      table: "Tavolo",
+      toggle: "EN",
+      toggleLabel: "Switch to English",
+    },
+    en: {
+      title: "Table menu",
+      notice: "To place an order, please speak to your waiter.",
+      loading: "Loading menu…",
+      empty: "No products available.",
+      error: "The menu is not available right now. Please ask your waiter.",
+      table: "Table",
+      toggle: "IT",
+      toggleLabel: "Passa all\u2019italiano",
+    },
   };
 
-  function categories() {
-    var list = [];
-    state.menu.forEach(function (group) {
-      if (list.indexOf(group.category) === -1) list.push(group.category);
-    });
-    return list;
-  }
+  var CATEGORY_LABELS = {
+    it: {
+      alba: "Alba",
+      mezzogiorno: "Mezzogiorno",
+      bibite: "Soft drink & Drink",
+      cocktail: "Cocktail & Drinks",
+    },
+    en: {
+      alba: "Morning",
+      mezzogiorno: "Midday",
+      bibite: "Soft drinks & Drinks",
+      cocktail: "Cocktails & Drinks",
+    },
+  };
 
-  var activeCategory = null;
-
-  function renderTabs() {
-    var list = categories();
-    activeCategory = activeCategory || list[0];
-    el("categoryTabs").innerHTML = list
-      .map(function (category) {
-        return (
-          '<button class="menu-tab' + (category === activeCategory ? " active" : "") +
-          '" data-category="' + category + '">' +
-          (CATEGORY_LABELS[category] || category) + "</button>"
-        );
-      })
-      .join("");
+  function t(key) { return TEXT[state.lang][key]; }
+  function categoryLabel(category) {
+    return CATEGORY_LABELS[state.lang][category] || category;
   }
 
   function escapeHtml(value) {
@@ -186,227 +66,138 @@
     });
   }
 
+  function fetchJson(url) {
+    return fetch(url, { headers: { Accept: "application/json" } }).then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    });
+  }
+
+  /** Groups the static products.json the same way /api/menu does. */
+  function groupStatic(products) {
+    var groups = [];
+    var index = {};
+    products
+      .slice()
+      .sort(function (a, b) { return a.sortOrder - b.sortOrder; })
+      .forEach(function (product) {
+        var key = product.category + "|" + (product.subcategory || "");
+        if (!index[key]) {
+          index[key] = { category: product.category, subcategory: product.subcategory, items: [] };
+          groups.push(index[key]);
+        }
+        index[key].items.push(product);
+      });
+    return groups;
+  }
+
+  function loadMenu() {
+    return fetchJson(API + "/menu")
+      .then(function (data) { return data.categories; })
+      .catch(function () {
+        return fetchJson(STATIC_MENU).then(groupStatic);
+      });
+  }
+
+  /* ---------------- rendering ---------------- */
+  function categories() {
+    var list = [];
+    state.menu.forEach(function (group) {
+      if (list.indexOf(group.category) === -1) list.push(group.category);
+    });
+    return list;
+  }
+
+  function renderTabs() {
+    var list = categories();
+    if (list.indexOf(state.category) === -1) state.category = list[0];
+    el("categoryTabs").innerHTML = list
+      .map(function (category) {
+        return (
+          '<button class="menu-tab' + (category === state.category ? " active" : "") +
+          '" role="tab" aria-selected="' + (category === state.category) +
+          '" data-category="' + escapeHtml(category) + '">' +
+          escapeHtml(categoryLabel(category)) + "</button>"
+        );
+      })
+      .join("");
+  }
+
+  function itemRow(item) {
+    return (
+      '<div class="order-item">' +
+      '  <div class="order-item__info">' +
+      '    <span class="order-item__name">' + escapeHtml(item.name) + "</span>" +
+      (item.description ? '<span class="order-item__desc">' + escapeHtml(item.description) + "</span>" : "") +
+      "  </div>" +
+      '  <span class="order-item__price">' + money(item.priceCents) + "</span>" +
+      "</div>"
+    );
+  }
+
   function renderMenu() {
     var html = state.menu
-      .filter(function (group) { return group.category === activeCategory; })
+      .filter(function (group) { return group.category === state.category; })
       .map(function (group) {
         return (
           '<div class="menu-group">' +
-          "<h3>" + escapeHtml(group.subcategory || CATEGORY_LABELS[group.category]) + "</h3>" +
+          "<h3>" + escapeHtml(group.subcategory || categoryLabel(group.category)) + "</h3>" +
           group.items.map(itemRow).join("") +
           "</div>"
         );
       })
       .join("");
-    el("menuList").innerHTML = html || "<p class=\"order-lead\">Nessun prodotto disponibile.</p>";
+    el("menuList").innerHTML = html || '<p class="order-lead">' + t("empty") + "</p>";
   }
 
-  function itemRow(item) {
-    var quantity = state.cart[item.id] ? state.cart[item.id].quantity : 0;
-    return (
-      '<div class="order-item" data-id="' + item.id + '">' +
-      '  <div class="order-item__info">' +
-      '    <span class="order-item__name">' + escapeHtml(item.name) + "</span>" +
-      (item.description ? '<span class="order-item__desc">' + escapeHtml(item.description) + "</span>" : "") +
-      '    <span class="order-item__price">' + money(item.priceCents) + "</span>" +
-      "  </div>" +
-      '  <div class="qty">' +
-      '    <button type="button" class="qty__btn" data-act="dec" aria-label="Rimuovi">−</button>' +
-      '    <span class="qty__value">' + quantity + "</span>" +
-      '    <button type="button" class="qty__btn" data-act="inc" aria-label="Aggiungi">+</button>' +
-      "  </div>" +
-      "</div>"
-    );
-  }
-
-  /* ---------------- cart ---------------- */
-  function findProduct(id) {
-    for (var i = 0; i < state.menu.length; i += 1) {
-      var items = state.menu[i].items;
-      for (var j = 0; j < items.length; j += 1) {
-        if (items[j].id === id) return items[j];
-      }
+  function applyLanguage() {
+    document.documentElement.lang = state.lang;
+    document.querySelectorAll("[data-i18n]").forEach(function (node) {
+      node.textContent = t(node.dataset.i18n);
+    });
+    document.title = t("title") + " · Il Chiosco | Taste & Beyond";
+    var toggle = el("langToggle");
+    toggle.textContent = t("toggle");
+    toggle.setAttribute("aria-label", t("toggleLabel"));
+    if (state.table) el("tableBadge").textContent = t("table") + " " + state.table;
+    if (state.menu.length) {
+      renderTabs();
+      renderMenu();
     }
-    return null;
-  }
-
-  function changeQty(id, delta) {
-    var product = findProduct(id);
-    if (!product) return;
-    var entry = state.cart[id] || { product: product, quantity: 0 };
-    entry.quantity = Math.max(0, Math.min(99, entry.quantity + delta));
-    if (entry.quantity === 0) delete state.cart[id];
-    else state.cart[id] = entry;
-    renderMenu();
-    renderCartBar();
-  }
-
-  function cartLines() {
-    return Object.keys(state.cart).map(function (id) { return state.cart[id]; });
-  }
-
-  function cartTotal() {
-    return cartLines().reduce(function (sum, line) {
-      return sum + line.product.priceCents * line.quantity;
-    }, 0);
-  }
-
-  function renderCartBar() {
-    var lines = cartLines();
-    var count = lines.reduce(function (sum, line) { return sum + line.quantity; }, 0);
-    el("cartBar").hidden = count === 0;
-    el("cartCount").textContent = count;
-    el("cartTotal").textContent = money(cartTotal());
-  }
-
-  function renderReview() {
-    el("reviewItems").innerHTML = cartLines()
-      .map(function (line) {
-        return (
-          '<div class="review-row"><span>' + line.quantity + "× " +
-          escapeHtml(line.product.name) + "</span><strong>" +
-          money(line.product.priceCents * line.quantity) + "</strong></div>"
-        );
-      })
-      .join("");
-    el("reviewTotal").textContent = money(cartTotal());
-  }
-
-  /* ---------------- submit + status ---------------- */
-  var STATUS_LABELS = {
-    received: "Ricevuto",
-    in_progress: "In preparazione",
-    served: "Servito",
-    paid: "Pagato",
-    cancelled: "Annullato",
-  };
-
-  function submitOrder() {
-    var button = el("submitBtn");
-    button.disabled = true;
-    fail(el("submitError"), "");
-
-    var body = {
-      tableNumber: state.table,
-      notes: el("orderNotes").value.trim() || undefined,
-      items: cartLines().map(function (line) {
-        return { productId: line.product.id, quantity: line.quantity };
-      }),
-    };
-
-    api("/orders", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        // Protects against double-taps and flaky mobile connections.
-        "Idempotency-Key": idempotencyKey(),
-      },
-      body: JSON.stringify(body),
-    })
-      .then(function (order) {
-        state.order = order;
-        state.cart = {};
-        renderCartBar();
-        renderDone(order);
-        show("screenDone");
-        startPolling(order.id);
-      })
-      .catch(function (err) { fail(el("submitError"), err.message); })
-      .finally(function () { button.disabled = false; });
-  }
-
-  var currentKey = null;
-  function idempotencyKey() {
-    if (!currentKey) {
-      currentKey =
-        (window.crypto && window.crypto.randomUUID && window.crypto.randomUUID()) ||
-        String(Date.now()) + Math.random().toString(16).slice(2);
-    }
-    return currentKey;
-  }
-
-  function renderDone(order) {
-    el("doneCode").textContent = order.orderCode;
-    el("doneTable").textContent = order.tableNumber;
-    el("doneStatus").textContent = STATUS_LABELS[order.status] || order.status;
-    el("doneTotal").textContent = money(order.totalCents);
-    el("doneItems").innerHTML = order.items
-      .map(function (item) {
-        return (
-          '<div class="review-row"><span>' + item.quantity + "× " +
-          escapeHtml(item.name) + "</span><strong>" + money(item.lineTotalCents) + "</strong></div>"
-        );
-      })
-      .join("");
-  }
-
-  function startPolling(orderId) {
-    if (state.poll) clearInterval(state.poll);
-    state.poll = setInterval(function () {
-      if (document.hidden) return;
-      api("/orders/" + orderId)
-        .then(function (order) {
-          el("doneStatus").textContent = STATUS_LABELS[order.status] || order.status;
-          if (order.status === "paid" || order.status === "cancelled") {
-            clearInterval(state.poll);
-            state.poll = null;
-          }
-        })
-        .catch(function () {});
-    }, 15000);
   }
 
   /* ---------------- wiring ---------------- */
-  el("startScanBtn").addEventListener("click", startScanner);
-  el("manualBtn").addEventListener("click", function () {
-    var number = parseInt(el("manualTable").value, 10);
-    if (!Number.isInteger(number) || number <= 0) {
-      fail(el("scanError"), "Inserisci un numero di tavolo valido.");
-      return;
-    }
-    useTable(number).catch(function (err) { fail(el("scanError"), err.message); });
+  function tableFromUrl() {
+    var number = parseInt(new URLSearchParams(window.location.search).get("table"), 10);
+    return Number.isInteger(number) && number > 0 && number < 1000 ? number : null;
+  }
+
+  try { state.lang = window.localStorage.getItem("ic-lang") === "en" ? "en" : "it"; } catch (e) {}
+  state.table = tableFromUrl();
+  el("tableBadge").hidden = !state.table;
+  applyLanguage();
+
+  el("langToggle").addEventListener("click", function () {
+    state.lang = state.lang === "it" ? "en" : "it";
+    try { window.localStorage.setItem("ic-lang", state.lang); } catch (e) {}
+    applyLanguage();
   });
 
   el("categoryTabs").addEventListener("click", function (event) {
     var tab = event.target.closest("[data-category]");
     if (!tab) return;
-    activeCategory = tab.dataset.category;
+    state.category = tab.dataset.category;
     renderTabs();
     renderMenu();
   });
 
-  el("menuList").addEventListener("click", function (event) {
-    var button = event.target.closest(".qty__btn");
-    if (!button) return;
-    var row = button.closest(".order-item");
-    changeQty(row.dataset.id, button.dataset.act === "inc" ? 1 : -1);
-  });
-
-  el("reviewBtn").addEventListener("click", function () {
-    renderReview();
-    show("screenReview");
-  });
-  el("cartToggle").addEventListener("click", function () {
-    renderReview();
-    show("screenReview");
-  });
-  el("backToMenu").addEventListener("click", function () { show("screenMenu"); });
-  el("submitBtn").addEventListener("click", submitOrder);
-  el("newOrderBtn").addEventListener("click", function () {
-    currentKey = null;
-    el("orderNotes").value = "";
-    if (state.poll) clearInterval(state.poll);
-    show("screenMenu");
-    renderMenu();
-  });
-
-  var fromUrl = tableFromUrl();
-  if (fromUrl) {
-    useTable(fromUrl).catch(function (err) {
-      show("screenScan");
-      fail(el("scanError"), err.message);
+  loadMenu()
+    .then(function (groups) {
+      state.menu = groups;
+      renderTabs();
+      renderMenu();
+    })
+    .catch(function () {
+      el("menuList").innerHTML = '<p class="order-error">' + t("error") + "</p>";
     });
-  } else {
-    show("screenScan");
-  }
 })();

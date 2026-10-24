@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <meta name="robots" content="noindex" />
-  <title>Ordina al tavolo · Il Chiosco | Taste &amp; Beyond</title>
+  <title>Menu al tavolo · Il Chiosco | Taste &amp; Beyond</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
@@ -18,86 +18,28 @@
     <span class="mark">Il Chiosco</span>
     <span class="sub">Taste &amp; Beyond</span>
   </a>
-  <span class="order-nav__table" id="tableBadge" hidden></span>
+  <div class="order-nav__right">
+    <span class="order-nav__table" id="tableBadge" hidden></span>
+    <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">EN</button>
+  </div>
 </header>
 
-<!-- ============ 1. Table not known yet: scan the QR ============ -->
-<section class="order-screen" id="screenScan">
+<section class="order-screen">
   <div class="order-container">
-    <h1>Ordina al tavolo</h1>
-    <p class="order-lead">
-      Inquadra il QR code che trovi sul tuo tavolo. Se hai già scansionato il QR,
-      il tavolo viene riconosciuto automaticamente.
+    <h1 data-i18n="title">Menu al tavolo</h1>
+    <p class="order-notice" role="note">
+      <span class="order-notice__icon" aria-hidden="true">✦</span>
+      <span data-i18n="notice">Per ordinare, rivolgiti al cameriere.</span>
     </p>
 
-    <div class="scanner" id="scanner" hidden>
-      <video id="scanVideo" playsinline muted></video>
-      <div class="scanner__frame"></div>
-    </div>
-    <canvas id="scanCanvas" hidden></canvas>
-
-    <p class="order-error" id="scanError" hidden></p>
-
-    <button class="btn btn--gold" id="startScanBtn" type="button">Scansiona il QR del tavolo</button>
-
-    <div class="order-manual">
-      <label for="manualTable">Il QR non funziona? Inserisci il numero del tavolo</label>
-      <div class="order-manual__row">
-        <input id="manualTable" type="number" inputmode="numeric" min="1" max="99" placeholder="es. 12" />
-        <button class="btn btn--outline" id="manualBtn" type="button">Continua</button>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ============ 2. Menu + cart ============ -->
-<section class="order-screen" id="screenMenu" hidden>
-  <div class="order-container">
     <div class="order-tabs" id="categoryTabs" role="tablist"></div>
     <div id="menuList" class="menu-groups" aria-live="polite">
-      <p class="order-lead">Caricamento menu…</p>
+      <p class="order-lead" data-i18n="loading">Caricamento menu…</p>
     </div>
   </div>
-
-  <div class="cart-bar" id="cartBar" hidden>
-    <button class="cart-bar__summary" id="cartToggle" type="button">
-      <span id="cartCount">0</span> articoli · <strong id="cartTotal">0,00 €</strong>
-    </button>
-    <button class="btn btn--gold" id="reviewBtn" type="button">Vedi ordine</button>
-  </div>
 </section>
 
-<!-- ============ 3. Review + send ============ -->
-<section class="order-screen" id="screenReview" hidden>
-  <div class="order-container">
-    <button class="link-back" id="backToMenu" type="button">← Torna al menu</button>
-    <h2>Il tuo ordine</h2>
-    <div id="reviewItems" class="review-items"></div>
-    <label class="order-notes">
-      Note per lo staff (allergie, preferenze…)
-      <textarea id="orderNotes" maxlength="500" rows="3" placeholder="Es. senza ghiaccio, latte di soia…"></textarea>
-    </label>
-    <div class="review-total"><span>Totale</span><strong id="reviewTotal">0,00 €</strong></div>
-    <p class="order-error" id="submitError" hidden></p>
-    <button class="btn btn--gold btn--full" id="submitBtn" type="button">Invia ordine</button>
-    <p class="order-fineprint">L'ordine viene inviato allo staff e alla cassa. Il pagamento si effettua al banco.</p>
-  </div>
-</section>
-
-<!-- ============ 4. Confirmation + live status ============ -->
-<section class="order-screen" id="screenDone" hidden>
-  <div class="order-container order-done">
-    <div class="order-done__check">✓</div>
-    <h2>Ordine inviato!</h2>
-    <p class="order-lead">Codice ordine <strong id="doneCode"></strong> · Tavolo <strong id="doneTable"></strong></p>
-    <p class="order-status">Stato: <strong id="doneStatus">Ricevuto</strong></p>
-    <div id="doneItems" class="review-items"></div>
-    <div class="review-total"><span>Totale</span><strong id="doneTotal"></strong></div>
-    <button class="btn btn--outline btn--full" id="newOrderBtn" type="button">Ordina ancora</button>
-  </div>
-</section>
-
-<script src="js/vendor/jsqr.min.js"></script>
+<script src="js/config.js"></script>
 <script src="js/order.js"></script>
 </body>
 </html>

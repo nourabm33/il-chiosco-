@@ -1,21 +1,9 @@
 import { Router } from "express";
-import rateLimit from "express-rate-limit";
-import { z } from "zod";
 import { query } from "../lib/db.js";
 import { asyncRoute } from "../middleware/index.js";
-import { badRequest, notFound } from "../lib/errors.js";
-import { config } from "../config.js";
-import { createOrder, getOrder } from "../services/orders.js";
+import { badRequest, gone, notFound } from "../lib/errors.js";
 
 export const publicRouter = Router();
-
-const orderLimiter = rateLimit({
-  windowMs: 60_000,
-  limit: 20,
-  standardHeaders: "draft-7",
-  legacyHeaders: false,
-  message: { error: { code: "rate_limited", message: "Too many orders, slow down" } },
-});
 
 let menuCache = { at: 0, payload: null };
 const MENU_TTL_MS = 30_000;
@@ -75,51 +63,7 @@ publicRouter.get(
   }),
 );
 
-const orderSchema = z.object({
-  tableNumber: z.number().int().positive(),
-  notes: z.string().trim().max(500).optional(),
-  items: z
-    .array(
-      z.object({
-        productId: z.string().uuid(),
-        quantity: z.number().int().min(1).max(99),
-        notes: z.string().trim().max(200).optional(),
-      }),
-    )
-    .min(1)
-    .max(config.maxOrderItems),
-});
-
-publicRouter.post(
-  "/orders",
-  orderLimiter,
-  asyncRoute(async (req, res) => {
-    const parsed = orderSchema.safeParse(req.body);
-    if (!parsed.success) {
-      throw badRequest("Invalid order", parsed.error.flatten());
-    }
-    const order = await createOrder({
-      ...parsed.data,
-      idempotencyKey: req.get("idempotency-key") ?? undefined,
-    });
-    res.status(201).json(order);
-  }),
-);
-
-publicRouter.get(
-  "/orders/:id",
-  asyncRoute(async (req, res) => {
-    const order = await getOrder(req.params.id);
-    // Customers only need the live status of their own order.
-    res.json({
-      id: order.id,
-      orderCode: order.orderCode,
-      tableNumber: order.tableNumber,
-      status: order.status,
-      totalCents: order.totalCents,
-      currency: order.currency,
-      createdAt: order.createdAt,
-      items: order.items,
-    });
-  }),
+// Customers browse the menu only; orders are taken by the waiter.
+publicRouter.post("/orders", (_req, _res, next) =>
+  next(gone("Per ordinare, rivolgiti al cameriere. / To place an order, please speak to your waiter.")),
 );

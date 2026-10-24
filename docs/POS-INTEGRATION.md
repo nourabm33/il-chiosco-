@@ -70,12 +70,20 @@ UPDATE restaurant_tables SET pos_table_id = '...' WHERE table_number = 1;
 UPDATE products SET pos_product_id = '...' WHERE slug = 'cocktail-spritz';
 ```
 
-Until then `POS_DRIVER=noop`: orders are stored and marked `skipped` for POS
-delivery, and the staff dashboard is the source of truth.
+Until then `POS_DRIVER=simulation` (the old name `noop` still works): orders
+released by the queue are marked `simulated` — shown as "Simulato · non inviato
+alla cassa" — and nothing is sent. Only an order the real adapter accepted is
+ever shown as "Inviato alla cassa".
+
+Orders reach the outbox only when the queue releases them (see
+[DEPLOY.md](DEPLOY.md)); each order has at most one outbox row, so it can be
+delivered once. A retry is only possible after delivery has definitively
+failed. If the POS may have accepted an order but timed out, the adapter should
+send the `orderId` as an idempotency key so the till can ignore the repeat.
 
 ## Operations
 
 * `GET /api/admin/pos/status` — driver, whether it is configured, outbox counts.
-* `POST /api/admin/pos/orders/:id/retry` — re-queue a failed delivery
-  (also available as a button on the dashboard).
-* Failed deliveries show as `Cassa: failed` on the order card.
+* `POST /api/admin/orders/:id/retry` — re-send a failed delivery
+  (manager only; also the "Riprova invio" button on the dashboard).
+* Failed deliveries show as "Invio fallito" with the error on the order.

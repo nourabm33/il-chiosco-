@@ -23,8 +23,7 @@ services:
     environment:
       DATABASE_URL: postgres://postgres:postgres@db:5432/ilchiosco
       PUBLIC_BASE_URL: ${PUBLIC_BASE_URL:-http://localhost:3000}
-      ADMIN_TOKEN: ${ADMIN_TOKEN:-changeme}
-      POS_DRIVER: ${POS_DRIVER:-noop}
+      POS_DRIVER: ${POS_DRIVER:-simulation}
     ports:
       - "3000:3000"
 
