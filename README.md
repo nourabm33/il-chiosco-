@@ -44,7 +44,7 @@ js/config.js      # backend address for the static copy (empty = same origin)
 js/order.js       # table menu (API, with the static product list as fallback)
 js/admin.js       # dashboard: queue controls, live updates
 server/           # Express API, Postgres schema, queue, POS integration layer
-docs/             # DEPLOY.md (hosting, env vars, test checklist), POS-INTEGRATION.md
+docs/             # DEPLOY.md (hosting, env vars, test checklist), POS-INTEGRATION.md, CASSA-IN-CLOUD.md
 assets/img/       # photography (counter, exterior, crowd, menu banners, cocktails)
 ```
 
