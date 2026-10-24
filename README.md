@@ -50,7 +50,7 @@ assets/img/       # photography (counter, exterior, crowd, menu banners, cocktai
 
 ## Sections
 
-- **Home / Hero** — full-screen bar image, title, subtitle and three CTAs (Food menu / Cocktail menu / Ordina al tavolo).
+- **Home / Hero** — full-screen bar image, title, subtitle and three CTAs (Food menu / Cocktail menu / Menu al tavolo).
 - **Menu Il Chiosco** — tabbed *Alba · Mezzogiorno · Soft drink & Drink*, each opening with a photo banner, extracted from the food PDFs.
 - **Cocktail Menu** — tabbed *Signatures · Classici · Gin · Birre*, extracted from the cocktail PDF.
 - **Gallery** — lightbox gallery of the provided photos.
