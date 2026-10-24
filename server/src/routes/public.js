@@ -31,7 +31,7 @@ publicRouter.get(
               price_cents, currency, sort_order
          FROM products
         WHERE is_available
-        ORDER BY category, sort_order, name`,
+        ORDER BY sort_order, name`,
     );
     const categories = [];
     const index = new Map();

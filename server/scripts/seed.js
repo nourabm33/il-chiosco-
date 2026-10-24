@@ -37,6 +37,7 @@ try {
             subcategory = EXCLUDED.subcategory,
             price_cents = EXCLUDED.price_cents,
             sort_order = EXCLUDED.sort_order,
+            is_available = true,
             updated_at = now()`,
     [
       JSON.stringify(
@@ -51,6 +52,14 @@ try {
         })),
       ),
     ],
+  );
+
+  // Products dropped from the printed menu stay in the table (past orders
+  // reference them) but are hidden from the ordering page.
+  await client.query(
+    `UPDATE products SET is_available = false, updated_at = now()
+      WHERE is_available AND NOT (slug = ANY($1::text[]))`,
+    [products.map((product) => product.slug)],
   );
 
   await client.query("COMMIT");
