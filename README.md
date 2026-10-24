@@ -42,13 +42,13 @@ js/main.js        # nav, scroll reveal, menu tabs, gallery lightbox, parallax
 js/order.js       # ordering flow, camera QR scanning
 js/admin.js       # dashboard polling and order status actions
 server/           # Express API, Postgres schema, POS integration layer
-assets/img/       # photography (counter, exterior, crowd)
+assets/img/       # photography (counter, exterior, crowd, menu banners, cocktails)
 ```
 
 ## Sections
 
-- **Home / Hero** — full-screen bar image, title, subtitle and two CTAs (Food / Cocktail menu).
-- **Menu Il Chiosco** — tabbed *Bevande · Dolce · Salato*, extracted from the food PDF.
+- **Home / Hero** — full-screen bar image, title, subtitle and three CTAs (Food menu / Cocktail menu / Ordina al tavolo).
+- **Menu Il Chiosco** — tabbed *Alba · Mezzogiorno · Soft drink & Drink*, each opening with a photo banner, extracted from the food PDFs.
 - **Cocktail Menu** — tabbed *Signatures · Classici · Gin · Birre*, extracted from the cocktail PDF.
 - **Gallery** — lightbox gallery of the provided photos.
 - **Contact** — address, click-to-call, opening hours, embedded Google Map, Get Directions.
@@ -81,6 +81,9 @@ node scripts/extract-menu.js   # index.html + js/cocktails.js → data/products.
 npm run seed                   # upsert into the products table
 ```
 
+Products no longer in the menu are marked `is_available = false` (kept for past
+orders) and disappear from the ordering page.
+
 ### POS / cassa
 
 Orders are queued for the cash register through a modular adapter layer; see
@@ -92,7 +95,8 @@ of details still needed from the POS technician. Until they arrive the driver is
 
 Menu items, descriptions and prices were extracted from the two supplied PDFs
 (food menu &amp; cocktail list). Photography is from the supplied images, with the
-social-media overlay icons cropped out.
+social-media overlay icons cropped out; the menu banners in `assets/img/menu/`
+(`alba`, `mezzogiorno`, `drink`) are Unsplash photos.
 
 ## Contact
 
