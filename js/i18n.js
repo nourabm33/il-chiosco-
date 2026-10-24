@@ -10,7 +10,7 @@
   var TXT = {
     // nav / cta
     "Prenota un tavolo": "Book a table",
-    "Ordina al tavolo": "Order at your table",
+    "Menu al tavolo": "Table menu",
 
     // intro
     "La nostra filosofia": "Our philosophy",

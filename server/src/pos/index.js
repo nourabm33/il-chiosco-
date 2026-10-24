@@ -1,9 +1,11 @@
 import { config } from "../config.js";
-import { NoopPosAdapter } from "./noop-adapter.js";
+import { SimulationPosAdapter } from "./simulation-adapter.js";
 import { HttpPosAdapter } from "./http-adapter.js";
 
 const registry = {
-  noop: NoopPosAdapter,
+  simulation: SimulationPosAdapter,
+  // pre-queue name of the simulation driver, kept so old .env files still work
+  noop: SimulationPosAdapter,
   http: HttpPosAdapter,
 };
 
@@ -17,7 +19,7 @@ export function registerPosAdapter(name, AdapterClass) {
 
 export function getPosAdapter() {
   if (!instance) {
-    const AdapterClass = registry[config.pos.driver] ?? NoopPosAdapter;
+    const AdapterClass = registry[config.pos.driver] ?? SimulationPosAdapter;
     instance = new AdapterClass();
   }
   return instance;

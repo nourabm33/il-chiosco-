@@ -1,18 +1,39 @@
 import { config } from "../config.js";
-import { unauthorized } from "../lib/errors.js";
+import { forbidden, unauthorized } from "../lib/errors.js";
 import { logger } from "../lib/logger.js";
+import { userForToken } from "../lib/auth.js";
 
-export function requireAdmin(req, _res, next) {
-  if (!config.adminToken) {
-    return next(
-      unauthorized("ADMIN_TOKEN is not set on the server — admin API disabled"),
-    );
-  }
+export function bearerToken(req) {
   const header = req.get("authorization") ?? "";
-  const token = header.startsWith("Bearer ")
-    ? header.slice(7)
-    : (req.get("x-admin-token") ?? "");
-  if (token !== config.adminToken) return next(unauthorized());
+  return header.startsWith("Bearer ") ? header.slice(7).trim() : "";
+}
+
+/** Requires a signed-in staff member; `roles` restricts who may continue. */
+export function requireStaff(...roles) {
+  return (req, _res, next) => {
+    userForToken(bearerToken(req))
+      .then((user) => {
+        if (!user) return next(unauthorized("Sign in again"));
+        if (roles.length > 0 && !roles.includes(user.role)) {
+          return next(forbidden("Only a manager can do this"));
+        }
+        req.staff = user;
+        return next();
+      })
+      .catch(next);
+  };
+}
+
+export function cors(req, res, next) {
+  const origin = req.get("origin");
+  if (origin && config.corsOrigins.includes(origin)) {
+    res.set("Access-Control-Allow-Origin", origin);
+    res.set("Access-Control-Allow-Headers", "Authorization, Content-Type, Idempotency-Key");
+    res.set("Access-Control-Allow-Methods", "GET, POST, PUT, PATCH, DELETE, OPTIONS");
+    res.set("Access-Control-Max-Age", "600");
+  }
+  res.vary("Origin");
+  if (req.method === "OPTIONS") return res.sendStatus(204);
   return next();
 }
 

@@ -1,11 +1,11 @@
 /* ============================================================
-   Il Chiosco — table ordering (customer) + admin dashboard
+   Il Chiosco — table menu (customer) + shared staff page styles
    Reuses the design tokens from styles.css
    ============================================================ */
 
 .order-body {
   background: var(--paper);
-  padding-bottom: 96px;
+  padding-bottom: 40px;
 }
 
 .order-nav {
@@ -46,6 +46,35 @@
   white-space: nowrap;
 }
 
+.order-nav__right {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.order-nav__right .lang-toggle {
+  margin: 0;
+}
+
+.order-notice {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 4px 0 26px;
+  padding: 14px 18px;
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  background: var(--cream);
+  font-family: var(--font-display);
+  font-size: clamp(19px, 4.6vw, 22px);
+  color: var(--green-deep);
+}
+
+.order-notice__icon {
+  color: var(--gold-deep);
+  font-size: 16px;
+}
+
 .order-container {
   max-width: 720px;
   margin: 0 auto;
@@ -72,50 +101,13 @@
   font-size: 15px;
 }
 
-/* ---------- scanner ---------- */
-.scanner {
-  position: relative;
-  margin-bottom: 18px;
-  border-radius: 16px;
-  overflow: hidden;
-  background: #000;
-  aspect-ratio: 4 / 3;
-}
-
-.scanner video {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.scanner__frame {
-  position: absolute;
-  inset: 18% 22%;
-  border: 2px solid var(--gold);
-  border-radius: 12px;
-  box-shadow: 0 0 0 100vmax rgba(0, 0, 0, 0.35);
-}
-
-.order-manual {
-  margin-top: 28px;
-  padding-top: 22px;
-  border-top: 1px solid var(--line);
-}
-
-.order-manual label {
-  display: block;
-  margin-bottom: 10px;
-  font-size: 15px;
-  color: var(--ink-soft);
-}
-
+/* ---------- form row (staff login) ---------- */
 .order-manual__row {
   display: flex;
   gap: 10px;
 }
 
-.order-manual input,
-.order-notes textarea {
+.order-manual__row input {
   flex: 1;
   padding: 12px 14px;
   border: 1px solid var(--line);
@@ -126,7 +118,7 @@
   color: var(--ink);
 }
 
-/* ---------- menu + cart ---------- */
+/* ---------- menu ---------- */
 .order-tabs {
   display: flex;
   gap: 10px;
@@ -172,106 +164,9 @@
 }
 
 .order-item__price {
-  margin-top: 2px;
-  font-size: 15px;
+  font-size: 16px;
+  white-space: nowrap;
   color: var(--gold-deep);
-}
-
-.qty {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-.qty__btn {
-  width: 36px;
-  height: 36px;
-  border: 1px solid var(--line);
-  border-radius: 50%;
-  background: #fff;
-  font-size: 20px;
-  line-height: 1;
-  color: var(--green-deep);
-  cursor: pointer;
-}
-
-.qty__btn:active {
-  background: var(--cream-2);
-}
-
-.qty__value {
-  min-width: 22px;
-  text-align: center;
-  font-variant-numeric: tabular-nums;
-}
-
-.cart-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 30;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 14px;
-  padding: 12px 18px calc(12px + env(safe-area-inset-bottom));
-  background: var(--green-deep);
-  color: var(--cream);
-}
-
-.cart-bar__summary {
-  background: none;
-  border: 0;
-  color: inherit;
-  font-family: inherit;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-/* ---------- review + confirmation ---------- */
-.link-back {
-  margin-bottom: 14px;
-  background: none;
-  border: 0;
-  padding: 0;
-  color: var(--ink-soft);
-  font-family: inherit;
-  font-size: 15px;
-  cursor: pointer;
-}
-
-.review-items {
-  margin: 16px 0;
-}
-
-.review-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  padding: 10px 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.review-total {
-  display: flex;
-  justify-content: space-between;
-  padding: 14px 0;
-  font-size: 20px;
-}
-
-.order-notes {
-  display: block;
-  margin-top: 10px;
-  font-size: 15px;
-  color: var(--ink-soft);
-}
-
-.order-notes textarea {
-  display: block;
-  width: 100%;
-  margin-top: 8px;
-  resize: vertical;
 }
 
 .btn--full {
@@ -280,29 +175,4 @@
   text-align: center;
 }
 
-.order-fineprint {
-  margin-top: 14px;
-  font-size: 13px;
-  color: var(--ink-soft);
-}
-
-.order-done {
-  text-align: center;
-}
-
-.order-done__check {
-  width: 68px;
-  height: 68px;
-  margin: 0 auto 18px;
-  display: grid;
-  place-items: center;
-  border-radius: 50%;
-  background: var(--green);
-  color: var(--cream);
-  font-size: 34px;
-}
-
-.order-status {
-  margin-bottom: 18px;
-  color: var(--ink-soft);
-}
+[hidden] { display: none !important; }

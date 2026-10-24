@@ -3,43 +3,75 @@ import QRCode from "qrcode";
 import { z } from "zod";
 import { config } from "../config.js";
 import { query } from "../lib/db.js";
-import { asyncRoute, requireAdmin } from "../middleware/index.js";
-import { badRequest, notFound } from "../lib/errors.js";
-import {
-  listOrders,
-  listTablesWithOrders,
-  updateOrderStatus,
-  ORDER_STATUSES,
-} from "../services/orders.js";
+import { asyncRoute, requireStaff } from "../middleware/index.js";
+import { badRequest, conflict, notFound } from "../lib/errors.js";
+import { getOrder, listOrders, listTablesWithOrders, STAGES } from "../services/orders.js";
+import { getQueueState, QUEUE_MODES, releaseNext, updateQueueSettings } from "../services/queue.js";
 import { drainOutbox, retryOrder } from "../pos/outbox-worker.js";
 import { getPosAdapter } from "../pos/index.js";
+import { orderId, parse } from "./schemas.js";
 
+/** Manager-only controls: queue mode, early release, retries, tables, QR codes. */
 export const adminRouter = Router();
 
-adminRouter.use(requireAdmin);
+adminRouter.use(requireStaff("manager"));
+
+const listSchema = z.object({
+  status: z.string().optional(),
+  stage: z.enum(STAGES).optional(),
+  table: z.coerce.number().int().positive().optional(),
+  since: z.string().datetime({ offset: true }).optional(),
+  limit: z.coerce.number().int().min(1).max(500).default(100),
+});
 
 adminRouter.get(
   "/orders",
   asyncRoute(async (req, res) => {
-    const { status, table, since, limit } = req.query;
+    const q = parse(listSchema, req.query);
     const orders = await listOrders({
-      status: typeof status === "string" ? status : undefined,
-      tableNumber: table ? Number.parseInt(String(table), 10) : undefined,
-      since: typeof since === "string" ? since : undefined,
-      limit: limit ? Number.parseInt(String(limit), 10) : 100,
+      status: q.status,
+      stage: q.stage,
+      tableNumber: q.table,
+      since: q.since,
+      limit: q.limit,
     });
     res.json({ orders });
   }),
 );
 
-const statusSchema = z.object({ status: z.enum(ORDER_STATUSES) });
+const settingsSchema = z
+  .object({
+    mode: z.enum(QUEUE_MODES).optional(),
+    busyIntervalSeconds: z.number().int().min(30).max(1800).optional(),
+  })
+  .refine((value) => value.mode || value.busyIntervalSeconds, "Nothing to update");
 
-adminRouter.patch(
-  "/orders/:id/status",
+adminRouter.put(
+  "/queue/settings",
   asyncRoute(async (req, res) => {
-    const parsed = statusSchema.safeParse(req.body);
-    if (!parsed.success) throw badRequest("Invalid status", parsed.error.flatten());
-    res.json(await updateOrderStatus(req.params.id, parsed.data.status));
+    const body = parse(settingsSchema, req.body, "Invalid queue settings");
+    res.json(await updateQueueSettings(body, req.staff));
+  }),
+);
+
+adminRouter.post(
+  "/queue/release-next",
+  asyncRoute(async (req, res) => {
+    const id = await releaseNext({ force: true, actor: req.staff });
+    if (!id) throw conflict("The queue is empty");
+    await drainOutbox(1);
+    res.json({ order: await getOrder(id), queue: await getQueueState() });
+  }),
+);
+
+adminRouter.post(
+  "/orders/:id/retry",
+  asyncRoute(async (req, res) => {
+    const id = orderId(req);
+    const requeued = await retryOrder(id, req.staff.id);
+    if (!requeued) throw conflict("Only an order whose delivery failed can be retried");
+    await drainOutbox(1);
+    res.json(await getOrder(id));
   }),
 );
 
@@ -72,7 +104,7 @@ adminRouter.get(
       `${config.publicBaseUrl}/order?table=${number}`,
       { errorCorrectionLevel: "M", margin: 2, width: 600 },
     );
-    res.type("png").set("Cache-Control", "public, max-age=3600").send(png);
+    res.type("png").set("Cache-Control", "private, max-age=3600").send(png);
   }),
 );
 
@@ -82,20 +114,12 @@ adminRouter.get(
     const { rows } = await query(
       `SELECT status, COUNT(*)::int AS count FROM pos_outbox GROUP BY status`,
     );
+    const adapter = getPosAdapter();
     res.json({
-      driver: getPosAdapter().name,
-      configured: getPosAdapter().isConfigured(),
+      driver: adapter.name,
+      simulated: adapter.name === "simulation",
+      configured: adapter.isConfigured(),
       outbox: Object.fromEntries(rows.map((row) => [row.status, row.count])),
     });
-  }),
-);
-
-adminRouter.post(
-  "/pos/orders/:id/retry",
-  asyncRoute(async (req, res) => {
-    const requeued = await retryOrder(req.params.id);
-    if (!requeued) throw notFound("No POS delivery found for this order");
-    await drainOutbox(1);
-    res.json({ ok: true });
   }),
 );

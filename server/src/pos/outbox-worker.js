@@ -1,6 +1,7 @@
 import { pool, query } from "../lib/db.js";
 import { logger } from "../lib/logger.js";
 import { config } from "../config.js";
+import { publish } from "../lib/events.js";
 import { getPosAdapter } from "./index.js";
 import { getOrder, loadPosContext } from "../services/orders.js";
 
@@ -26,20 +27,32 @@ async function claimNext(client) {
   return rows[0] ?? null;
 }
 
-async function markSent(outboxId, orderId, posOrderId, skipped) {
+async function markSent(outboxId, orderId, posOrderId, simulated) {
   await query(
     "UPDATE pos_outbox SET status = 'sent', last_error = NULL, updated_at = now() WHERE id = $1",
     [outboxId],
   );
-  await query(
-    "UPDATE orders SET pos_status = $2, pos_order_id = $3, updated_at = now() WHERE id = $1",
-    [orderId, skipped ? "skipped" : "sent", posOrderId ?? null],
+  const stage = simulated ? "simulated" : "sent";
+  const { rows } = await query(
+    `UPDATE orders
+        SET pos_status = $2, pos_order_id = $3, stage = $4, delivered_at = now(),
+            release_error = NULL, updated_at = now()
+      WHERE id = $1
+    RETURNING table_number`,
+    [orderId, simulated ? "skipped" : "sent", posOrderId ?? null, stage],
   );
+  await query(
+    `INSERT INTO order_events (order_id, kind, from_value, to_value, detail)
+     VALUES ($1, 'stage', 'releasing', $2, $3)`,
+    [orderId, stage, simulated ? "POS simulation — not sent to the till" : null],
+  );
+  await publish("order", { orderId, tableNumber: rows[0]?.table_number });
 }
 
 async function markFailed(row, err) {
   const giveUp = err.permanent === true || row.attempts >= config.pos.maxAttempts;
   const delay = Math.min(BACKOFF_BASE_SECONDS * 2 ** (row.attempts - 1), 900);
+  const message = String(err.message).slice(0, 500);
   await query(
     `UPDATE pos_outbox
         SET status = $2,
@@ -47,13 +60,27 @@ async function markFailed(row, err) {
             next_attempt_at = now() + ($4 || ' seconds')::interval,
             updated_at = now()
       WHERE id = $1`,
-    [row.id, giveUp ? "failed" : "pending", String(err.message).slice(0, 500), delay],
+    [row.id, giveUp ? "failed" : "pending", message, delay],
+  );
+  // While retrying the order stays "releasing" with the last error visible.
+  const { rows } = await query(
+    `UPDATE orders
+        SET release_error = $2,
+            pos_status = CASE WHEN $3 THEN 'failed' ELSE pos_status END,
+            stage = CASE WHEN $3 THEN 'failed' ELSE stage END,
+            updated_at = now()
+      WHERE id = $1
+    RETURNING table_number`,
+    [row.order_id, message, giveUp],
   );
   if (giveUp) {
-    await query("UPDATE orders SET pos_status = 'failed', updated_at = now() WHERE id = $1", [
-      row.order_id,
-    ]);
+    await query(
+      `INSERT INTO order_events (order_id, kind, from_value, to_value, detail)
+       VALUES ($1, 'stage', 'releasing', 'failed', $2)`,
+      [row.order_id, message],
+    );
   }
+  await publish("order", { orderId: row.order_id, tableNumber: rows[0]?.table_number });
   logger.warn(
     { outboxId: row.id, attempts: row.attempts, giveUp, err: err.message },
     "POS delivery failed",
@@ -86,7 +113,12 @@ export async function drainOutbox(max = 25) {
       const order = await getOrder(row.order_id);
       const payload = await loadPosContext(order);
       const result = await adapter.sendOrder(payload);
-      await markSent(row.id, row.order_id, result?.posOrderId, result?.skipped === true);
+      await markSent(
+        row.id,
+        row.order_id,
+        result?.posOrderId,
+        result?.simulated === true || result?.skipped === true,
+      );
     } catch (err) {
       await markFailed(row, err);
     }
@@ -118,16 +150,31 @@ export function startOutboxWorker() {
   };
 }
 
-/** Re-queues an order whose POS delivery previously gave up. */
-export async function retryOrder(orderId) {
-  const { rowCount } = await query(
-    `UPDATE pos_outbox
-        SET status = 'pending', attempts = 0, next_attempt_at = now(), updated_at = now()
-      WHERE order_id = $1`,
+/**
+ * Re-sends an order whose POS delivery gave up. Only a `failed` order can be
+ * retried, so an order the POS accepted is never sent again.
+ */
+export async function retryOrder(orderId, actorId) {
+  const { rows } = await query(
+    `UPDATE orders SET stage = 'releasing', pos_status = 'pending', release_error = NULL,
+                       updated_at = now()
+      WHERE id = $1 AND stage = 'failed'
+    RETURNING table_number`,
     [orderId],
   );
-  if (rowCount > 0) {
-    await query("UPDATE orders SET pos_status = 'pending' WHERE id = $1", [orderId]);
-  }
-  return rowCount > 0;
+  if (rows.length === 0) return false;
+  await query(
+    `INSERT INTO pos_outbox (order_id) VALUES ($1)
+     ON CONFLICT (order_id) DO UPDATE
+        SET status = 'pending', attempts = 0, next_attempt_at = now(), last_error = NULL,
+            updated_at = now()`,
+    [orderId],
+  );
+  await query(
+    `INSERT INTO order_events (order_id, kind, from_value, to_value, actor_id, detail)
+     VALUES ($1, 'stage', 'failed', 'releasing', $2, 'manual retry')`,
+    [orderId, actorId ?? null],
+  );
+  await publish("order", { orderId, tableNumber: rows[0].table_number });
+  return true;
 }

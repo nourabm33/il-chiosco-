@@ -62,6 +62,11 @@ try {
     [products.map((product) => product.slug)],
   );
 
+  await client.query(
+    `UPDATE products SET prep_profile = 'cocktail'
+      WHERE category = 'cocktail' AND prep_profile = 'standard'`,
+  );
+
   await client.query("COMMIT");
   console.log(`seeded ${config.tableCount} tables and ${products.length} products`);
 } catch (err) {

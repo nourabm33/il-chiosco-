@@ -10,7 +10,9 @@ import { logger } from "./lib/logger.js";
 import { pool } from "./lib/db.js";
 import { publicRouter } from "./routes/public.js";
 import { adminRouter } from "./routes/admin.js";
-import { errorHandler } from "./middleware/index.js";
+import { authRouter } from "./routes/auth.js";
+import { staffRouter } from "./routes/staff.js";
+import { cors, errorHandler } from "./middleware/index.js";
 
 const siteRoot = path.resolve(fileURLToPath(new URL("../..", import.meta.url)));
 
@@ -27,6 +29,7 @@ export function createApp() {
       crossOriginEmbedderPolicy: false,
     }),
   );
+  // SSE responses flush themselves; everything else is compressed.
   app.use(compression());
   app.use(express.json({ limit: "64kb" }));
   if (config.env !== "test") app.use(pinoHttp({ logger }));
@@ -50,10 +53,13 @@ export function createApp() {
       legacyHeaders: false,
     }),
   );
-  app.use("/api", publicRouter);
+  app.use("/api", cors);
+  app.use("/api/auth", authRouter);
+  app.use("/api/staff", staffRouter);
   app.use("/api/admin", adminRouter);
+  app.use("/api", publicRouter);
 
-  // Pretty URLs for the two new pages; the QR codes point at /order?table=N.
+  // Pretty URLs for the table menu and staff pages; the QR codes point at /order?table=N.
   app.get("/order", (_req, res) => res.sendFile(path.join(siteRoot, "order.html")));
   app.get("/admin", (_req, res) => res.sendFile(path.join(siteRoot, "admin.html")));
 

@@ -10,6 +10,8 @@ export default [
         process: "readonly",
         fetch: "readonly",
         AbortSignal: "readonly",
+        AbortController: "readonly",
+        TextDecoder: "readonly",
         URL: "readonly",
         setTimeout: "readonly",
         clearTimeout: "readonly",

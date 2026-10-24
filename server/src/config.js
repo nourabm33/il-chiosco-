@@ -13,14 +13,26 @@ export const config = {
     process.env.DATABASE_URL ??
     "postgres://postgres:postgres@localhost:5432/ilchiosco",
   databasePoolMax: int(process.env.DATABASE_POOL_MAX, 20),
-  adminToken: process.env.ADMIN_TOKEN ?? "",
+  // Origins allowed to call the API from a browser (e.g. the GitHub Pages site).
+  corsOrigins: (process.env.CORS_ORIGINS ?? "")
+    .split(",")
+    .map((origin) => origin.trim())
+    .filter(Boolean),
+  sessionHours: int(process.env.STAFF_SESSION_HOURS, 12),
   tableCount: int(process.env.TABLE_COUNT, 40),
   maxOrderItems: int(process.env.MAX_ORDER_ITEMS, 50),
   trustProxy: process.env.TRUST_PROXY ?? "loopback",
+  queue: {
+    schedulerEnabled: process.env.QUEUE_SCHEDULER_ENABLED !== "false",
+    tickMs: int(process.env.QUEUE_TICK_MS, 2000),
+  },
   pos: {
-    // "noop"  — store orders only (default until the POS docs arrive)
-    // "http"  — generic HTTP adapter, configured with the values below
-    driver: process.env.POS_DRIVER ?? "noop",
+    // "simulation" — releases are recorded as simulated, nothing reaches the till
+    //                (default until the POS technician provides the docs)
+    // "http"       — generic HTTP adapter, configured with the values below
+    driver: process.env.POS_DRIVER ?? "simulation",
+    // simulation only: share of releases that fail, to rehearse error handling
+    simulationFailureRate: Number.parseFloat(process.env.POS_SIMULATION_FAILURE_RATE ?? "0") || 0,
     baseUrl: process.env.POS_BASE_URL ?? "",
     apiKey: process.env.POS_API_KEY ?? "",
     authScheme: process.env.POS_AUTH_SCHEME ?? "bearer",
