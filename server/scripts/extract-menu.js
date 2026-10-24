@@ -61,7 +61,7 @@ function push({ name, description, category, subcategory, price }) {
 /* ---------- food menu, from index.html ---------- */
 const html = fs.readFileSync(path.join(root, "index.html"), "utf8");
 const panelRe =
-  /<div class="menu-panel[^"]*" id="panel-(bevande|dolce|salato)"[\s\S]*?(?=<div class="menu-panel|<\/section>)/g;
+  /<div class="menu-panel[^"]*" id="panel-(alba|mezzogiorno|bibite)"[\s\S]*?(?=<div class="menu-panel|<\/section>)/g;
 
 for (const panel of html.matchAll(panelRe)) {
   const category = panel[1];

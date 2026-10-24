@@ -1,489 +1,660 @@
 [
   {
-    "slug": "bevande-espresso-singolo",
-    "name": "Espresso singolo",
+    "slug": "alba-espresso",
+    "name": "Espresso",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Caffè",
+    "category": "alba",
+    "subcategory": "Coffee",
     "priceCents": 150,
     "sortOrder": 1
   },
   {
-    "slug": "bevande-espresso-doppio",
-    "name": "Espresso doppio",
+    "slug": "alba-cappuccino",
+    "name": "Cappuccino",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Caffè",
-    "priceCents": 300,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 190,
     "sortOrder": 2
   },
   {
-    "slug": "bevande-cappuccino",
-    "name": "Cappuccino",
+    "slug": "alba-latte-macchiato",
+    "name": "Latte macchiato",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Caffè",
-    "priceCents": 190,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 200,
     "sortOrder": 3
   },
   {
-    "slug": "bevande-latte-macchiato",
-    "name": "Latte macchiato",
+    "slug": "alba-flat-white",
+    "name": "Flat White",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Caffè",
-    "priceCents": 200,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 350,
     "sortOrder": 4
   },
   {
-    "slug": "bevande-flat-white",
-    "name": "Flat White",
+    "slug": "alba-ginseng-orzo",
+    "name": "Ginseng / Orzo",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Caffè",
-    "priceCents": 350,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 200,
     "sortOrder": 5
   },
   {
-    "slug": "bevande-ginseng-orzo",
-    "name": "Ginseng / Orzo",
+    "slug": "alba-americano",
+    "name": "Americano",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Caffè",
-    "priceCents": 200,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 180,
     "sortOrder": 6
   },
   {
-    "slug": "bevande-americano",
-    "name": "Americano",
+    "slug": "alba-caffe-shakerato",
+    "name": "Caffè shakerato",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Caffè",
-    "priceCents": 180,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 350,
     "sortOrder": 7
   },
   {
-    "slug": "bevande-caffe-shakerato",
-    "name": "Caffè shakerato",
+    "slug": "alba-marocchino",
+    "name": "Marocchino",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Caffè",
-    "priceCents": 350,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 200,
     "sortOrder": 8
   },
   {
-    "slug": "bevande-marocchino",
-    "name": "Marocchino",
+    "slug": "alba-iced-americano",
+    "name": "Iced Americano",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Caffè",
-    "priceCents": 200,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 350,
     "sortOrder": 9
   },
   {
-    "slug": "bevande-iced-americano",
-    "name": "Iced Americano",
+    "slug": "alba-iced-latte",
+    "name": "Iced Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
-    "priceCents": 250,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 450,
     "sortOrder": 10
   },
   {
-    "slug": "bevande-iced-latte",
-    "name": "Iced Latte",
+    "slug": "alba-vanilla-latte",
+    "name": "Vanilla Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
-    "priceCents": 350,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 450,
     "sortOrder": 11
   },
   {
-    "slug": "bevande-iced-biscoff-latte",
-    "name": "Iced Biscoff Latte",
+    "slug": "alba-caramel-latte",
+    "name": "Caramel Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
-    "priceCents": 600,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 450,
     "sortOrder": 12
   },
   {
-    "slug": "bevande-iced-vanilla-caramel-latte",
-    "name": "Iced Vanilla / Caramel Latte",
+    "slug": "alba-coconut-latte",
+    "name": "Coconut Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
-    "priceCents": 400,
+    "category": "alba",
+    "subcategory": "Coffee",
+    "priceCents": 450,
     "sortOrder": 13
   },
   {
-    "slug": "bevande-frappuccino",
-    "name": "Frappuccino",
-    "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
+    "slug": "alba-caffe-in-filtro-v60",
+    "name": "Caffè in filtro V60",
+    "description": "Ogni giorno estrai il tuo filter coffee aromatico in autonomia.",
+    "category": "alba",
+    "subcategory": "Coffee",
     "priceCents": 600,
     "sortOrder": 14
   },
   {
-    "slug": "bevande-iced-matcha-latte",
-    "name": "Iced Matcha Latte",
+    "slug": "alba-matcha-latte",
+    "name": "Matcha Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
+    "category": "alba",
+    "subcategory": "Matcha",
     "priceCents": 500,
     "sortOrder": 15
   },
   {
-    "slug": "bevande-iced-matcha-strawberry-latte",
-    "name": "Iced Matcha Strawberry Latte",
+    "slug": "alba-matcha-strawberry-latte",
+    "name": "Matcha Strawberry Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
+    "category": "alba",
+    "subcategory": "Matcha",
     "priceCents": 550,
     "sortOrder": 16
   },
   {
-    "slug": "bevande-iced-matcha-ube-latte",
-    "name": "Iced Matcha Ube Latte",
+    "slug": "alba-matcha-ube-latte",
+    "name": "Matcha Ube Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
+    "category": "alba",
+    "subcategory": "Matcha",
     "priceCents": 600,
     "sortOrder": 17
   },
   {
-    "slug": "bevande-iced-ube-vanilla-latte",
-    "name": "Iced Ube Vanilla Latte",
+    "slug": "alba-ube-vanilla-latte",
+    "name": "Ube Vanilla Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
-    "priceCents": 550,
+    "category": "alba",
+    "subcategory": "Latte",
+    "priceCents": 600,
     "sortOrder": 18
   },
   {
-    "slug": "bevande-iced-pink-coconut-latte",
-    "name": "Iced Pink Coconut Latte",
+    "slug": "alba-strawberry-cream-latte",
+    "name": "Strawberry Cream Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Iced & Specialty",
-    "priceCents": 500,
+    "category": "alba",
+    "subcategory": "Latte",
+    "priceCents": 400,
     "sortOrder": 19
   },
   {
-    "slug": "bevande-frullato-del-giorno",
-    "name": "Frullato del giorno",
+    "slug": "alba-pumpkin-spice-latte",
+    "name": "Pumpkin Spice Latte",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Altre bevande",
-    "priceCents": 600,
+    "category": "alba",
+    "subcategory": "Latte",
+    "priceCents": 400,
     "sortOrder": 20
   },
   {
-    "slug": "bevande-kombucha-laverve",
-    "name": "Kombucha \"Laverve\"",
-    "description": "Bevanda fermentata a base di tè.",
-    "category": "bevande",
-    "subcategory": "Altre bevande",
-    "priceCents": 600,
+    "slug": "alba-anise-cardamom-latte",
+    "name": "Anise & Cardamom Latte",
+    "description": null,
+    "category": "alba",
+    "subcategory": "Latte",
+    "priceCents": 400,
     "sortOrder": 21
   },
   {
-    "slug": "bevande-bibite-galvanina-bio",
-    "name": "Bibite Galvanina Bio",
-    "description": "Aranciata · Limonata · Cedrata · Chinotto · Tonica · Ginger.",
-    "category": "bevande",
-    "subcategory": "Altre bevande",
+    "slug": "alba-chai-latte",
+    "name": "Chai Latte",
+    "description": null,
+    "category": "alba",
+    "subcategory": "Latte",
     "priceCents": 400,
     "sortOrder": 22
   },
   {
-    "slug": "bevande-succo-di-frutta-looza",
-    "name": "Succo di frutta Looza",
-    "description": "Ace · Albicocca · Pesca · Pera · Ananas.",
-    "category": "bevande",
-    "subcategory": "Altre bevande",
-    "priceCents": 350,
+    "slug": "alba-apple-pie-smoothie",
+    "name": "Apple Pie Smoothie",
+    "description": "Mela, cannella, burro d'arachidi, vaniglia, latte, yogurt.",
+    "category": "alba",
+    "subcategory": "Smoothie",
+    "priceCents": 600,
     "sortOrder": 23
   },
   {
-    "slug": "bevande-spremuta",
-    "name": "Spremuta",
-    "description": null,
-    "category": "bevande",
-    "subcategory": "Altre bevande",
-    "priceCents": 400,
+    "slug": "alba-banana-bread-smoothie",
+    "name": "Banana Bread Smoothie",
+    "description": "Banana, fiocchi d'avena, sciroppo d'acero, latte.",
+    "category": "alba",
+    "subcategory": "Smoothie",
+    "priceCents": 600,
     "sortOrder": 24
   },
   {
-    "slug": "bevande-bibite-in-vetro",
-    "name": "Bibite in vetro",
+    "slug": "alba-apple-pie",
+    "name": "Apple Pie",
     "description": null,
-    "category": "bevande",
-    "subcategory": "Altre bevande",
-    "priceCents": 350,
+    "category": "alba",
+    "subcategory": "Best seller",
+    "priceCents": 450,
     "sortOrder": 25
   },
   {
-    "slug": "dolce-new-york-roll",
+    "slug": "alba-new-york-roll",
     "name": "New York Roll",
     "description": "Croissant moderno, tondo, ripieno di crema e ricoperto da ganache e frutta fresca.",
-    "category": "dolce",
-    "subcategory": "I nostri best seller",
+    "category": "alba",
+    "subcategory": "Best seller",
     "priceCents": 350,
     "sortOrder": 26
   },
   {
-    "slug": "dolce-cinnamon-roll",
+    "slug": "alba-cinnamon-roll",
     "name": "Cinnamon Roll",
     "description": "Girella alla cannella, un dolce lievitato morbido dal profumo irresistibile. Servito con panna.",
-    "category": "dolce",
-    "subcategory": "I nostri best seller",
+    "category": "alba",
+    "subcategory": "Best seller",
     "priceCents": 400,
     "sortOrder": 27
   },
   {
-    "slug": "dolce-crumbl-cookies",
+    "slug": "alba-crumbl-cookies",
     "name": "Crumbl Cookies",
     "description": "I biscotti più famosi del web: grandi e morbidi. Classici o decorati con frosting di creme e frutta fresca.",
-    "category": "dolce",
-    "subcategory": "I nostri best seller",
+    "category": "alba",
+    "subcategory": "Best seller",
     "priceCents": 350,
     "sortOrder": 28
   },
   {
-    "slug": "dolce-croissant-lievito-madre-vuoto",
+    "slug": "alba-croissant-lievito-madre-vuoto",
     "name": "Croissant lievito madre vuoto",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Sfoglie & Brioches",
+    "category": "alba",
+    "subcategory": "Dolce",
     "priceCents": 150,
     "sortOrder": 29
   },
   {
-    "slug": "dolce-croissant-vegano-vuoto-o-farcito",
-    "name": "Croissant vegano vuoto o farcito",
+    "slug": "alba-croissant-vegano-vuoto",
+    "name": "Croissant vegano vuoto",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Sfoglie & Brioches",
+    "category": "alba",
+    "subcategory": "Dolce",
     "priceCents": 150,
     "sortOrder": 30
   },
   {
-    "slug": "dolce-croissant-cereali-miele-o-lampone",
-    "name": "Croissant cereali miele o lampone",
+    "slug": "alba-croissant-vegano-albicocca",
+    "name": "Croissant vegano albicocca",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Sfoglie & Brioches",
+    "category": "alba",
+    "subcategory": "Dolce",
     "priceCents": 160,
     "sortOrder": 31
   },
   {
-    "slug": "dolce-croissant-crema-o-cioccolato",
+    "slug": "alba-croissant-crema-o-cioccolato",
     "name": "Croissant crema o cioccolato",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Sfoglie & Brioches",
+    "category": "alba",
+    "subcategory": "Dolce",
     "priceCents": 180,
     "sortOrder": 32
   },
   {
-    "slug": "dolce-croissant-pistacchio-o-mandorla",
+    "slug": "alba-croissant-pistacchio-o-mandorla",
     "name": "Croissant pistacchio o mandorla",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Sfoglie & Brioches",
+    "category": "alba",
+    "subcategory": "Dolce",
     "priceCents": 200,
     "sortOrder": 33
   },
   {
-    "slug": "dolce-pain-au-chocolat",
-    "name": "Pain au chocolat",
+    "slug": "alba-croissant-cereali-miele-o-lampone",
+    "name": "Croissant cereali miele o lampone",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Sfoglie & Brioches",
-    "priceCents": 200,
+    "category": "alba",
+    "subcategory": "Dolce",
+    "priceCents": 160,
     "sortOrder": 34
   },
   {
-    "slug": "dolce-pain-au-raisins-girella",
-    "name": "Pain au raisins (girella)",
+    "slug": "alba-pain-au-chocolat",
+    "name": "Pain au chocolat",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Sfoglie & Brioches",
+    "category": "alba",
+    "subcategory": "Dolce",
     "priceCents": 200,
     "sortOrder": 35
   },
   {
-    "slug": "dolce-muffin-cioccolato-yogurt-e-mirtilli",
+    "slug": "alba-muffin-cioccolato-yogurt-e-mirtilli",
     "name": "Muffin cioccolato / yogurt e mirtilli",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Sfoglie & Brioches",
+    "category": "alba",
+    "subcategory": "Dolce",
     "priceCents": 300,
     "sortOrder": 36
   },
   {
-    "slug": "dolce-pancake-sciroppo-d-acero",
-    "name": "Pancake sciroppo d'acero",
+    "slug": "alba-mini-panino-farcito",
+    "name": "Mini panino farcito",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Brunch dolce",
-    "priceCents": 600,
+    "category": "alba",
+    "subcategory": "Salato",
+    "priceCents": 150,
     "sortOrder": 37
   },
   {
-    "slug": "dolce-pancake-frutta-di-stagione-e-yogurt",
-    "name": "Pancake frutta di stagione e yogurt",
+    "slug": "alba-croissant-salato-farcito",
+    "name": "Croissant salato farcito",
     "description": null,
-    "category": "dolce",
-    "subcategory": "Brunch dolce",
-    "priceCents": 900,
+    "category": "alba",
+    "subcategory": "Salato",
+    "priceCents": 300,
     "sortOrder": 38
   },
   {
-    "slug": "dolce-yogurt-frutta-fresca-granola",
-    "name": "Yogurt, frutta fresca & granola",
-    "description": "Frutta fresca di stagione e granola croccante.",
-    "category": "dolce",
-    "subcategory": "Brunch dolce",
-    "priceCents": 600,
+    "slug": "alba-toast-prosciutto-cotto-e-formaggio",
+    "name": "Toast prosciutto cotto e formaggio",
+    "description": null,
+    "category": "alba",
+    "subcategory": "Salato",
+    "priceCents": 400,
     "sortOrder": 39
   },
   {
-    "slug": "dolce-smoothie-bowl",
-    "name": "Smoothie bowl",
-    "description": "Frutta fresca, semi, frutta secca e miele.",
-    "category": "dolce",
-    "subcategory": "Brunch dolce",
-    "priceCents": 900,
+    "slug": "mezzogiorno-pancake-sciroppo-d-acero",
+    "name": "Pancake sciroppo d'acero",
+    "description": null,
+    "category": "mezzogiorno",
+    "subcategory": "Brunch",
+    "priceCents": 600,
     "sortOrder": 40
   },
   {
-    "slug": "dolce-pane-burro-marmellata",
-    "name": "Pane, burro & marmellata",
-    "description": "Pane con farine \"Paolo Mariani\".",
-    "category": "dolce",
-    "subcategory": "Brunch dolce",
-    "priceCents": 450,
+    "slug": "mezzogiorno-pancake-frutta-di-stagione-yogurt",
+    "name": "Pancake frutta di stagione & yogurt",
+    "description": null,
+    "category": "mezzogiorno",
+    "subcategory": "Brunch",
+    "priceCents": 900,
     "sortOrder": 41
   },
   {
-    "slug": "salato-croissant-ai-cereali-farcito",
-    "name": "Croissant ai cereali farcito",
+    "slug": "mezzogiorno-yogurt-frutta-granola-home-made",
+    "name": "Yogurt, frutta, granola home made",
     "description": null,
-    "category": "salato",
-    "subcategory": "Sfoglie & Brioches salate",
-    "priceCents": 300,
+    "category": "mezzogiorno",
+    "subcategory": "Brunch",
+    "priceCents": 600,
     "sortOrder": 42
   },
   {
-    "slug": "salato-mini-panino-croccante-farcito",
-    "name": "Mini panino croccante farcito",
+    "slug": "mezzogiorno-porridge-con-frutta-e-latte-di-avena",
+    "name": "Porridge con frutta e latte di avena",
     "description": null,
-    "category": "salato",
-    "subcategory": "Sfoglie & Brioches salate",
-    "priceCents": 150,
+    "category": "mezzogiorno",
+    "subcategory": "Brunch",
+    "priceCents": 700,
     "sortOrder": 43
   },
   {
-    "slug": "salato-toast-prosciutto-cotto-formaggio",
-    "name": "Toast prosciutto cotto & formaggio",
-    "description": "Prosciutto cotto \"Salumeria Offagna\" e formaggio filante.",
-    "category": "salato",
-    "subcategory": "Sfoglie & Brioches salate",
-    "priceCents": 400,
+    "slug": "mezzogiorno-avocado-toast",
+    "name": "Avocado Toast",
+    "description": "Pane mille grani, avocado, uovo, erbe e spezie.",
+    "category": "mezzogiorno",
+    "subcategory": "Dalla cucina",
+    "priceCents": 1000,
     "sortOrder": 44
   },
   {
-    "slug": "salato-triangolo-spinaci-e-pomodorini",
-    "name": "Triangolo spinaci e pomodorini",
-    "description": null,
-    "category": "salato",
-    "subcategory": "Sfoglie & Brioches salate",
-    "priceCents": 400,
+    "slug": "mezzogiorno-pan-tomate",
+    "name": "Pan Tomate",
+    "description": "Pan de cristal, pomodoro fresco, erbe e spezie.",
+    "category": "mezzogiorno",
+    "subcategory": "Dalla cucina",
+    "priceCents": 800,
     "sortOrder": 45
   },
   {
-    "slug": "salato-club-sandwich-del-chiosco",
+    "slug": "mezzogiorno-club-sandwich-del-chiosco",
     "name": "Club sandwich del chiosco",
     "description": "Pane tostato ai cereali, tacchino, bacon, lattuga, pomodoro, formaggio filante, accompagnato da patate al forno.",
-    "category": "salato",
-    "subcategory": "Brunch / Lunch",
+    "category": "mezzogiorno",
+    "subcategory": "Dalla cucina",
     "priceCents": 1200,
     "sortOrder": 46
   },
   {
-    "slug": "salato-il-chiosco-s-brunch-plate",
+    "slug": "mezzogiorno-il-chiosco-s-brunch-plate",
     "name": "Il Chiosco's brunch plate",
-    "description": "Uova allevate a terra, cottura a scelta, pane farine \"Paolo Mariani\", burro e marmellata, spremuta d'arancia, espresso o americano.",
-    "category": "salato",
-    "subcategory": "Brunch / Lunch",
+    "description": "Uova cottura a scelta, pane farine \"Paolo Mariani\", burro e marmellata, spremuta d'arancia, espresso o americano.",
+    "category": "mezzogiorno",
+    "subcategory": "Dalla cucina",
     "priceCents": 1500,
     "sortOrder": 47
   },
   {
-    "slug": "salato-bagel-farcito-del-giorno",
-    "name": "Bagel farcito del giorno",
-    "description": "Morbido e goloso panino a forma di ciambella con farcitura salata.",
-    "category": "salato",
-    "subcategory": "Brunch / Lunch",
-    "priceCents": 400,
+    "slug": "mezzogiorno-super-focacciona-vegetariana",
+    "name": "Super focacciona Vegetariana",
+    "description": "Doppia focaccia 72h di lievitazione ripiena di verdure grigliate e formaggio dolce filante, o versione vegana con hummus di ceci.",
+    "category": "mezzogiorno",
+    "subcategory": "Dalla cucina",
+    "priceCents": 600,
     "sortOrder": 48
   },
   {
-    "slug": "salato-super-focacciona-vegetariana",
-    "name": "Super focacciona Vegetariana",
-    "description": "Doppia focaccia 72h di lievitazione, verdure grigliate e formaggio dolce filante. Versione vegana con hummus di ceci.",
-    "category": "salato",
-    "subcategory": "Brunch / Lunch",
+    "slug": "mezzogiorno-super-focacciona",
+    "name": "Super focacciona",
+    "description": "Doppia focaccia 72h di lievitazione ripiena di salumi del \"Salumificio Offagna\", edamer, pomodoro e insalata.",
+    "category": "mezzogiorno",
+    "subcategory": "Dalla cucina",
     "priceCents": 600,
     "sortOrder": 49
   },
   {
-    "slug": "salato-super-focacciona-estiva",
-    "name": "Super focacciona Estiva",
-    "description": "Doppia focaccia 72h, pomodoro, mozzarella, basilico e pesto.",
-    "category": "salato",
-    "subcategory": "Brunch / Lunch",
-    "priceCents": 600,
+    "slug": "mezzogiorno-uovo",
+    "name": "Uovo",
+    "description": null,
+    "category": "mezzogiorno",
+    "subcategory": "Extras",
+    "priceCents": 250,
     "sortOrder": 50
   },
   {
-    "slug": "salato-super-focacciona-cotto",
-    "name": "Super focacciona Cotto",
-    "description": "Doppia focaccia 72h, prosciutto cotto affumicato \"Salumificio Offagna\", carciofini, basilico, edamer e salsa tartara.",
-    "category": "salato",
-    "subcategory": "Brunch / Lunch",
-    "priceCents": 600,
+    "slug": "mezzogiorno-bacon",
+    "name": "Bacon",
+    "description": null,
+    "category": "mezzogiorno",
+    "subcategory": "Extras",
+    "priceCents": 350,
     "sortOrder": 51
   },
   {
-    "slug": "salato-lasagna-del-chiosco",
-    "name": "Lasagna del chiosco",
-    "description": "Lasagna home made classica rossa al ragù.",
-    "category": "salato",
-    "subcategory": "Brunch / Lunch",
-    "priceCents": 800,
+    "slug": "mezzogiorno-salmone-affumicato",
+    "name": "Salmone affumicato",
+    "description": null,
+    "category": "mezzogiorno",
+    "subcategory": "Extras",
+    "priceCents": 400,
     "sortOrder": 52
   },
   {
-    "slug": "salato-pasta-fresca-del-giorno",
-    "name": "Pasta fresca del giorno",
-    "description": "Chiedi al personale.",
-    "category": "salato",
-    "subcategory": "Brunch / Lunch",
-    "priceCents": 700,
+    "slug": "mezzogiorno-avocado",
+    "name": "Avocado",
+    "description": null,
+    "category": "mezzogiorno",
+    "subcategory": "Extras",
+    "priceCents": 300,
     "sortOrder": 53
   },
   {
-    "slug": "salato-prosciutto-e-bruschette",
-    "name": "Prosciutto e bruschette",
-    "description": "Prosciutto crudo \"Salumificio Offagna\" e bruschette con verdure.",
-    "category": "salato",
-    "subcategory": "Brunch / Lunch",
-    "priceCents": 700,
+    "slug": "bibite-kombucha-laverve",
+    "name": "Kombucha \"Laverve\"",
+    "description": "Bevanda fermentata a base di tè.",
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 600,
     "sortOrder": 54
+  },
+  {
+    "slug": "bibite-bibite-galvanina-bio",
+    "name": "Bibite Galvanina Bio",
+    "description": "Aranciata · Limonata · Cedrata · Chinotto · Tonica · Ginger.",
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 400,
+    "sortOrder": 55
+  },
+  {
+    "slug": "bibite-succo-di-frutta-looza",
+    "name": "Succo di frutta Looza",
+    "description": "Ace · Albicocca · Pesca · Pera · Ananas.",
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 350,
+    "sortOrder": 56
+  },
+  {
+    "slug": "bibite-spremuta",
+    "name": "Spremuta",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 400,
+    "sortOrder": 57
+  },
+  {
+    "slug": "bibite-bibite-in-vetro",
+    "name": "Bibite in vetro",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 400,
+    "sortOrder": 58
+  },
+  {
+    "slug": "bibite-coca-cola-vetro",
+    "name": "Coca Cola vetro",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 400,
+    "sortOrder": 59
+  },
+  {
+    "slug": "bibite-coca-cola-zero-vetro",
+    "name": "Coca Cola Zero vetro",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 400,
+    "sortOrder": 60
+  },
+  {
+    "slug": "bibite-estathe-limone",
+    "name": "Estathè limone",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 400,
+    "sortOrder": 61
+  },
+  {
+    "slug": "bibite-estathe-pesca",
+    "name": "Estathè pesca",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 400,
+    "sortOrder": 62
+  },
+  {
+    "slug": "bibite-acquainbrick",
+    "name": "Acquainbrick",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Soft drink",
+    "priceCents": 150,
+    "sortOrder": 63
+  },
+  {
+    "slug": "bibite-aperol-spritz",
+    "name": "Aperol Spritz",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 700,
+    "sortOrder": 64
+  },
+  {
+    "slug": "bibite-campari-spritz",
+    "name": "Campari Spritz",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 700,
+    "sortOrder": 65
+  },
+  {
+    "slug": "bibite-select-spritz",
+    "name": "Select Spritz",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 700,
+    "sortOrder": 66
+  },
+  {
+    "slug": "bibite-hugo-spritz",
+    "name": "Hugo Spritz",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 700,
+    "sortOrder": 67
+  },
+  {
+    "slug": "bibite-americano",
+    "name": "Americano",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 700,
+    "sortOrder": 68
+  },
+  {
+    "slug": "bibite-negroni",
+    "name": "Negroni",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 800,
+    "sortOrder": 69
+  },
+  {
+    "slug": "bibite-gin-tonic",
+    "name": "Gin Tonic",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 700,
+    "sortOrder": 70
+  },
+  {
+    "slug": "bibite-vodka-tonic",
+    "name": "Vodka Tonic",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 700,
+    "sortOrder": 71
+  },
+  {
+    "slug": "bibite-calice-di-vino",
+    "name": "Calice di vino",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 600,
+    "sortOrder": 72
+  },
+  {
+    "slug": "bibite-birra-alla-spina",
+    "name": "Birra alla spina",
+    "description": null,
+    "category": "bibite",
+    "subcategory": "Drink",
+    "priceCents": 500,
+    "sortOrder": 73
   },
   {
     "slug": "cocktail-good-vibes",
@@ -492,7 +663,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 1000,
-    "sortOrder": 55
+    "sortOrder": 74
   },
   {
     "slug": "cocktail-the-change",
@@ -501,7 +672,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 1200,
-    "sortOrder": 56
+    "sortOrder": 75
   },
   {
     "slug": "cocktail-american-love",
@@ -510,7 +681,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 1000,
-    "sortOrder": 57
+    "sortOrder": 76
   },
   {
     "slug": "cocktail-zafferoni",
@@ -519,7 +690,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 1200,
-    "sortOrder": 58
+    "sortOrder": 77
   },
   {
     "slug": "cocktail-fig-storm",
@@ -528,7 +699,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 1200,
-    "sortOrder": 59
+    "sortOrder": 78
   },
   {
     "slug": "cocktail-negroni-s-wife",
@@ -537,7 +708,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 1000,
-    "sortOrder": 60
+    "sortOrder": 79
   },
   {
     "slug": "cocktail-daiquiri-frozen",
@@ -546,7 +717,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 1000,
-    "sortOrder": 61
+    "sortOrder": 80
   },
   {
     "slug": "cocktail-queen-g",
@@ -555,7 +726,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 1000,
-    "sortOrder": 62
+    "sortOrder": 81
   },
   {
     "slug": "cocktail-sun-kissed",
@@ -564,7 +735,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 800,
-    "sortOrder": 63
+    "sortOrder": 82
   },
   {
     "slug": "cocktail-purple-mirage",
@@ -573,7 +744,7 @@
     "category": "cocktail",
     "subcategory": "Signatures",
     "priceCents": 800,
-    "sortOrder": 64
+    "sortOrder": 83
   },
   {
     "slug": "cocktail-spritz",
@@ -582,7 +753,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 700,
-    "sortOrder": 65
+    "sortOrder": 84
   },
   {
     "slug": "cocktail-americano",
@@ -591,7 +762,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 700,
-    "sortOrder": 66
+    "sortOrder": 85
   },
   {
     "slug": "cocktail-negroni",
@@ -600,7 +771,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 700,
-    "sortOrder": 67
+    "sortOrder": 86
   },
   {
     "slug": "cocktail-margarita",
@@ -609,7 +780,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 800,
-    "sortOrder": 68
+    "sortOrder": 87
   },
   {
     "slug": "cocktail-mojito",
@@ -618,7 +789,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 800,
-    "sortOrder": 69
+    "sortOrder": 88
   },
   {
     "slug": "cocktail-mojito-fidel",
@@ -627,7 +798,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 800,
-    "sortOrder": 70
+    "sortOrder": 89
   },
   {
     "slug": "cocktail-tommy-s-mezcal",
@@ -636,7 +807,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 1000,
-    "sortOrder": 71
+    "sortOrder": 90
   },
   {
     "slug": "cocktail-paloma",
@@ -645,7 +816,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 900,
-    "sortOrder": 72
+    "sortOrder": 91
   },
   {
     "slug": "cocktail-gin-tonic",
@@ -654,7 +825,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 700,
-    "sortOrder": 73
+    "sortOrder": 92
   },
   {
     "slug": "cocktail-vodka-tonic",
@@ -663,7 +834,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 700,
-    "sortOrder": 74
+    "sortOrder": 93
   },
   {
     "slug": "cocktail-cuba-libre",
@@ -672,7 +843,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 700,
-    "sortOrder": 75
+    "sortOrder": 94
   },
   {
     "slug": "cocktail-campari-shakerato",
@@ -681,7 +852,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 700,
-    "sortOrder": 76
+    "sortOrder": 95
   },
   {
     "slug": "cocktail-pina-colada",
@@ -690,7 +861,7 @@
     "category": "cocktail",
     "subcategory": "I Classici",
     "priceCents": 900,
-    "sortOrder": 77
+    "sortOrder": 96
   },
   {
     "slug": "cocktail-ngricca-house-gin",
@@ -699,7 +870,7 @@
     "category": "cocktail",
     "subcategory": "I Gin",
     "priceCents": 900,
-    "sortOrder": 78
+    "sortOrder": 97
   },
   {
     "slug": "cocktail-windspiel-premium-dry",
@@ -708,7 +879,7 @@
     "category": "cocktail",
     "subcategory": "I Gin",
     "priceCents": 1800,
-    "sortOrder": 79
+    "sortOrder": 98
   },
   {
     "slug": "cocktail-electric-spirit-co",
@@ -717,7 +888,7 @@
     "category": "cocktail",
     "subcategory": "I Gin",
     "priceCents": 1600,
-    "sortOrder": 80
+    "sortOrder": 99
   },
   {
     "slug": "cocktail-martin-miller-s-original",
@@ -726,7 +897,7 @@
     "category": "cocktail",
     "subcategory": "I Gin",
     "priceCents": 1000,
-    "sortOrder": 81
+    "sortOrder": 100
   },
   {
     "slug": "cocktail-westbourne-strength",
@@ -735,7 +906,7 @@
     "category": "cocktail",
     "subcategory": "I Gin",
     "priceCents": 1600,
-    "sortOrder": 82
+    "sortOrder": 101
   },
   {
     "slug": "cocktail-44-n-gin",
@@ -744,7 +915,7 @@
     "category": "cocktail",
     "subcategory": "I Gin",
     "priceCents": 2000,
-    "sortOrder": 83
+    "sortOrder": 102
   },
   {
     "slug": "cocktail-gin-mare",
@@ -753,7 +924,7 @@
     "category": "cocktail",
     "subcategory": "I Gin",
     "priceCents": 1000,
-    "sortOrder": 84
+    "sortOrder": 103
   },
   {
     "slug": "cocktail-gin-hendrick-s",
@@ -762,7 +933,7 @@
     "category": "cocktail",
     "subcategory": "I Gin",
     "priceCents": 900,
-    "sortOrder": 85
+    "sortOrder": 104
   },
   {
     "slug": "cocktail-gin-malfy-rosa",
@@ -771,7 +942,7 @@
     "category": "cocktail",
     "subcategory": "I Gin",
     "priceCents": 900,
-    "sortOrder": 86
+    "sortOrder": 105
   },
   {
     "slug": "cocktail-forst-vip-pils-spina-piccola",
@@ -780,7 +951,7 @@
     "category": "cocktail",
     "subcategory": "Le Birre",
     "priceCents": 300,
-    "sortOrder": 87
+    "sortOrder": 106
   },
   {
     "slug": "cocktail-forst-vip-pils-spina-grande",
@@ -789,7 +960,7 @@
     "category": "cocktail",
     "subcategory": "Le Birre",
     "priceCents": 500,
-    "sortOrder": 88
+    "sortOrder": 107
   },
   {
     "slug": "cocktail-forst-1857-33cl",
@@ -798,7 +969,7 @@
     "category": "cocktail",
     "subcategory": "Le Birre",
     "priceCents": 400,
-    "sortOrder": 89
+    "sortOrder": 108
   },
   {
     "slug": "cocktail-forst-0-0",
@@ -807,7 +978,7 @@
     "category": "cocktail",
     "subcategory": "Le Birre",
     "priceCents": 350,
-    "sortOrder": 90
+    "sortOrder": 109
   },
   {
     "slug": "cocktail-weihenstephan-helles-50cl",
@@ -816,7 +987,7 @@
     "category": "cocktail",
     "subcategory": "Le Birre",
     "priceCents": 500,
-    "sortOrder": 91
+    "sortOrder": 110
   },
   {
     "slug": "cocktail-weihenstephan-weissbier-50cl",
@@ -825,7 +996,7 @@
     "category": "cocktail",
     "subcategory": "Le Birre",
     "priceCents": 700,
-    "sortOrder": 92
+    "sortOrder": 111
   },
   {
     "slug": "cocktail-hobgoblin-ipa-50cl",
@@ -834,6 +1005,6 @@
     "category": "cocktail",
     "subcategory": "Le Birre",
     "priceCents": 700,
-    "sortOrder": 93
+    "sortOrder": 112
   }
 ]

@@ -150,9 +150,9 @@
   }
 
   var CATEGORY_LABELS = {
-    bevande: "Bevande",
-    dolce: "Dolce",
-    salato: "Salato",
+    alba: "Alba",
+    mezzogiorno: "Mezzogiorno",
+    bibite: "Soft drink & Drink",
     cocktail: "Cocktail & Drinks",
   };
 
