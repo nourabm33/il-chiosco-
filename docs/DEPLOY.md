@@ -106,6 +106,9 @@ npm test && npm run lint
   protocol. Simulated releases are always labelled "Simulato · non inviato
   alla cassa", never "Inviato alla cassa".
 
+The waiters' app is **Comandi – Cassa in Cloud**. What its API and Kitchen Monitor can and cannot do,
+with sources and technician questions: [CASSA-IN-CLOUD.md](CASSA-IN-CLOUD.md).
+
 ### Questions for the waiter-app / till technician
 
 1. Name and maker of the waiter app and of the till (photo of the app's
