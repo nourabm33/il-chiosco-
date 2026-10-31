@@ -100,6 +100,14 @@ of details still needed from the POS technician. Until they arrive the driver is
 `simulation`: released orders are marked "Simulato · non inviato alla cassa" and
 nothing is sent to the till.
 
+## Photos and 3D / AR menu
+
+Every menu item (food, drinks, cocktails, gin and beers) has a photo and a 3D model. Tapping an item on the site menu or the table menu (`order.html`) opens a viewer with the photo, a 3D model you can rotate, and an "AR" button on phones that places the item on the table (Scene Viewer on Android, Quick Look on iPhone, via Google `<model-viewer>`).
+
+- Photos: `assets/img/items/<product-slug>.webp` (credits in `docs/PHOTO-CREDITS.md`); cocktail photos stay in `js/cocktails.js`.
+- Models: `assets/models/<product-slug>.glb` + `.usdz`, generated procedurally by `tools/models` (`cd tools/models && npm ci && npm run build`), one per product in `server/data/products.json`.
+- After adding or renaming a product, rebuild the models and run `node tools/models/media.mjs` to refresh `js/menu-media.js`.
+
 ## Content source
 
 Menu items, descriptions and prices were extracted from the two supplied PDFs
