@@ -1,4 +1,6 @@
-# Il Chiosco menu in 3D and AR
+# Il Chiosco menu in 3D and AR — PR #17 pilot
+
+For the current catalog coverage, public menu redesign and device checklist, see [Premium digital menu review](PREMIUM-MENU.md).
 
 ## Audit of PR #16
 

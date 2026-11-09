@@ -105,8 +105,8 @@ nothing is sent to the till.
 Both menus use the same product media manifest. Products with a reviewed replacement open in interactive 3D and offer table placement through Google model-viewer on supported devices. Products waiting for a replacement open with their existing photo.
 
 - [Product media inventory](docs/MENU-MEDIA-INVENTORY.md) tracks sources, physical dimensions and validation for every catalog slug.
-- [Production and device testing guide](docs/MENU-AR.md) describes asset intake, AR routing and how to test on a phone.
-- Run `node tools/models/media.mjs` after changing catalog media or adding a reviewed replacement in `tools/models/replacements.json`.
+- [Premium menu review and device checklist](docs/PREMIUM-MENU.md) includes current coverage, before-and-after captures and the workflow for preparing new assets.
+- Run `npm run media --prefix tools/models` after changing catalog media or adding a reviewed replacement in `tools/models/replacements.json`.
 
 
 ## Content source

@@ -4,11 +4,12 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { NodeIO, getBounds } from "@gltf-transform/core";
 import validator from "gltf-validator";
+import { KHRTextureTransform } from "@gltf-transform/extensions";
 
 const root = fileURLToPath(new URL("../..", import.meta.url));
 const read = (file) => fs.readFile(path.join(root, file));
 const replacements = JSON.parse(await read("tools/models/replacements.json"));
-const io = new NodeIO();
+const io = new NodeIO().registerExtensions([KHRTextureTransform]);
 const toleranceM = 0.0005;
 
 for (const [slug, model] of Object.entries(replacements)) {
@@ -19,6 +20,7 @@ for (const [slug, model] of Object.entries(replacements)) {
   assert.equal(report.issues.numWarnings, 0, JSON.stringify(report.issues.messages, null, 2));
   assert.equal(report.info.resources.every(({ storage }) => ["glb", "buffer-view"].includes(storage)), true, `${slug}: external resource`);
   assert.ok(bytes.length <= 5_000_000, `${slug}: GLB exceeds 5 MB`);
+  assert.ok(report.info.totalTriangleCount > 0, `${slug}: no mesh geometry`);
   assert.ok(report.info.totalTriangleCount <= 100_000, `${slug}: triangle budget exceeded`);
 
   assert.ok(report.info.materialCount <= 10 && report.info.maxUVs <= 1, `${slug}: Scene Viewer material or UV budget exceeded`);

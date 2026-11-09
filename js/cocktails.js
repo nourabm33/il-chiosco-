@@ -146,20 +146,21 @@
 
   function card(item, key, i) {
     var gid = "lg-" + key + "-" + i;
+    var slug = slugify("cocktail-" + item.n);
+    var viewer = window.IlChioscoViewer;
+    var thumbnail = viewer?.thumbnail(slug);
     var media, cls;
     if (item.cover) {
-      media = '<img class="beer-photo" src="' + item.cover + '" alt="' + item.n + '" loading="lazy" />';
+      media = '<img class="beer-photo" src="' + (thumbnail || item.cover) + '" alt="' + item.n + '" loading="lazy" decoding="async" />';
       cls = " has-cover";
     } else if (item.photo) {
-      media = '<img class="cocktail-photo" src="' + item.photo + '" alt="Cocktail ' + item.n + '" loading="lazy" />';
+      media = '<img class="cocktail-photo" src="' + (thumbnail || item.photo) + '" alt="Cocktail ' + item.n + '" loading="lazy" decoding="async" />';
       cls = " has-photo";
     } else {
       media = glass(item.g, gid, item.c, item.r);
       cls = "";
     }
     var tag = item.t ? '<span class="tag">' + item.t + "</span>" : "";
-    var slug = slugify("cocktail-" + item.n) + (item.p.indexOf("/") > -1 ? "-grande" : "");
-    var viewer = window.IlChioscoViewer;
     var xr = viewer?.model(slug) ? '<span class="cocktail-card__xr">' + viewer.cube + "3D</span>" : "";
     return '' +
       '<article class="cocktail-card' + cls + ' reveal" data-slug="' + slug + '" data-kicker="' + KICKERS[key] + '" role="button" tabindex="0" style="transition-delay:' + (i % 4) * 0.08 + 's">' +
@@ -175,6 +176,13 @@
   Object.keys(DATA).forEach(function (key) {
     var host = document.getElementById("cg-" + key);
     if (!host) return;
-    host.innerHTML = DATA[key].map(function (item, i) { return card(item, key, i); }).join("");
+    var servings = DATA[key].flatMap(function (item) {
+      var prices = item.p.split("/");
+      if (prices.length !== 2) return [item];
+      return ["piccola", "grande"].map(function (size, index) {
+        return { ...item, n: item.n + " · " + size, p: prices[index].trim() };
+      });
+    });
+    host.innerHTML = servings.map(function (item, i) { return card(item, key, i); }).join("");
   });
 })();

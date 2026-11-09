@@ -33,31 +33,45 @@ for (const line of read("docs/PHOTO-CREDITS.md").split("\n")) {
   const match = line.match(/^\| `([^`]+)` \| (.+) \|$/);
   if (match) credits.set(match[1], match[2]);
 }
-const photoOverrides = {
-  "cocktail-windspiel-premium-dry": {
-    source: "Existing gin-card image (Giolu Gin). Correct Windspiel reference needed.",
-    authenticity: "mismatch",
-  },
-};
+const photoOverrides = JSON.parse(read("tools/models/photos.json"));
 
 const slugs = new Set(products.map(({ slug }) => slug));
 if (slugs.size !== products.length) throw new Error("Duplicate catalog slug");
-for (const slug of Object.keys(replacements)) {
-  if (!slugs.has(slug)) throw new Error(`Replacement has unknown slug: ${slug}`);
+for (const slug of new Set([...Object.keys(replacements), ...Object.keys(photoOverrides)])) {
+  if (!slugs.has(slug)) throw new Error(`Media entry has unknown slug: ${slug}`);
 }
 
 const usedAssets = new Set();
+const audit = JSON.parse(read("tools/models/asset-review.json"));
+function pendingReason(product) {
+  if (audit[product.slug]) return audit[product.slug];
+  if (product.category === "cocktail") {
+    if (/gin|birr/i.test(product.subcategory)) return "Awaiting the correct bottle or serving mesh and rights for any visible label.";
+    return "Awaiting a reviewed glass, liquid and garnish assembly that matches the menu image.";
+  }
+  if (product.category === "bibite") return "Awaiting a reviewed drink or packaging model matching the served format and variant.";
+  if (/coffee|matcha|latte|smoothie/i.test(product.subcategory)) {
+    return "Awaiting a reviewed vessel, fill and surface finish for this drink variant.";
+  }
+  return "Awaiting a commercial-use mesh or reconstruction matching the serving and visible ingredients.";
+}
 const media = {};
 for (const { slug } of products) {
   const own = `assets/img/items/${slug}.webp`;
-  const photo = exists(own) ? own : drinks[slug];
+  const photo = photoOverrides[slug]?.photo || (exists(own) ? own : drinks[slug]);
   if (!photo || !exists(photo)) throw new Error(`Missing photo for ${slug}`);
 
   const credit = credits.get(slug);
   const photoInfo = photoOverrides[slug] || {
     source: credit || "Existing cocktail-card image. Original source unverified.",
     authenticity: credit?.startsWith("Il Chiosco") ? "cafe-credited" : credit ? "representative" : "unverified",
+    license: credit?.includes("Unsplash") ? "Unsplash License" : credit?.startsWith("Il Chiosco") ? "Café supplied" : "Existing photo rights unverified",
   };
+  // Keep the existing public image when its original rights are unverified.
+  const thumbnail = photoInfo.license === "Existing photo rights unverified"
+    ? photo
+    : photo.replace(/^assets\/img\//, "assets/img/menu-thumbs/").replace(/\.[^.]+$/, ".webp");
+  if (process.argv.includes("--check") && !exists(thumbnail)) throw new Error(`Missing thumbnail for ${slug}`);
   const model = replacements[slug] || { status: "pending" };
   if (model.status === "ready") {
     for (const format of ["glb", "usdz"]) {
@@ -74,7 +88,7 @@ for (const { slug } of products) {
   } else if (model.status !== "pending") {
     throw new Error(`Unknown model status for ${slug}`);
   }
-  media[slug] = { photo, photoSource: photoInfo.source, photoAuthenticity: photoInfo.authenticity, model };
+  media[slug] = { photo, thumbnail, photoSource: photoInfo.source, photoAuthenticity: photoInfo.authenticity, photoLicense: photoInfo.license, model };
 }
 
 const inventory = [
@@ -84,12 +98,13 @@ const inventory = [
   "",
   "Photo origin is based on the repository credits. Café-credited photos still need product and portion confirmation for modeling. Dimensions are width × height × depth in meters. Pending products show their existing photo.",
   "",
-  "| Product and slug | Existing photo and source | Photo authenticity | Legacy model pair | Replacement source and authenticity | GLB / USDZ | Dimensions (m) | Quality and AR status |",
+  "| Product and slug | Image, thumbnail and source | Image authenticity and rights | Legacy model pair | Replacement source and authenticity | GLB / USDZ | Dimensions (m) | Quality and AR status |",
   "| --- | --- | --- | --- | --- | --- | --- | --- |",
 ];
 
 const cell = (value) => String(value).replaceAll("|", "\\|");
-for (const { slug, name } of products) {
+for (const product of products) {
+  const { slug, name } = product;
   const entry = media[slug];
   const model = entry.model;
   const ready = model.status === "ready";
@@ -99,13 +114,13 @@ for (const { slug, name } of products) {
   }).join(" / ");
   const fields = [
     `${name} · \`${slug}\``,
-    `[Image](../${entry.photo}) · ${entry.photoSource}`,
-    entry.photoAuthenticity,
+    `[Image](../${entry.photo}) · [Thumbnail](../${entry.thumbnail}) · ${entry.photoSource}`,
+    `${entry.photoAuthenticity} · ${entry.photoLicense}`,
     legacy,
-    ready ? `[${model.credit}](${model.source}) · ${model.license} · ${model.authenticity}` : "Awaiting suitable references or licensed model",
+    ready ? [`[${model.credit}](${model.source})`, ...(model.additionalSources || []).map((item) => `[${item.credit}](${item.source})`), model.license, model.authenticity].join(" · ") : pendingReason(product),
     ready ? `[GLB](../${model.glb}) / [USDZ](../${model.usdz})` : "Pending / Pending",
     ready ? `${model.dimensionsM.join(" × ")} · ${model.dimensionBasis}` : "Awaiting measurement",
-    ready ? model.arValidation : "Photo only · AR pending",
+    ready ? [model.appearance, model.arValidation].filter(Boolean).join(" ") : "Photo only · AR pending",
   ];
   inventory.push(`| ${fields.map(cell).join(" | ")} |`);
 }
