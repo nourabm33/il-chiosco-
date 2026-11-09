@@ -2,7 +2,7 @@
 window.IL_CHIOSCO_MEDIA = {
   "alba-espresso": {
     "photo": "assets/img/items/alba-espresso.webp",
-    "thumbnail": "assets/img/menu-thumbs/items/alba-espresso.webp",
+    "thumbnail": "assets/img/menu-renders/alba-espresso.webp",
     "photoSource": "[Nathan Dumlao](https://unsplash.com/photos/dAYJfrtVjh0) on Unsplash",
     "photoAuthenticity": "representative",
     "photoLicense": "Unsplash License",
@@ -10,23 +10,25 @@ window.IL_CHIOSCO_MEDIA = {
       "status": "ready",
       "glb": "assets/models/realistic/alba-espresso.glb",
       "usdz": "assets/models/realistic/alba-espresso.usdz",
+      "thumbnail": "assets/img/menu-renders/alba-espresso.webp",
       "authenticity": "representative",
-      "source": "https://sketchfab.com/3d-models/cup-of-coffee-f82264218618431d81b8a280076a786e",
-      "credit": "Adapted from Cup of Coffee by senorp3dro",
-      "license": "CC-BY-4.0",
+      "source": "docs/coffee-batch-01/README.md#espresso",
+      "credit": "Blender · espresso.jpeg",
+      "license": "Created for Il Chiosco from café-supplied references",
       "dimensionsM": [
-        0.116,
-        0.0508,
-        0.116
+        0.114,
+        0.055,
+        0.114
       ],
-      "dimensionBasis": "Modeled cup and saucer dimensions. Café serviceware not measured.",
-      "cameraOrbit": "-115deg 56deg auto",
-      "arValidation": "Desktop 3D and format checks passed. Phone placement not verified."
+      "dimensionBasis": "Reference-guided vessel size estimated in meters.",
+      "cameraOrbit": "17deg 43deg auto",
+      "appearance": "Cool porcelain demitasse, low espresso fill, mottled crema and a recessed saucer.",
+      "arValidation": "Desktop 3D and format checks passed. Phone placement unverified."
     }
   },
   "alba-cappuccino": {
     "photo": "assets/img/items/alba-cappuccino.webp",
-    "thumbnail": "assets/img/menu-thumbs/items/alba-cappuccino.webp",
+    "thumbnail": "assets/img/menu-renders/alba-cappuccino.webp",
     "photoSource": "[tabitha turner](https://unsplash.com/photos/3n3mPoGko8g) on Unsplash",
     "photoAuthenticity": "representative",
     "photoLicense": "Unsplash License",
@@ -34,38 +36,72 @@ window.IL_CHIOSCO_MEDIA = {
       "status": "ready",
       "glb": "assets/models/realistic/alba-cappuccino.glb",
       "usdz": "assets/models/realistic/alba-cappuccino.usdz",
+      "thumbnail": "assets/img/menu-renders/alba-cappuccino.webp",
       "authenticity": "representative",
-      "source": "https://sketchfab.com/3d-models/cup-of-coffee-f82264218618431d81b8a280076a786e",
-      "credit": "Adapted from Cup of Coffee by senorp3dro",
-      "license": "CC-BY-4.0",
+      "source": "docs/coffee-batch-01/README.md#cappuccino",
+      "credit": "Blender · cappuchino.webp",
+      "license": "Created for Il Chiosco from café-supplied references",
       "dimensionsM": [
-        0.143,
-        0.0559,
-        0.1445
+        0.146,
+        0.056,
+        0.146
       ],
-      "dimensionBasis": "Modeled cup and saucer dimensions. Café serviceware not measured.",
-      "cameraOrbit": "-115deg 56deg auto",
-      "arValidation": "Desktop 3D and format checks passed. Phone placement not verified."
+      "dimensionBasis": "Reference-guided vessel size estimated in meters.",
+      "cameraOrbit": "17deg 47deg auto",
+      "appearance": "Rounded warm porcelain, a heart pour, cocoa-toned crema and curved microfoam, with saucer and teaspoon.",
+      "arValidation": "Desktop 3D and format checks passed. Phone placement unverified."
     }
   },
   "alba-latte-macchiato": {
     "photo": "assets/img/items/alba-latte-macchiato.webp",
-    "thumbnail": "assets/img/menu-thumbs/items/alba-latte-macchiato.webp",
+    "thumbnail": "assets/img/menu-renders/alba-latte-macchiato.webp",
     "photoSource": "[Daniel](https://unsplash.com/photos/7RzeVpUHiEY) on Unsplash",
     "photoAuthenticity": "representative",
     "photoLicense": "Unsplash License",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/alba-latte-macchiato.glb",
+      "usdz": "assets/models/realistic/alba-latte-macchiato.usdz",
+      "thumbnail": "assets/img/menu-renders/alba-latte-macchiato.webp",
+      "authenticity": "representative",
+      "source": "docs/coffee-batch-01/README.md#latte-macchiato",
+      "credit": "Blender · latte macchiato.webp",
+      "license": "Created for Il Chiosco from café-supplied references",
+      "dimensionsM": [
+        0.11685,
+        0.1273,
+        0.091
+      ],
+      "dimensionBasis": "Reference-guided vessel size estimated in meters.",
+      "cameraOrbit": "17deg 60deg auto",
+      "appearance": "Tall tapered glass with a curved handle and heavy base, layered milk, coffee and foam.",
+      "arValidation": "Desktop 3D and format checks passed. Phone placement unverified."
     }
   },
   "alba-flat-white": {
     "photo": "assets/img/items/alba-flat-white.webp",
-    "thumbnail": "assets/img/menu-thumbs/items/alba-flat-white.webp",
+    "thumbnail": "assets/img/menu-renders/alba-flat-white.webp",
     "photoSource": "[Dani](https://unsplash.com/photos/ZLqxSzvVr7I) on Unsplash",
     "photoAuthenticity": "representative",
     "photoLicense": "Unsplash License",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/alba-flat-white.glb",
+      "usdz": "assets/models/realistic/alba-flat-white.usdz",
+      "thumbnail": "assets/img/menu-renders/alba-flat-white.webp",
+      "authenticity": "representative",
+      "source": "docs/coffee-batch-01/README.md#flat-white",
+      "credit": "Blender · Flat White.webp",
+      "license": "Created for Il Chiosco from café-supplied references",
+      "dimensionsM": [
+        0.098476,
+        0.0815,
+        0.0776
+      ],
+      "dimensionBasis": "Reference-guided vessel size estimated in meters.",
+      "cameraOrbit": "17deg 58deg auto",
+      "appearance": "Fluted clear glass with squared handle, steamed milk and a thin tulip-pour microfoam layer.",
+      "arValidation": "Desktop 3D and format checks passed. Phone placement unverified."
     }
   },
   "alba-ginseng-orzo": {
@@ -80,12 +116,28 @@ window.IL_CHIOSCO_MEDIA = {
   },
   "alba-americano": {
     "photo": "assets/img/items/alba-americano.webp",
-    "thumbnail": "assets/img/menu-thumbs/items/alba-americano.webp",
+    "thumbnail": "assets/img/menu-renders/alba-americano.webp",
     "photoSource": "[Ben Kolde](https://unsplash.com/photos/-sKBWdCyBLg) on Unsplash",
     "photoAuthenticity": "representative",
     "photoLicense": "Unsplash License",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/alba-americano.glb",
+      "usdz": "assets/models/realistic/alba-americano.usdz",
+      "thumbnail": "assets/img/menu-renders/alba-americano.webp",
+      "authenticity": "representative",
+      "source": "docs/coffee-batch-01/README.md#americano",
+      "credit": "Blender · americano.webp",
+      "license": "Created for Il Chiosco from café-supplied references",
+      "dimensionsM": [
+        0.154,
+        0.063,
+        0.154
+      ],
+      "dimensionBasis": "Reference-guided vessel size estimated in meters.",
+      "cameraOrbit": "-24deg 51deg auto",
+      "appearance": "Ivory porcelain, clear dark coffee, an irregular bubble ring, matching saucer and teaspoon.",
+      "arValidation": "Desktop 3D and format checks passed. Phone placement unverified."
     }
   },
   "alba-caffe-shakerato": {

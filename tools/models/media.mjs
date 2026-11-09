@@ -67,12 +67,16 @@ for (const { slug } of products) {
     authenticity: credit?.startsWith("Il Chiosco") ? "cafe-credited" : credit ? "representative" : "unverified",
     license: credit?.includes("Unsplash") ? "Unsplash License" : credit?.startsWith("Il Chiosco") ? "Café supplied" : "Existing photo rights unverified",
   };
+  const model = replacements[slug] || { status: "pending" };
   // Keep the existing public image when its original rights are unverified.
-  const thumbnail = photoInfo.license === "Existing photo rights unverified"
+  const photoThumbnail = photoInfo.license === "Existing photo rights unverified"
     ? photo
     : photo.replace(/^assets\/img\//, "assets/img/menu-thumbs/").replace(/\.[^.]+$/, ".webp");
+  const thumbnail = model.thumbnail || photoThumbnail;
+  if (model.thumbnail && (model.status !== "ready" || thumbnail !== `assets/img/menu-renders/${slug}.webp` || !exists(thumbnail))) {
+    throw new Error(`Invalid model thumbnail for ${slug}`);
+  }
   if (process.argv.includes("--check") && !exists(thumbnail)) throw new Error(`Missing thumbnail for ${slug}`);
-  const model = replacements[slug] || { status: "pending" };
   if (model.status === "ready") {
     for (const format of ["glb", "usdz"]) {
       const asset = model[format];
@@ -103,6 +107,7 @@ const inventory = [
 ];
 
 const cell = (value) => String(value).replaceAll("|", "\\|");
+const sourceLink = (source) => source.startsWith("docs/") ? `../${source}` : source;
 for (const product of products) {
   const { slug, name } = product;
   const entry = media[slug];
@@ -117,7 +122,7 @@ for (const product of products) {
     `[Image](../${entry.photo}) · [Thumbnail](../${entry.thumbnail}) · ${entry.photoSource}`,
     `${entry.photoAuthenticity} · ${entry.photoLicense}`,
     legacy,
-    ready ? [`[${model.credit}](${model.source})`, ...(model.additionalSources || []).map((item) => `[${item.credit}](${item.source})`), model.license, model.authenticity].join(" · ") : pendingReason(product),
+    ready ? [`[${model.credit}](${sourceLink(model.source)})`, ...(model.additionalSources || []).map((item) => `[${item.credit}](${sourceLink(item.source)})`), model.license, model.authenticity].join(" · ") : pendingReason(product),
     ready ? `[GLB](../${model.glb}) / [USDZ](../${model.usdz})` : "Pending / Pending",
     ready ? `${model.dimensionsM.join(" × ")} · ${model.dimensionBasis}` : "Awaiting measurement",
     ready ? [model.appearance, model.arValidation].filter(Boolean).join(" ") : "Photo only · AR pending",
