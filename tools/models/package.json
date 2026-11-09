@@ -1,0 +1,12 @@
+{
+  "name": "il-chiosco-models",
+  "private": true,
+  "type": "module",
+  "description": "Generates the 3D/AR menu models (GLB for web/Android, USDZ for iPhone) into assets/models/.",
+  "scripts": {
+    "build": "node generate.mjs"
+  },
+  "dependencies": {
+    "three": "0.170.0"
+  }
+}

@@ -139,6 +139,11 @@
   };
 
   /* ---------- render ---------- */
+  var KICKERS = { signatures: "Signatures", classici: "I Classici", gin: "I Gin", birre: "Le Birre" };
+  function slugify(v) {
+    return v.toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "");
+  }
+
   function card(item, key, i) {
     var gid = "lg-" + key + "-" + i;
     var media, cls;
@@ -153,9 +158,11 @@
       cls = "";
     }
     var tag = item.t ? '<span class="tag">' + item.t + "</span>" : "";
+    var slug = slugify("cocktail-" + item.n) + (item.p.indexOf("/") > -1 ? "-grande" : "");
+    var xr = window.IlChioscoViewer ? '<span class="cocktail-card__xr">' + window.IlChioscoViewer.cube + "3D · AR</span>" : "";
     return '' +
-      '<article class="cocktail-card' + cls + ' reveal" style="transition-delay:' + (i % 4) * 0.08 + 's">' +
-      '  <div class="cocktail-card__media" style="--c1:' + item.c[0] + ';--c2:' + item.c[1] + '">' + media + '</div>' +
+      '<article class="cocktail-card' + cls + ' reveal" data-slug="' + slug + '" data-kicker="' + KICKERS[key] + '" role="button" tabindex="0" style="transition-delay:' + (i % 4) * 0.08 + 's">' +
+      '  <div class="cocktail-card__media" style="--c1:' + item.c[0] + ';--c2:' + item.c[1] + '">' + media + xr + '</div>' +
       '  <div class="cocktail-card__body">' +
       '    <div class="cocktail-card__top"><h4 class="cocktail-card__name">' + item.n + tag + '</h4>' +
       '    <span class="cocktail-card__price">' + item.p + "</span></div>" +

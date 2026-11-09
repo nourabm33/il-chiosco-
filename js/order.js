@@ -124,8 +124,9 @@
   }
 
   function itemRow(item) {
+    var viewer = item.slug && window.IlChioscoViewer;
     return (
-      '<div class="order-item">' +
+      '<div class="order-item"' + (viewer ? ' data-slug="' + escapeHtml(item.slug) + '" data-kicker="' + escapeHtml(item.subcategory || "") + '" role="button" tabindex="0">' + viewer.thumb(item.slug, item.name) : ">") +
       '  <div class="order-item__info">' +
       '    <span class="order-item__name">' + escapeHtml(item.name) + "</span>" +
       (item.description ? '<span class="order-item__desc">' + escapeHtml(item.description) + "</span>" : "") +

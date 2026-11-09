@@ -23,6 +23,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/viewer.css" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -158,29 +159,29 @@
           <div class="menu-cat__head"><h3>Coffee</h3><span class="rule"></span></div>
           <p class="menu-cat__note">Per il nostro espresso usiamo la miscela Club Kavè · latte vegetale +0,3€ · deca +0,2€ · extra shot caffè +1,3€</p>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Espresso</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Cappuccino</span><span class="menu-item__dots"></span><span class="menu-item__price">1,9€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Latte macchiato</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Flat White</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Ginseng / Orzo</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Americano</span><span class="menu-item__dots"></span><span class="menu-item__price">1,8€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Caffè shakerato</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Marocchino</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Iced Americano</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Iced Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Vanilla Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Caramel Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Coconut Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Caffè in filtro V60</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Ogni giorno estrai il tuo filter coffee aromatico in autonomia.</p></div>
+            <div class="menu-item" data-slug="alba-espresso"><div class="menu-item__top"><span class="menu-item__name">Espresso</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-cappuccino"><div class="menu-item__top"><span class="menu-item__name">Cappuccino</span><span class="menu-item__dots"></span><span class="menu-item__price">1,9€</span></div></div>
+            <div class="menu-item" data-slug="alba-latte-macchiato"><div class="menu-item__top"><span class="menu-item__name">Latte macchiato</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
+            <div class="menu-item" data-slug="alba-flat-white"><div class="menu-item__top"><span class="menu-item__name">Flat White</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-ginseng-orzo"><div class="menu-item__top"><span class="menu-item__name">Ginseng / Orzo</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
+            <div class="menu-item" data-slug="alba-americano"><div class="menu-item__top"><span class="menu-item__name">Americano</span><span class="menu-item__dots"></span><span class="menu-item__price">1,8€</span></div></div>
+            <div class="menu-item" data-slug="alba-caffe-shakerato"><div class="menu-item__top"><span class="menu-item__name">Caffè shakerato</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-marocchino"><div class="menu-item__top"><span class="menu-item__name">Marocchino</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
+            <div class="menu-item" data-slug="alba-iced-americano"><div class="menu-item__top"><span class="menu-item__name">Iced Americano</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-iced-latte"><div class="menu-item__top"><span class="menu-item__name">Iced Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-vanilla-latte"><div class="menu-item__top"><span class="menu-item__name">Vanilla Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-caramel-latte"><div class="menu-item__top"><span class="menu-item__name">Caramel Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-coconut-latte"><div class="menu-item__top"><span class="menu-item__name">Coconut Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-caffe-in-filtro-v60"><div class="menu-item__top"><span class="menu-item__name">Caffè in filtro V60</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Ogni giorno estrai il tuo filter coffee aromatico in autonomia.</p></div>
           </div>
         </div>
 
         <div class="menu-cat reveal">
           <div class="menu-cat__head"><h3>Matcha</h3><span class="rule"></span></div>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Matcha Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Matcha Strawberry Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">5,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Matcha Ube Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
+            <div class="menu-item" data-slug="alba-matcha-latte"><div class="menu-item__top"><span class="menu-item__name">Matcha Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">5€</span></div></div>
+            <div class="menu-item" data-slug="alba-matcha-strawberry-latte"><div class="menu-item__top"><span class="menu-item__name">Matcha Strawberry Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">5,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-matcha-ube-latte"><div class="menu-item__top"><span class="menu-item__name">Matcha Ube Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
           </div>
         </div>
 
@@ -188,11 +189,11 @@
           <div class="menu-cat__head"><h3>Latte</h3><span class="rule"></span></div>
           <p class="menu-cat__note">Latte vegetale +0,3€ · deca +0,2€ · extra shot caffè +1,3€</p>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Ube Vanilla Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Strawberry Cream Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Pumpkin Spice Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Anise &amp; Cardamom Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Chai Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="alba-ube-vanilla-latte"><div class="menu-item__top"><span class="menu-item__name">Ube Vanilla Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
+            <div class="menu-item" data-slug="alba-strawberry-cream-latte"><div class="menu-item__top"><span class="menu-item__name">Strawberry Cream Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="alba-pumpkin-spice-latte"><div class="menu-item__top"><span class="menu-item__name">Pumpkin Spice Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="alba-anise-cardamom-latte"><div class="menu-item__top"><span class="menu-item__name">Anise &amp; Cardamom Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="alba-chai-latte"><div class="menu-item__top"><span class="menu-item__name">Chai Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
           </div>
           <figure class="menu-showcase reveal">
             <img src="assets/img/menu/iced-specialty.webp" alt="Selezione specialty: matcha, fragola, cocco, ube e vaniglia" loading="lazy" />
@@ -203,8 +204,8 @@
         <div class="menu-cat reveal">
           <div class="menu-cat__head"><h3>Smoothie</h3><span class="rule"></span></div>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Apple Pie Smoothie</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Mela, cannella, burro d'arachidi, vaniglia, latte, yogurt.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Banana Bread Smoothie</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Banana, fiocchi d'avena, sciroppo d'acero, latte.</p></div>
+            <div class="menu-item" data-slug="alba-apple-pie-smoothie"><div class="menu-item__top"><span class="menu-item__name">Apple Pie Smoothie</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Mela, cannella, burro d'arachidi, vaniglia, latte, yogurt.</p></div>
+            <div class="menu-item" data-slug="alba-banana-bread-smoothie"><div class="menu-item__top"><span class="menu-item__name">Banana Bread Smoothie</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Banana, fiocchi d'avena, sciroppo d'acero, latte.</p></div>
           </div>
         </div>
 
@@ -212,33 +213,33 @@
           <div class="menu-cat__head"><h3>Best seller</h3><span class="rule"></span></div>
           <p class="menu-cat__note">Chiedi al nostro staff per gli speciali del mese.</p>
           <div class="menu-list menu-list--single">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Apple Pie</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">New York Roll</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div><p class="menu-item__desc">Croissant moderno, tondo, ripieno di crema e ricoperto da ganache e frutta fresca.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Cinnamon Roll</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div><p class="menu-item__desc">Girella alla cannella, un dolce lievitato morbido dal profumo irresistibile. Servito con panna.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Crumbl Cookies</span><span class="menu-item__dots"></span><span class="menu-item__price">da 3,5 a 5€</span></div><p class="menu-item__desc">I biscotti più famosi del web: grandi e morbidi. Classici o decorati con frosting di creme e frutta fresca.</p></div>
+            <div class="menu-item" data-slug="alba-apple-pie"><div class="menu-item__top"><span class="menu-item__name">Apple Pie</span><span class="menu-item__dots"></span><span class="menu-item__price">4,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-new-york-roll"><div class="menu-item__top"><span class="menu-item__name">New York Roll</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div><p class="menu-item__desc">Croissant moderno, tondo, ripieno di crema e ricoperto da ganache e frutta fresca.</p></div>
+            <div class="menu-item" data-slug="alba-cinnamon-roll"><div class="menu-item__top"><span class="menu-item__name">Cinnamon Roll</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div><p class="menu-item__desc">Girella alla cannella, un dolce lievitato morbido dal profumo irresistibile. Servito con panna.</p></div>
+            <div class="menu-item" data-slug="alba-crumbl-cookies"><div class="menu-item__top"><span class="menu-item__name">Crumbl Cookies</span><span class="menu-item__dots"></span><span class="menu-item__price">da 3,5 a 5€</span></div><p class="menu-item__desc">I biscotti più famosi del web: grandi e morbidi. Classici o decorati con frosting di creme e frutta fresca.</p></div>
           </div>
         </div>
 
         <div class="menu-cat reveal">
           <div class="menu-cat__head"><h3>Dolce</h3><span class="rule"></span></div>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Croissant lievito madre vuoto</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Croissant vegano vuoto</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Croissant vegano albicocca</span><span class="menu-item__dots"></span><span class="menu-item__price">1,6€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Croissant crema o cioccolato</span><span class="menu-item__dots"></span><span class="menu-item__price">1,8€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Croissant pistacchio o mandorla</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Croissant cereali miele o lampone</span><span class="menu-item__dots"></span><span class="menu-item__price">1,6€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Pain au chocolat</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Muffin cioccolato / yogurt e mirtilli</span><span class="menu-item__dots"></span><span class="menu-item__price">3€</span></div></div>
+            <div class="menu-item" data-slug="alba-croissant-lievito-madre-vuoto"><div class="menu-item__top"><span class="menu-item__name">Croissant lievito madre vuoto</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-croissant-vegano-vuoto"><div class="menu-item__top"><span class="menu-item__name">Croissant vegano vuoto</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-croissant-vegano-albicocca"><div class="menu-item__top"><span class="menu-item__name">Croissant vegano albicocca</span><span class="menu-item__dots"></span><span class="menu-item__price">1,6€</span></div></div>
+            <div class="menu-item" data-slug="alba-croissant-crema-o-cioccolato"><div class="menu-item__top"><span class="menu-item__name">Croissant crema o cioccolato</span><span class="menu-item__dots"></span><span class="menu-item__price">1,8€</span></div></div>
+            <div class="menu-item" data-slug="alba-croissant-pistacchio-o-mandorla"><div class="menu-item__top"><span class="menu-item__name">Croissant pistacchio o mandorla</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
+            <div class="menu-item" data-slug="alba-croissant-cereali-miele-o-lampone"><div class="menu-item__top"><span class="menu-item__name">Croissant cereali miele o lampone</span><span class="menu-item__dots"></span><span class="menu-item__price">1,6€</span></div></div>
+            <div class="menu-item" data-slug="alba-pain-au-chocolat"><div class="menu-item__top"><span class="menu-item__name">Pain au chocolat</span><span class="menu-item__dots"></span><span class="menu-item__price">2€</span></div></div>
+            <div class="menu-item" data-slug="alba-muffin-cioccolato-yogurt-e-mirtilli"><div class="menu-item__top"><span class="menu-item__name">Muffin cioccolato / yogurt e mirtilli</span><span class="menu-item__dots"></span><span class="menu-item__price">3€</span></div></div>
           </div>
         </div>
 
         <div class="menu-cat reveal">
           <div class="menu-cat__head"><h3>Salato</h3><span class="rule"></span></div>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Mini panino farcito</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Croissant salato farcito</span><span class="menu-item__dots"></span><span class="menu-item__price">3€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Toast prosciutto cotto e formaggio</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="alba-mini-panino-farcito"><div class="menu-item__top"><span class="menu-item__name">Mini panino farcito</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
+            <div class="menu-item" data-slug="alba-croissant-salato-farcito"><div class="menu-item__top"><span class="menu-item__name">Croissant salato farcito</span><span class="menu-item__dots"></span><span class="menu-item__price">3€</span></div></div>
+            <div class="menu-item" data-slug="alba-toast-prosciutto-cotto-e-formaggio"><div class="menu-item__top"><span class="menu-item__name">Toast prosciutto cotto e formaggio</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
           </div>
         </div>
       </div>
@@ -257,22 +258,22 @@
         <div class="menu-cat reveal">
           <div class="menu-cat__head"><h3>Brunch</h3><span class="rule"></span></div>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Pancake sciroppo d'acero</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Pancake frutta di stagione &amp; yogurt</span><span class="menu-item__dots"></span><span class="menu-item__price">9€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Yogurt, frutta, granola home made</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Porridge con frutta e latte di avena</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
+            <div class="menu-item" data-slug="mezzogiorno-pancake-sciroppo-d-acero"><div class="menu-item__top"><span class="menu-item__name">Pancake sciroppo d'acero</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
+            <div class="menu-item" data-slug="mezzogiorno-pancake-frutta-di-stagione-yogurt"><div class="menu-item__top"><span class="menu-item__name">Pancake frutta di stagione &amp; yogurt</span><span class="menu-item__dots"></span><span class="menu-item__price">9€</span></div></div>
+            <div class="menu-item" data-slug="mezzogiorno-yogurt-frutta-granola-home-made"><div class="menu-item__top"><span class="menu-item__name">Yogurt, frutta, granola home made</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
+            <div class="menu-item" data-slug="mezzogiorno-porridge-con-frutta-e-latte-di-avena"><div class="menu-item__top"><span class="menu-item__name">Porridge con frutta e latte di avena</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
           </div>
         </div>
 
         <div class="menu-cat reveal">
           <div class="menu-cat__head"><h3>Dalla cucina</h3><span class="rule"></span></div>
           <div class="menu-list menu-list--single">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Avocado Toast</span><span class="menu-item__dots"></span><span class="menu-item__price">10€</span></div><p class="menu-item__desc">Pane mille grani, avocado, uovo, erbe e spezie.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Pan Tomate</span><span class="menu-item__dots"></span><span class="menu-item__price">8€</span></div><p class="menu-item__desc">Pan de cristal, pomodoro fresco, erbe e spezie.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Club sandwich del chiosco</span><span class="menu-item__dots"></span><span class="menu-item__price">12€</span></div><p class="menu-item__desc">Pane tostato ai cereali, tacchino, bacon, lattuga, pomodoro, formaggio filante, accompagnato da patate al forno.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Il Chiosco's brunch plate</span><span class="menu-item__dots"></span><span class="menu-item__price">15€</span></div><p class="menu-item__desc">Uova cottura a scelta, pane farine "Paolo Mariani", burro e marmellata, spremuta d'arancia, espresso o americano.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Super focacciona Vegetariana</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Doppia focaccia 72h di lievitazione ripiena di verdure grigliate e formaggio dolce filante, o versione vegana con hummus di ceci.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Super focacciona</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Doppia focaccia 72h di lievitazione ripiena di salumi del "Salumificio Offagna", edamer, pomodoro e insalata.</p></div>
+            <div class="menu-item" data-slug="mezzogiorno-avocado-toast"><div class="menu-item__top"><span class="menu-item__name">Avocado Toast</span><span class="menu-item__dots"></span><span class="menu-item__price">10€</span></div><p class="menu-item__desc">Pane mille grani, avocado, uovo, erbe e spezie.</p></div>
+            <div class="menu-item" data-slug="mezzogiorno-pan-tomate"><div class="menu-item__top"><span class="menu-item__name">Pan Tomate</span><span class="menu-item__dots"></span><span class="menu-item__price">8€</span></div><p class="menu-item__desc">Pan de cristal, pomodoro fresco, erbe e spezie.</p></div>
+            <div class="menu-item" data-slug="mezzogiorno-club-sandwich-del-chiosco"><div class="menu-item__top"><span class="menu-item__name">Club sandwich del chiosco</span><span class="menu-item__dots"></span><span class="menu-item__price">12€</span></div><p class="menu-item__desc">Pane tostato ai cereali, tacchino, bacon, lattuga, pomodoro, formaggio filante, accompagnato da patate al forno.</p></div>
+            <div class="menu-item" data-slug="mezzogiorno-il-chiosco-s-brunch-plate"><div class="menu-item__top"><span class="menu-item__name">Il Chiosco's brunch plate</span><span class="menu-item__dots"></span><span class="menu-item__price">15€</span></div><p class="menu-item__desc">Uova cottura a scelta, pane farine "Paolo Mariani", burro e marmellata, spremuta d'arancia, espresso o americano.</p></div>
+            <div class="menu-item" data-slug="mezzogiorno-super-focacciona-vegetariana"><div class="menu-item__top"><span class="menu-item__name">Super focacciona Vegetariana</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Doppia focaccia 72h di lievitazione ripiena di verdure grigliate e formaggio dolce filante, o versione vegana con hummus di ceci.</p></div>
+            <div class="menu-item" data-slug="mezzogiorno-super-focacciona"><div class="menu-item__top"><span class="menu-item__name">Super focacciona</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Doppia focaccia 72h di lievitazione ripiena di salumi del "Salumificio Offagna", edamer, pomodoro e insalata.</p></div>
           </div>
         </div>
 
@@ -280,10 +281,10 @@
           <div class="menu-cat__head"><h3>Extras</h3><span class="rule"></span></div>
           <p class="menu-cat__note">Da aggiungere ai vostri piatti.</p>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Uovo</span><span class="menu-item__dots"></span><span class="menu-item__price">2,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Bacon</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Salmone affumicato</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Avocado</span><span class="menu-item__dots"></span><span class="menu-item__price">3€</span></div></div>
+            <div class="menu-item" data-slug="mezzogiorno-uovo"><div class="menu-item__top"><span class="menu-item__name">Uovo</span><span class="menu-item__dots"></span><span class="menu-item__price">2,5€</span></div></div>
+            <div class="menu-item" data-slug="mezzogiorno-bacon"><div class="menu-item__top"><span class="menu-item__name">Bacon</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div></div>
+            <div class="menu-item" data-slug="mezzogiorno-salmone-affumicato"><div class="menu-item__top"><span class="menu-item__name">Salmone affumicato</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="mezzogiorno-avocado"><div class="menu-item__top"><span class="menu-item__name">Avocado</span><span class="menu-item__dots"></span><span class="menu-item__price">3€</span></div></div>
           </div>
         </div>
 
@@ -310,32 +311,32 @@
         <div class="menu-cat reveal">
           <div class="menu-cat__head"><h3>Soft drink</h3><span class="rule"></span></div>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Kombucha "Laverve"</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Bevanda fermentata a base di tè.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Bibite Galvanina Bio</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div><p class="menu-item__desc">Aranciata · Limonata · Cedrata · Chinotto · Tonica · Ginger.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Succo di frutta Looza</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div><p class="menu-item__desc">Ace · Albicocca · Pesca · Pera · Ananas.</p></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Spremuta</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Bibite in vetro</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Coca Cola vetro</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Coca Cola Zero vetro</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Estathè limone</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Estathè pesca</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Acquainbrick</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
+            <div class="menu-item" data-slug="bibite-kombucha-laverve"><div class="menu-item__top"><span class="menu-item__name">Kombucha "Laverve"</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div><p class="menu-item__desc">Bevanda fermentata a base di tè.</p></div>
+            <div class="menu-item" data-slug="bibite-bibite-galvanina-bio"><div class="menu-item__top"><span class="menu-item__name">Bibite Galvanina Bio</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div><p class="menu-item__desc">Aranciata · Limonata · Cedrata · Chinotto · Tonica · Ginger.</p></div>
+            <div class="menu-item" data-slug="bibite-succo-di-frutta-looza"><div class="menu-item__top"><span class="menu-item__name">Succo di frutta Looza</span><span class="menu-item__dots"></span><span class="menu-item__price">3,5€</span></div><p class="menu-item__desc">Ace · Albicocca · Pesca · Pera · Ananas.</p></div>
+            <div class="menu-item" data-slug="bibite-spremuta"><div class="menu-item__top"><span class="menu-item__name">Spremuta</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="bibite-bibite-in-vetro"><div class="menu-item__top"><span class="menu-item__name">Bibite in vetro</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="bibite-coca-cola-vetro"><div class="menu-item__top"><span class="menu-item__name">Coca Cola vetro</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="bibite-coca-cola-zero-vetro"><div class="menu-item__top"><span class="menu-item__name">Coca Cola Zero vetro</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="bibite-estathe-limone"><div class="menu-item__top"><span class="menu-item__name">Estathè limone</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="bibite-estathe-pesca"><div class="menu-item__top"><span class="menu-item__name">Estathè pesca</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
+            <div class="menu-item" data-slug="bibite-acquainbrick"><div class="menu-item__top"><span class="menu-item__name">Acquainbrick</span><span class="menu-item__dots"></span><span class="menu-item__price">1,5€</span></div></div>
           </div>
         </div>
 
         <div class="menu-cat reveal">
           <div class="menu-cat__head"><h3>Drink</h3><span class="rule"></span></div>
           <div class="menu-list">
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Aperol Spritz</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Campari Spritz</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Select Spritz</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Hugo Spritz</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Americano</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Negroni</span><span class="menu-item__dots"></span><span class="menu-item__price">8€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Gin Tonic</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Vodka Tonic</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Calice di vino</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
-            <div class="menu-item"><div class="menu-item__top"><span class="menu-item__name">Birra alla spina</span><span class="menu-item__dots"></span><span class="menu-item__price">5€</span></div></div>
+            <div class="menu-item" data-slug="bibite-aperol-spritz"><div class="menu-item__top"><span class="menu-item__name">Aperol Spritz</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
+            <div class="menu-item" data-slug="bibite-campari-spritz"><div class="menu-item__top"><span class="menu-item__name">Campari Spritz</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
+            <div class="menu-item" data-slug="bibite-select-spritz"><div class="menu-item__top"><span class="menu-item__name">Select Spritz</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
+            <div class="menu-item" data-slug="bibite-hugo-spritz"><div class="menu-item__top"><span class="menu-item__name">Hugo Spritz</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
+            <div class="menu-item" data-slug="bibite-americano"><div class="menu-item__top"><span class="menu-item__name">Americano</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
+            <div class="menu-item" data-slug="bibite-negroni"><div class="menu-item__top"><span class="menu-item__name">Negroni</span><span class="menu-item__dots"></span><span class="menu-item__price">8€</span></div></div>
+            <div class="menu-item" data-slug="bibite-gin-tonic"><div class="menu-item__top"><span class="menu-item__name">Gin Tonic</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
+            <div class="menu-item" data-slug="bibite-vodka-tonic"><div class="menu-item__top"><span class="menu-item__name">Vodka Tonic</span><span class="menu-item__dots"></span><span class="menu-item__price">7€</span></div></div>
+            <div class="menu-item" data-slug="bibite-calice-di-vino"><div class="menu-item__top"><span class="menu-item__name">Calice di vino</span><span class="menu-item__dots"></span><span class="menu-item__price">6€</span></div></div>
+            <div class="menu-item" data-slug="bibite-birra-alla-spina"><div class="menu-item__top"><span class="menu-item__name">Birra alla spina</span><span class="menu-item__dots"></span><span class="menu-item__price">5€</span></div></div>
           </div>
         </div>
 
@@ -521,6 +522,8 @@
     <button class="lightbox__nav next" id="lbNext" aria-label="Successivo">&#8250;</button>
   </div>
 
+  <script src="js/menu-media.js"></script>
+  <script src="js/viewer.js"></script>
   <script src="js/cocktails.js"></script>
   <script src="js/main.js"></script>
   <script src="js/i18n.js"></script>
