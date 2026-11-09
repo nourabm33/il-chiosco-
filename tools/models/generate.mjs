@@ -1,5 +1,5 @@
-/* Generates assets/models/<slug>.glb (+ .usdz for iPhone Quick Look) for every
-   product in server/data/products.json.   cd tools/models && npm ci && npm run build */
+/* Rebuilds the legacy comparison assets in tools/models/output/legacy.
+   This directory is never used by the production manifest. */
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -16,7 +16,7 @@ globalThis.FileReader = class {
 };
 
 const root = path.resolve(fileURLToPath(new URL("../..", import.meta.url)));
-const outDir = path.join(root, "assets/models");
+const outDir = path.join(root, "tools/models/output/legacy");
 fs.mkdirSync(outDir, { recursive: true });
 const products = JSON.parse(fs.readFileSync(path.join(root, "server/data/products.json"), "utf8"));
 const only = process.argv.slice(2);
@@ -37,4 +37,4 @@ for (const { slug } of products) {
   fs.writeFileSync(path.join(outDir, `${slug}.usdz`), usdz);
   total += glb.length + usdz.length;
 }
-console.log(`Wrote models to assets/models (${(total / 1e6).toFixed(1)} MB)`);
+console.log(`Wrote comparison models to tools/models/output/legacy (${(total / 1e6).toFixed(1)} MB)`);

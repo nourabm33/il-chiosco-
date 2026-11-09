@@ -1,188 +1,325 @@
-/* ============================================================
-   Il Chiosco — photo + 3D / AR viewer for every menu item.
-   Uses Google <model-viewer> (loaded on first open):
-   WebXR / Scene Viewer on Android, Quick Look on iPhone.
-   Models: assets/models/<slug>.glb (+ .usdz for iOS).
-   ============================================================ */
+/* Product media for the homepage and QR table menu. */
 (function () {
   "use strict";
 
   var MODEL_VIEWER = "https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js";
+  var LOAD_LIMIT_MS = 18000;
   var MEDIA = window.IL_CHIOSCO_MEDIA || {};
+  var CUBE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.3 6.6 3.7L12 11.7 5.4 8 12 4.3ZM5 9.7l6 3.4v6.6l-6-3.4V9.7Zm8 10v-6.6l6-3.4v6.6l-6 3.4Z"/></svg>';
   var TEXT = {
     it: {
-      photo: "Foto", model: "3D", ar: "Vedi sul tuo tavolo", hint: "Trascina per ruotare · pizzica per lo zoom",
-      close: "Chiudi", phoneOnly: "Apri il menu dal telefono per vederlo in AR sul tuo tavolo.",
-      open: "Vedi foto e 3D", badge: "3D · AR", note: "Modello 3D illustrativo",
+      photo: "Foto", model: "3D", ar: "Vedi sul tuo tavolo", close: "Chiudi", exitAR: "Esci dalla realtà aumentata",
+      hint: "Trascina per ruotare · pizzica o scorri per ingrandire",
+      loading: "Caricamento del modello 3D", pending: "Modello 3D in preparazione",
+      failed: "Il modello 3D non si è caricato. Puoi continuare a vedere la foto.",
+      noPhoto: "Foto non disponibile.",
+      unavailable: "La realtà aumentata non è disponibile su questo dispositivo o browser. Puoi esplorare il modello in 3D.",
+      arFailed: "Impossibile aprire la realtà aumentata. Puoi continuare a esplorare il modello in 3D.",
+      arGuide: "Muovi lentamente il telefono per inquadrare il tavolo. Tocca il tavolo per posizionare il prodotto.",
+      tracking: "Inquadra una zona ben illuminata del tavolo e muovi lentamente il telefono.",
+      representative: "Modello rappresentativo. Aspetto e dimensioni della porzione possono variare.",
     },
     en: {
-      photo: "Photo", model: "3D", ar: "View on your table", hint: "Drag to rotate · pinch to zoom",
-      close: "Close", phoneOnly: "Open the menu on your phone to see it in AR on your table.",
-      open: "See photo and 3D", badge: "3D · AR", note: "Illustrative 3D model",
+      photo: "Photo", model: "3D", ar: "View on your table", close: "Close", exitAR: "Exit augmented reality",
+      hint: "Drag to rotate · pinch or scroll to zoom",
+      loading: "Loading the 3D model", pending: "3D model in preparation",
+      failed: "The 3D model could not load. You can still view the photo.",
+      noPhoto: "Photo unavailable.",
+      unavailable: "Augmented reality is unavailable on this device or browser. You can still explore the 3D model.",
+      arFailed: "Augmented reality could not open. You can keep exploring the 3D model.",
+      arGuide: "Move your phone slowly over the table. Tap the table to place the item.",
+      tracking: "Point your phone at a well-lit part of the table and move slowly.",
+      representative: "Representative model. The actual serving may look different or vary in size.",
     },
   };
 
-  function lang() { return document.documentElement.lang === "en" ? "en" : "it"; }
-  function t(key) { return TEXT[lang()][key]; }
-  function photoFor(slug) { return MEDIA[slug] || null; }
-  function modelFor(slug) { return { glb: "assets/models/" + slug + ".glb", usdz: "assets/models/" + slug + ".usdz" }; }
-  function esc(s) {
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+  function t(key) { return TEXT[document.documentElement.lang === "en" ? "en" : "it"][key]; }
+  function mediaFor(slug) { return Object.hasOwn(MEDIA, slug) ? MEDIA[slug] : null; }
+  function photoFor(slug) { return mediaFor(slug)?.photo || null; }
+  function modelFor(slug) {
+    var model = mediaFor(slug)?.model;
+    return model?.status === "ready" ? model : null;
+  }
+  function esc(value) {
+    return String(value == null ? "" : value).replace(/[&<>"']/g, function (char) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[char];
     });
   }
 
-  var loader = null;
+  var loader;
   function loadModelViewer() {
-    if (window.customElements && window.customElements.get("model-viewer")) return Promise.resolve();
+    if (customElements.get("model-viewer")) return Promise.resolve();
     if (!loader) {
       loader = new Promise(function (resolve, reject) {
-        var s = document.createElement("script");
-        s.type = "module";
-        s.src = MODEL_VIEWER;
-        s.onload = function () { resolve(); };
-        s.onerror = reject;
-        document.head.appendChild(s);
+        var script = document.createElement("script");
+        script.type = "module";
+        script.src = MODEL_VIEWER;
+        function finish(error) {
+          clearTimeout(timeout);
+          if (error) {
+            script.remove();
+            reject(error);
+          } else {
+            resolve();
+          }
+        }
+        var timeout = setTimeout(function () { finish(new Error("Viewer script timed out")); }, LOAD_LIMIT_MS);
+        script.onload = function () {
+          finish(customElements.get("model-viewer") ? null : new Error("Viewer did not register"));
+        };
+        script.onerror = function () { finish(new Error("Viewer script failed")); };
+        document.head.appendChild(script);
+      }).catch(function (error) {
+        loader = null;
+        throw error;
       });
     }
     return loader;
   }
 
-  var modal, els = {}, lastFocus = null;
+  var modal, els = {}, current, lastFocus;
 
   function build() {
-    modal = document.createElement("div");
+    modal = document.createElement("dialog");
     modal.className = "xr-modal";
-    modal.hidden = true;
-    modal.setAttribute("role", "dialog");
-    modal.setAttribute("aria-modal", "true");
     modal.setAttribute("aria-labelledby", "xrTitle");
     modal.innerHTML =
       '<div class="xr-modal__backdrop" data-close></div>' +
       '<article class="xr-card">' +
-      '  <button class="xr-card__close" type="button" data-close><span aria-hidden="true">×</span></button>' +
+      '  <button class="xr-card__close" type="button" data-close autofocus><span aria-hidden="true">×</span></button>' +
       '  <div class="xr-stage">' +
       '    <img class="xr-stage__photo" alt="" />' +
+      '    <p class="xr-stage__missing" hidden></p>' +
       '    <div class="xr-stage__model"></div>' +
-      '    <div class="xr-switch" role="tablist">' +
-      '      <button type="button" role="tab" data-mode="model"></button>' +
-      '      <button type="button" role="tab" data-mode="photo"></button>' +
-      "    </div>" +
-      '    <p class="xr-stage__hint"></p>' +
-      "  </div>" +
+      '    <p class="xr-stage__hint" hidden></p>' +
+      '    <div class="xr-progress" role="status" hidden><span></span><progress max="1" value="0" aria-hidden="true"></progress></div>' +
+      '    <div class="xr-switch" role="group" hidden>' +
+      '      <button type="button" data-mode="photo"></button>' +
+      '      <button type="button" data-mode="model"></button>' +
+      '    </div>' +
+      '  </div>' +
       '  <div class="xr-info">' +
       '    <span class="xr-info__kicker"></span>' +
       '    <h3 class="xr-info__name" id="xrTitle"></h3>' +
       '    <p class="xr-info__desc"></p>' +
       '    <span class="xr-info__price"></span>' +
-      '    <button class="btn btn--gold xr-ar" type="button" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.3 6.6 3.7L12 11.7 5.4 8 12 4.3ZM5 9.7l6 3.4v6.6l-6-3.4V9.7Zm8 10v-6.6l6-3.4v6.6l-6 3.4Z"/></svg><span></span></button>' +
-      '    <p class="xr-info__phone" hidden></p>' +
-      '    <p class="xr-info__note"></p>' +
-      "  </div>" +
-      "</article>";
+      '    <button class="btn btn--gold xr-ar" type="button" hidden>' + CUBE + '<span></span></button>' +
+      '    <p class="xr-info__phone" role="status" hidden></p>' +
+      '    <p class="xr-info__note" role="status"></p>' +
+      '    <a class="xr-info__credit" target="_blank" rel="noopener" hidden></a>' +
+      '  </div>' +
+      '</article>';
     document.body.appendChild(modal);
-    ["photo", "model", "kicker", "name", "desc", "price", "phone", "note"].forEach(function (k) {
-      els[k] = modal.querySelector(".xr-stage__" + k + ", .xr-info__" + k);
+    ["photo", "missing", "model", "hint", "kicker", "name", "desc", "price", "phone", "note", "credit"].forEach(function (key) {
+      els[key] = modal.querySelector(".xr-stage__" + key + ", .xr-info__" + key);
     });
-    els.card = modal.querySelector(".xr-card");
-    els.hint = modal.querySelector(".xr-stage__hint");
     els.ar = modal.querySelector(".xr-ar");
     els.close = modal.querySelector(".xr-card__close");
-    els.tabs = modal.querySelectorAll(".xr-switch button");
+    els.switcher = modal.querySelector(".xr-switch");
+    els.photoButton = modal.querySelector('[data-mode="photo"]');
+    els.modelButton = modal.querySelector('[data-mode="model"]');
+    els.progress = modal.querySelector(".xr-progress");
 
-    modal.addEventListener("click", function (e) {
-      if (e.target.closest("[data-close]")) close();
-      var tab = e.target.closest("[data-mode]");
-      if (tab) setMode(tab.getAttribute("data-mode"));
+    modal.addEventListener("click", function (event) {
+      if (event.target.closest("[data-close]")) close();
+      var button = event.target.closest("button[data-mode]");
+      if (button) setMode(button.dataset.mode);
+    });
+    modal.addEventListener("cancel", function (event) {
+      event.preventDefault();
+      close();
+    });
+    els.photo.addEventListener("error", function () {
+      els.photo.hidden = true;
+      els.missing.hidden = false;
     });
     els.ar.addEventListener("click", function () {
-      var mv = els.model.querySelector("model-viewer");
-      if (mv && mv.activateAR) mv.activateAR();
-    });
-    document.addEventListener("keydown", function (e) {
-      if (!modal.hidden && e.key === "Escape") close();
+      var session = current;
+      if (!session?.viewer?.canActivateAR || !session.loaded) return;
+      // Keep the native handoff inside the user's tap gesture.
+      session.viewer.activateAR().catch(function () { arFailed(session); });
     });
   }
 
   function setMode(mode) {
-    modal.setAttribute("data-mode", mode);
-    els.tabs.forEach(function (b) { b.setAttribute("aria-selected", String(b.getAttribute("data-mode") === mode)); });
+    if (!current || (mode === "model" && !current.model)) return;
+    modal.dataset.mode = mode;
+    els.photoButton.setAttribute("aria-pressed", String(mode === "photo"));
+    els.modelButton.setAttribute("aria-pressed", String(mode === "model"));
+    els.model.inert = mode === "photo";
+    els.progress.hidden = mode !== "model" || current.loaded;
+    els.hint.hidden = mode !== "model" || !current.loaded;
+    els.note.textContent = current.failed ? t("failed") :
+      current.model?.authenticity === "representative" ? t("representative") :
+      current.pending ? t("pending") : "";
+    els.credit.hidden = mode !== "model" || !current.loaded || !current.model?.credit;
+    updateAR(current);
+  }
+
+  function updateAR(session) {
+    if (current !== session) return;
+    var modelVisible = session.loaded && modal.dataset.mode === "model";
+    var canActivate = modelVisible && session.viewer.canActivateAR && !session.arFailed;
+    els.ar.hidden = !canActivate;
+    els.phone.hidden = !modelVisible || (!canActivate && !session.checkedAR && !session.arFailed);
+    els.phone.textContent = !modelVisible ? "" : session.arFailed ? t("arFailed") :
+      canActivate ? t("arGuide") : session.checkedAR ? t("unavailable") : "";
+  }
+
+  function arFailed(session) {
+    session.arFailed = true;
+    updateAR(session);
+  }
+
+  function failModel(session) {
+    if (current !== session || session.failed) return;
+    clearTimeout(session.timeout);
+    clearInterval(session.capabilityCheck);
+    session.model = null;
+    session.failed = true;
+    session.loaded = false;
+    els.model.replaceChildren();
+    els.switcher.hidden = true;
+    if (els.switcher.contains(document.activeElement) || document.activeElement === els.ar) els.close.focus();
+    setMode("photo");
+  }
+
+  function startModel(session, name) {
+    session.timeout = setTimeout(function () { failModel(session); }, LOAD_LIMIT_MS);
+    loadModelViewer().then(function () {
+      if (current !== session || session.failed) return;
+      var viewer = document.createElement("model-viewer");
+      session.viewer = viewer;
+      var attributes = {
+        src: session.model.glb,
+        "ios-src": session.model.usdz,
+        alt: name + " 3D",
+        ar: "",
+        "ar-modes": "webxr scene-viewer quick-look",
+        "ar-scale": "fixed",
+        "ar-placement": "floor",
+        "camera-controls": "",
+        "disable-pan": "",
+        "interaction-prompt": "none",
+        loading: "eager",
+        "camera-orbit": session.model.cameraOrbit || "25deg 64deg auto",
+        "max-camera-orbit": "auto 86deg auto",
+        "shadow-intensity": "0.85",
+        "shadow-softness": "0.95",
+        "environment-image": "neutral",
+        exposure: "1.05",
+        "touch-action": "none",
+      };
+      for (var attribute in attributes) viewer.setAttribute(attribute, attributes[attribute]);
+
+      var nativeButton = document.createElement("button");
+      nativeButton.slot = "ar-button";
+      nativeButton.hidden = true;
+      var exit = document.createElement("button");
+      exit.slot = "exit-webxr-ar-button";
+      exit.className = "xr-card__close";
+      exit.type = "button";
+      exit.addEventListener("beforexrselect", function (event) { event.preventDefault(); });
+      exit.textContent = "×";
+      exit.setAttribute("aria-label", t("exitAR"));
+      var guidance = document.createElement("p");
+      guidance.className = "xr-placement";
+      guidance.textContent = t("arGuide");
+      viewer.append(nativeButton, exit, guidance);
+
+      viewer.addEventListener("progress", function (event) {
+        if (current !== session || session.loaded) return;
+        var progress = event.detail.totalProgress;
+        els.progress.querySelector("progress").value = progress;
+        els.progress.querySelector("span").textContent = t("loading") + " · " + Math.round(progress * 100) + "%";
+      });
+      viewer.addEventListener("load", function () {
+        if (current !== session || session.failed) return;
+        clearTimeout(session.timeout);
+        session.loaded = true;
+        modal.dataset.state = "ready";
+        setMode(modal.dataset.mode);
+        // WebXR detection resolves asynchronously and has no public ready event.
+        var attempts = 0;
+        session.capabilityCheck = setInterval(function () {
+          if (viewer.canActivateAR || ++attempts >= 12) {
+            clearInterval(session.capabilityCheck);
+            session.checkedAR = true;
+            updateAR(session);
+          }
+        }, 250);
+      }, { once: true });
+      viewer.addEventListener("error", function () { failModel(session); });
+      viewer.addEventListener("ar-status", function (event) {
+        if (event.detail.status === "failed") arFailed(session);
+        else updateAR(session);
+      });
+      viewer.addEventListener("ar-tracking", function (event) {
+        guidance.textContent = t(event.detail.status === "not-tracking" ? "tracking" : "arGuide");
+      });
+      els.model.appendChild(viewer);
+    }).catch(function () { failModel(session); });
   }
 
   function open(item) {
     if (!modal) build();
+    if (modal.open) close();
+    if (modal.open) return;
     lastFocus = document.activeElement;
-    var photo = item.photo || photoFor(item.slug);
+    var photo = photoFor(item.slug) || item.photo;
     var model = modelFor(item.slug);
+    var session = { model: model, pending: mediaFor(item.slug)?.model?.status === "pending" };
+    current = session;
 
     els.kicker.textContent = item.kicker || "";
+    els.kicker.hidden = !item.kicker;
     els.name.textContent = item.name || "";
     els.desc.textContent = item.desc || "";
     els.desc.hidden = !item.desc;
     els.price.textContent = item.price || "";
     els.close.setAttribute("aria-label", t("close"));
     els.hint.textContent = t("hint");
-    els.note.textContent = t("note");
     els.ar.querySelector("span").textContent = t("ar");
-    els.ar.hidden = true;
-    els.phone.hidden = true;
-    els.phone.textContent = t("phoneOnly");
-    els.tabs[0].textContent = t("model");
-    els.tabs[1].textContent = t("photo");
-    els.tabs[1].hidden = !photo;
-    els.photo.src = photo || "";
+    els.photoButton.textContent = t("photo");
+    els.modelButton.textContent = t("model");
+    els.switcher.hidden = !model;
+    els.credit.textContent = model?.credit || "";
+    if (model?.source) els.credit.href = model.source;
+    else els.credit.removeAttribute("href");
+    els.photoButton.hidden = !photo;
     els.photo.alt = item.name || "";
     els.photo.hidden = !photo;
-
-    els.model.innerHTML =
-      '<model-viewer src="' + esc(model.glb) + '" ios-src="' + esc(model.usdz) + '"' +
-      (photo ? ' poster="' + esc(photo) + '"' : "") +
-      ' alt="' + esc(item.name) + ' 3D" ar ar-modes="webxr scene-viewer quick-look" ar-scale="auto" ar-placement="floor"' +
-      ' camera-controls auto-rotate auto-rotate-delay="600" rotation-per-second="18deg" interaction-prompt="none"' +
-      ' camera-orbit="25deg 68deg auto" min-camera-orbit="auto 10deg auto" max-camera-orbit="auto 95deg auto"' +
-      ' shadow-intensity="1.1" shadow-softness="0.9" exposure="1.05" environment-image="neutral" touch-action="pan-y">' +
-      '<button slot="ar-button" hidden></button></model-viewer>';
-    setMode("model");
-
-    modal.hidden = false;
+    if (photo) els.photo.src = photo;
+    else els.photo.removeAttribute("src");
+    els.missing.textContent = t("noPhoto");
+    els.missing.hidden = !!photo;
+    els.progress.querySelector("span").textContent = t("loading");
+    els.progress.querySelector("progress").value = 0;
+    modal.dataset.state = model ? "loading" : "photo";
+    setMode(model ? "model" : "photo");
+    modal.showModal();
     document.documentElement.classList.add("xr-lock");
-    requestAnimationFrame(function () { modal.classList.add("is-open"); });
-    els.close.focus({ preventScroll: true });
-
-    loadModelViewer().then(function () {
-      var mv = els.model.querySelector("model-viewer");
-      if (!mv) return;
-      var check = function () {
-        var can = !!mv.canActivateAR;
-        els.ar.hidden = !can;
-        els.phone.hidden = can;
-      };
-      mv.addEventListener("load", check, { once: true });
-      setTimeout(check, 1500);
-    }).catch(function () {
-      setMode("photo");
-    });
+    if (model) startModel(session, item.name || "");
   }
 
   function close() {
-    if (!modal || modal.hidden) return;
-    modal.classList.remove("is-open");
+    if (!modal?.open) return;
+    var arStatus = current.viewer?.getAttribute("ar-status");
+    if (arStatus === "session-started" || arStatus === "object-placed") return;
+    clearTimeout(current.timeout);
+    clearInterval(current.capabilityCheck);
+    current = null;
+    els.model.replaceChildren();
+    modal.close();
     document.documentElement.classList.remove("xr-lock");
-    setTimeout(function () {
-      modal.hidden = true;
-      els.model.innerHTML = "";
-    }, 260);
-    if (lastFocus && lastFocus.focus) lastFocus.focus({ preventScroll: true });
+    lastFocus?.focus({ preventScroll: true });
   }
 
-  var CUBE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.3 6.6 3.7L12 11.7 5.4 8 12 4.3ZM5 9.7l6 3.4v6.6l-6-3.4V9.7Zm8 10v-6.6l6-3.4v6.6l-6 3.4Z"/></svg>';
-
-  /** Thumbnail with the 3D badge, shared by the site menu and the table menu. */
   function thumb(slug, alt) {
     var photo = photoFor(slug);
     return '<span class="xr-thumb">' +
       (photo ? '<img src="' + esc(photo) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async" />' : "") +
-      '<span class="xr-thumb__badge">' + CUBE + "3D</span></span>";
+      (modelFor(slug) ? '<span class="xr-thumb__badge">' + CUBE + '3D</span>' : "") + "</span>";
   }
 
   /* --- main site: static menu items carrying data-slug --- */
@@ -230,7 +367,7 @@
     document.addEventListener("keydown", handler);
   }
 
-  window.IlChioscoViewer = { open: open, thumb: thumb, photo: photoFor, model: modelFor, text: t, cube: CUBE };
+  window.IlChioscoViewer = { open: open, thumb: thumb, photo: photoFor, model: modelFor, cube: CUBE };
   enhanceStaticMenu();
   bindOpeners();
 })();
