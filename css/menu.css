@@ -243,6 +243,12 @@
   .xr-modal--premium .xr-info__desc { font-size: .9rem; line-height: 1.48; }
   .xr-modal--premium .xr-stage__hint { font-size: .74rem; left: 15px; }
 }
+@media (max-width: 420px) {
+  .xr-modal--premium .xr-stage__model {
+    top: 12px;
+    height: calc(100% - 64px);
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   .xr-modal--premium :is(.xr-stage__photo, .xr-stage__model, .xr-reset, .xr-browse button) { transition: none; }
 }

@@ -10,9 +10,9 @@ const scope = { window: {} };
 vm.runInNewContext(await fs.readFile(resolve("js/menu-media.js"), "utf8"), scope);
 
 const entries = Object.values(scope.window.IL_CHIOSCO_MEDIA);
-const photos = new Map(entries.filter(({ photo, thumbnail }) => photo !== thumbnail).map(({ photo, thumbnail }) => [thumbnail, photo]));
-for (const [thumbnail, photo] of photos) {
-  if (process.argv.includes("--check")) {
+const thumbnails = new Map(entries.filter(({ photo, thumbnail }) => photo !== thumbnail).map((entry) => [entry.thumbnail, entry]));
+for (const [thumbnail, { photo, model }] of thumbnails) {
+  if (process.argv.includes("--check") || model.thumbnail) {
     const { width, height, format } = await sharp(resolve(thumbnail)).metadata();
     if (width > 384 || height > 384 || format !== "webp") throw new Error(`Invalid thumbnail: ${thumbnail}`);
     continue;
@@ -23,4 +23,4 @@ for (const [thumbnail, photo] of photos) {
     .webp({ quality: 80 })
     .toFile(resolve(thumbnail));
 }
-console.log(`${photos.size} unique optimized thumbnails across ${entries.length} products`);
+console.log(`${thumbnails.size} unique optimized thumbnails across ${entries.length} products`);
