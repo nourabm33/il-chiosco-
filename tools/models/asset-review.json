@@ -1,0 +1,19 @@
+{
+  "alba-cinnamon-roll": "Local reconstruction merged the cream and pastry into the plate. Public scan candidates had a different shape and lacked the cream shown in the menu.",
+  "alba-flat-white": "No matching candidate with a confirmed commercial license and convincing foam was accepted.",
+  "alba-matcha-ube-latte": "A representative image shows both colors. The transparent glass, layered liquid and ice still need a reviewed mesh.",
+  "mezzogiorno-club-sandwich-del-chiosco": "The downloaded model included a table scene and surrounding artifacts. The new image shows the published fillings and side.",
+  "mezzogiorno-pancake-sciroppo-d-acero": "Reviewed maple-syrup candidate had plastic-looking surfaces and simplified pancakes.",
+  "mezzogiorno-pancake-frutta-di-stagione-yogurt": "Reviewed candidate was a partial scan with a warped plate and different toppings.",
+  "mezzogiorno-super-focacciona": "Café photo shows the service wrap and side, but the filling is hidden. No reviewed model matched the named fillings.",
+  "mezzogiorno-super-focacciona-vegetariana": "Café photo shows the cut face only. No reviewed model matched the grilled vegetables and cheese variant.",
+  "mezzogiorno-salmone-affumicato": "The licensed scan showed salmon on bread with visible extra ingredients. The updated image shows smoked salmon slices alone.",
+  "bibite-acquainbrick": "Existing reference shows a different carton brand. No suitable exact package mesh and source rights were found.",
+  "bibite-coca-cola-zero-vetro": "A public-domain bottle photograph is available. The label and exact current packaging have no cleared 3D source.",
+  "cocktail-windspiel-premium-dry": "Existing reference shows Giolu Gin. No usable matching bottle photo and licensed 3D mesh were accepted.",
+  "cocktail-forst-1857-33cl": "A public-domain bottle photograph is available. No cleared 3D packaging asset was found.",
+  "alba-croissant-vegano-vuoto": "The local image-to-3D tool could not extract a closed surface from this reference.",
+  "bibite-spremuta": "The test glass and pulp material appeared too flat in the mobile-compatible rendering.",
+  "bibite-calice-di-vino": "The test glass looked opaque after conversion to the portable materials supported by the target viewers.",
+  "cocktail-good-vibes": "The hosted reconstruction trial hit the ZeroGPU quota at GLB export. No export was available to review."
+}

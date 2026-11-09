@@ -2,8 +2,10 @@
 window.IL_CHIOSCO_MEDIA = {
   "alba-espresso": {
     "photo": "assets/img/items/alba-espresso.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-espresso.webp",
     "photoSource": "[Nathan Dumlao](https://unsplash.com/photos/dAYJfrtVjh0) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "ready",
       "glb": "assets/models/realistic/alba-espresso.glb",
@@ -24,8 +26,10 @@ window.IL_CHIOSCO_MEDIA = {
   },
   "alba-cappuccino": {
     "photo": "assets/img/items/alba-cappuccino.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-cappuccino.webp",
     "photoSource": "[tabitha turner](https://unsplash.com/photos/3n3mPoGko8g) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "ready",
       "glb": "assets/models/realistic/alba-cappuccino.glb",
@@ -46,216 +50,298 @@ window.IL_CHIOSCO_MEDIA = {
   },
   "alba-latte-macchiato": {
     "photo": "assets/img/items/alba-latte-macchiato.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-latte-macchiato.webp",
     "photoSource": "[Daniel](https://unsplash.com/photos/7RzeVpUHiEY) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-flat-white": {
     "photo": "assets/img/items/alba-flat-white.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-flat-white.webp",
     "photoSource": "[Dani](https://unsplash.com/photos/ZLqxSzvVr7I) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-ginseng-orzo": {
     "photo": "assets/img/items/alba-ginseng-orzo.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-ginseng-orzo.webp",
     "photoSource": "[Matt Hoffman](https://unsplash.com/photos/IE-gdqEg45M) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-americano": {
     "photo": "assets/img/items/alba-americano.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-americano.webp",
     "photoSource": "[Ben Kolde](https://unsplash.com/photos/-sKBWdCyBLg) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-caffe-shakerato": {
     "photo": "assets/img/items/alba-caffe-shakerato.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-caffe-shakerato.webp",
     "photoSource": "[Jon Parry](https://unsplash.com/photos/Hvi-Sqs0F2k) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-marocchino": {
     "photo": "assets/img/items/alba-marocchino.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-marocchino.webp",
     "photoSource": "[Alexandr Marynkin](https://unsplash.com/photos/c0XGtrcIls4) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-iced-americano": {
     "photo": "assets/img/items/alba-iced-americano.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-iced-americano.webp",
     "photoSource": "[Mayur](https://unsplash.com/photos/vP9TjdIm9fE) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-iced-latte": {
     "photo": "assets/img/items/alba-iced-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-iced-latte.webp",
     "photoSource": "[Hannah Reid](https://unsplash.com/photos/LPDn9x-F6GM) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-vanilla-latte": {
     "photo": "assets/img/items/alba-vanilla-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-vanilla-latte.webp",
     "photoSource": "[Billy Kwok](https://unsplash.com/photos/vfiA7rRtjWo) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-caramel-latte": {
     "photo": "assets/img/items/alba-caramel-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-caramel-latte.webp",
     "photoSource": "[E R](https://unsplash.com/photos/XPCrF5TB8YY) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-coconut-latte": {
     "photo": "assets/img/items/alba-coconut-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-coconut-latte.webp",
     "photoSource": "[T](https://unsplash.com/photos/ZUGgeu8SILQ) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-caffe-in-filtro-v60": {
     "photo": "assets/img/items/alba-caffe-in-filtro-v60.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-caffe-in-filtro-v60.webp",
     "photoSource": "[Emma Smith](https://unsplash.com/photos/NS_DMD4rEjk) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-matcha-latte": {
     "photo": "assets/img/items/alba-matcha-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-matcha-latte.webp",
     "photoSource": "[Jason Leung](https://unsplash.com/photos/Z-hvocTfR_s) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-matcha-strawberry-latte": {
     "photo": "assets/img/items/alba-matcha-strawberry-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-matcha-strawberry-latte.webp",
     "photoSource": "[Karl Joshua Bernal](https://unsplash.com/photos/HLnQd9ylUaE) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-matcha-ube-latte": {
-    "photo": "assets/img/items/alba-matcha-ube-latte.webp",
-    "photoSource": "[Bakd&Raw by Karolin Baitinger](https://unsplash.com/photos/vohNMFX8_w8) on Unsplash",
-    "photoAuthenticity": "representative",
+    "photo": "assets/img/menu-renders/alba-matcha-ube-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/menu-renders/alba-matcha-ube-latte.webp",
+    "photoSource": "Original ImageGen render of green matcha and purple ube milk. See PREMIUM-MENU.md.",
+    "photoAuthenticity": "generated-representative",
+    "photoLicense": "Original generated menu artwork",
     "model": {
       "status": "pending"
     }
   },
   "alba-ube-vanilla-latte": {
     "photo": "assets/img/items/alba-ube-vanilla-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-ube-vanilla-latte.webp",
     "photoSource": "[Frank Huang](https://unsplash.com/photos/Sbs1vytqNnI) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-strawberry-cream-latte": {
     "photo": "assets/img/items/alba-strawberry-cream-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-strawberry-cream-latte.webp",
     "photoSource": "Il Chiosco (own photo)",
     "photoAuthenticity": "cafe-credited",
+    "photoLicense": "Café supplied",
     "model": {
       "status": "pending"
     }
   },
   "alba-pumpkin-spice-latte": {
     "photo": "assets/img/items/alba-pumpkin-spice-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-pumpkin-spice-latte.webp",
     "photoSource": "[Madeline Liu](https://unsplash.com/photos/YDlcL-_GxMw) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-anise-cardamom-latte": {
     "photo": "assets/img/items/alba-anise-cardamom-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-anise-cardamom-latte.webp",
     "photoSource": "Il Chiosco (own photo)",
     "photoAuthenticity": "cafe-credited",
+    "photoLicense": "Café supplied",
     "model": {
       "status": "pending"
     }
   },
   "alba-chai-latte": {
     "photo": "assets/img/items/alba-chai-latte.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-chai-latte.webp",
     "photoSource": "[Mae Mu](https://unsplash.com/photos/eNfR6MUyjBI) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-apple-pie-smoothie": {
     "photo": "assets/img/items/alba-apple-pie-smoothie.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-apple-pie-smoothie.webp",
     "photoSource": "[Elena Leya](https://unsplash.com/photos/O39Vx5yPaD4) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-banana-bread-smoothie": {
     "photo": "assets/img/items/alba-banana-bread-smoothie.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-banana-bread-smoothie.webp",
     "photoSource": "[Elena Leya](https://unsplash.com/photos/JfWhrxbmF-U) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-apple-pie": {
     "photo": "assets/img/items/alba-apple-pie.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-apple-pie.webp",
     "photoSource": "Il Chiosco (own photo)",
     "photoAuthenticity": "cafe-credited",
+    "photoLicense": "Café supplied",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/alba-apple-pie.glb",
+      "usdz": "assets/models/realistic/alba-apple-pie.usdz",
+      "authenticity": "representative",
+      "source": "https://sketchfab.com/3d-models/apple-pie-slice-89599995536d4f1ba1998ff26697d915",
+      "credit": "Adapted from Apple Pie Slice by yanix",
+      "license": "CC-BY-4.0",
+      "dimensionsM": [
+        0.105,
+        0.04671,
+        0.05926
+      ],
+      "dimensionBasis": "Estimated dimensions for a representative serving.",
+      "appearance": "Photogrammetry of an apple pie slice. Portion size is estimated.",
+      "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
     }
   },
   "alba-new-york-roll": {
     "photo": "assets/img/items/alba-new-york-roll.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-new-york-roll.webp",
     "photoSource": "[Christopher Popovici](https://unsplash.com/photos/Ka9K5Bmo-Ik) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-cinnamon-roll": {
     "photo": "assets/img/items/alba-cinnamon-roll.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-cinnamon-roll.webp",
     "photoSource": "Il Chiosco (own photo)",
     "photoAuthenticity": "cafe-credited",
+    "photoLicense": "Café supplied",
     "model": {
       "status": "pending"
     }
   },
   "alba-crumbl-cookies": {
     "photo": "assets/img/items/alba-crumbl-cookies.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-crumbl-cookies.webp",
     "photoSource": "Il Chiosco (own photo)",
     "photoAuthenticity": "cafe-credited",
+    "photoLicense": "Café supplied",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/alba-crumbl-cookies.glb",
+      "usdz": "assets/models/realistic/alba-crumbl-cookies.usdz",
+      "authenticity": "representative",
+      "source": "https://sketchfab.com/3d-models/moms-homemade-chocolate-chip-cookies-ad187b48edd24196bbf2ab14435c16d3",
+      "credit": "Adapted from Mom's Homemade Chocolate Chip Cookies by Casarome",
+      "license": "CC-BY-4.0",
+      "dimensionsM": [
+        0.102,
+        0.0202,
+        0.09826
+      ],
+      "dimensionBasis": "Estimated dimensions for a representative serving.",
+      "appearance": "Photogrammetry of a chocolate chip cookie as an example of the classic serving. The café’s decorated variants may differ.",
+      "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
     }
   },
   "alba-croissant-lievito-madre-vuoto": {
     "photo": "assets/img/items/alba-croissant-lievito-madre-vuoto.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-croissant-lievito-madre-vuoto.webp",
     "photoSource": "[personalgraphic.com](https://unsplash.com/photos/VzUE5RtCuBA) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "ready",
       "glb": "assets/models/realistic/alba-croissant-lievito-madre-vuoto.glb",
@@ -275,664 +361,907 @@ window.IL_CHIOSCO_MEDIA = {
   },
   "alba-croissant-vegano-vuoto": {
     "photo": "assets/img/items/alba-croissant-vegano-vuoto.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-croissant-vegano-vuoto.webp",
     "photoSource": "[Vicky Nguyen](https://unsplash.com/photos/a4xoMVKzbak) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-croissant-vegano-albicocca": {
-    "photo": "assets/img/items/alba-croissant-vegano-albicocca.webp",
-    "photoSource": "[Uliana Kopanytsia](https://unsplash.com/photos/ZZFCtK_ucb0) on Unsplash",
-    "photoAuthenticity": "representative",
+    "photo": "assets/img/menu-renders/alba-croissant-vegano-albicocca.webp",
+    "thumbnail": "assets/img/menu-thumbs/menu-renders/alba-croissant-vegano-albicocca.webp",
+    "photoSource": "Original ImageGen render of a split apricot-filled croissant.",
+    "photoAuthenticity": "generated-representative",
+    "photoLicense": "Original generated menu artwork",
     "model": {
       "status": "pending"
     }
   },
   "alba-croissant-crema-o-cioccolato": {
     "photo": "assets/img/items/alba-croissant-crema-o-cioccolato.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-croissant-crema-o-cioccolato.webp",
     "photoSource": "[Guilherme Gomes Dos Santos](https://unsplash.com/photos/NFsT6I6R-HA) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-croissant-pistacchio-o-mandorla": {
     "photo": "assets/img/items/alba-croissant-pistacchio-o-mandorla.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-croissant-pistacchio-o-mandorla.webp",
     "photoSource": "[Habib Eskandari](https://unsplash.com/photos/yGMlOsO4rM0) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-croissant-cereali-miele-o-lampone": {
     "photo": "assets/img/items/alba-croissant-cereali-miele-o-lampone.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-croissant-cereali-miele-o-lampone.webp",
     "photoSource": "[Nataliya Melnychuk](https://unsplash.com/photos/Li2zmWtG8Ns) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-pain-au-chocolat": {
     "photo": "assets/img/items/alba-pain-au-chocolat.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-pain-au-chocolat.webp",
     "photoSource": "[jonathan ocampo](https://unsplash.com/photos/CUbyC8PxPB4) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/alba-pain-au-chocolat.glb",
+      "usdz": "assets/models/realistic/alba-pain-au-chocolat.usdz",
+      "authenticity": "representative",
+      "source": "https://sketchfab.com/3d-models/pain-au-chocolat-df139869b8ff4fe790304ed9137dd1c6",
+      "credit": "Adapted from Pain au chocolat by MadeleineMirabelle",
+      "license": "CC-BY-4.0",
+      "dimensionsM": [
+        0.112,
+        0.06198,
+        0.12074
+      ],
+      "dimensionBasis": "Estimated dimensions for a representative serving.",
+      "appearance": "Textured model of the pastry with its chocolate filling.",
+      "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
     }
   },
   "alba-muffin-cioccolato-yogurt-e-mirtilli": {
     "photo": "assets/img/items/alba-muffin-cioccolato-yogurt-e-mirtilli.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-muffin-cioccolato-yogurt-e-mirtilli.webp",
     "photoSource": "[Joshua Flores](https://unsplash.com/photos/5RQffqRkmWQ) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/alba-muffin-cioccolato-yogurt-e-mirtilli.glb",
+      "usdz": "assets/models/realistic/alba-muffin-cioccolato-yogurt-e-mirtilli.usdz",
+      "authenticity": "representative",
+      "source": "https://sketchfab.com/3d-models/blueberry-muffin-e48f29f0714a4c70ac75a34cedf6b3bc",
+      "credit": "Adapted from Blueberry Muffin by Terrie Simmons-Ehrhardt",
+      "license": "CC-BY-4.0",
+      "dimensionsM": [
+        0.078,
+        0.05927,
+        0.07694
+      ],
+      "dimensionBasis": "Estimated dimensions for a representative serving.",
+      "appearance": "Photogrammetry of a blueberry muffin. Represents the blueberry choice. Recipe and yogurt content are not inferred.",
+      "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
     }
   },
   "alba-mini-panino-farcito": {
     "photo": "assets/img/items/alba-mini-panino-farcito.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-mini-panino-farcito.webp",
     "photoSource": "[Culinarissimo](https://unsplash.com/photos/AAjAYQ7csF4) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-croissant-salato-farcito": {
     "photo": "assets/img/items/alba-croissant-salato-farcito.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-croissant-salato-farcito.webp",
     "photoSource": "[Maria Labanda](https://unsplash.com/photos/_tG0FdjrH0E) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "alba-toast-prosciutto-cotto-e-formaggio": {
     "photo": "assets/img/items/alba-toast-prosciutto-cotto-e-formaggio.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/alba-toast-prosciutto-cotto-e-formaggio.webp",
     "photoSource": "[Glenn Diaz](https://unsplash.com/photos/87HPR8VlDfg) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-pancake-sciroppo-d-acero": {
     "photo": "assets/img/items/mezzogiorno-pancake-sciroppo-d-acero.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-pancake-sciroppo-d-acero.webp",
     "photoSource": "[Mae Mu](https://unsplash.com/photos/TkzdkVn1AyA) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-pancake-frutta-di-stagione-yogurt": {
     "photo": "assets/img/items/mezzogiorno-pancake-frutta-di-stagione-yogurt.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-pancake-frutta-di-stagione-yogurt.webp",
     "photoSource": "[Portuguese Gravity](https://unsplash.com/photos/qq3hT-CYD1I) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-yogurt-frutta-granola-home-made": {
     "photo": "assets/img/items/mezzogiorno-yogurt-frutta-granola-home-made.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-yogurt-frutta-granola-home-made.webp",
     "photoSource": "[Jaqueline Pelzer](https://unsplash.com/photos/neUW-U0NwCU) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-porridge-con-frutta-e-latte-di-avena": {
     "photo": "assets/img/items/mezzogiorno-porridge-con-frutta-e-latte-di-avena.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-porridge-con-frutta-e-latte-di-avena.webp",
     "photoSource": "[Abdelrahman Sarayreh](https://unsplash.com/photos/opJ-TlLYu4Q) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-avocado-toast": {
     "photo": "assets/img/items/mezzogiorno-avocado-toast.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-avocado-toast.webp",
     "photoSource": "[Imad 786](https://unsplash.com/photos/w1NiWDrp68M) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/mezzogiorno-avocado-toast.glb",
+      "usdz": "assets/models/realistic/mezzogiorno-avocado-toast.usdz",
+      "authenticity": "representative",
+      "source": "https://sketchfab.com/3d-models/avocado-toast-deed53db426a460d956319b301046785",
+      "credit": "Adapted from Avocado Toast by Richard.Parry",
+      "license": "CC-BY-4.0",
+      "dimensionsM": [
+        0.19,
+        0.03595,
+        0.166
+      ],
+      "dimensionBasis": "Estimated dimensions for a representative serving.",
+      "appearance": "Two toasted pieces with avocado and a fried egg. Combined from two licensed sources. Bread and portion size are representative.",
+      "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified.",
+      "additionalSources": [
+        {
+          "credit": "Fried Egg PBR by ANCAP Assets",
+          "source": "https://sketchfab.com/3d-models/fried-egg-pbr-game-asset-8de2390c67b84532bd2b25318f656b99",
+          "license": "CC-BY-4.0"
+        }
+      ]
     }
   },
   "mezzogiorno-pan-tomate": {
-    "photo": "assets/img/items/mezzogiorno-pan-tomate.webp",
-    "photoSource": "[Ryan Quintal](https://unsplash.com/photos/0RbF2qupdRc) on Unsplash",
-    "photoAuthenticity": "representative",
+    "photo": "assets/img/menu-renders/mezzogiorno-pan-tomate.webp",
+    "thumbnail": "assets/img/menu-thumbs/menu-renders/mezzogiorno-pan-tomate.webp",
+    "photoSource": "Original ImageGen render of pan de cristal with tomato pulp and herbs.",
+    "photoAuthenticity": "generated-representative",
+    "photoLicense": "Original generated menu artwork",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-club-sandwich-del-chiosco": {
-    "photo": "assets/img/items/mezzogiorno-club-sandwich-del-chiosco.webp",
-    "photoSource": "[Mae Mu](https://unsplash.com/photos/IZ0LRt1khgM) on Unsplash",
-    "photoAuthenticity": "representative",
+    "photo": "assets/img/menu-renders/mezzogiorno-club-sandwich-del-chiosco.webp",
+    "thumbnail": "assets/img/menu-thumbs/menu-renders/mezzogiorno-club-sandwich-del-chiosco.webp",
+    "photoSource": "Original ImageGen render based on the published menu ingredients and roasted potato side.",
+    "photoAuthenticity": "generated-representative",
+    "photoLicense": "Original generated menu artwork",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-il-chiosco-s-brunch-plate": {
-    "photo": "assets/img/items/mezzogiorno-il-chiosco-s-brunch-plate.webp",
-    "photoSource": "[Luke Tokaryk](https://unsplash.com/photos/VANvc2u1eic) on Unsplash",
-    "photoAuthenticity": "representative",
+    "photo": "assets/img/menu-renders/mezzogiorno-il-chiosco-s-brunch-plate.webp",
+    "thumbnail": "assets/img/menu-thumbs/menu-renders/mezzogiorno-il-chiosco-s-brunch-plate.webp",
+    "photoSource": "Original ImageGen render of the fried eggs and espresso option, with bread, butter, jam and orange juice.",
+    "photoAuthenticity": "generated-representative",
+    "photoLicense": "Original generated menu artwork",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-super-focacciona-vegetariana": {
     "photo": "assets/img/items/mezzogiorno-super-focacciona-vegetariana.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-super-focacciona-vegetariana.webp",
     "photoSource": "Il Chiosco (own photo)",
     "photoAuthenticity": "cafe-credited",
+    "photoLicense": "Café supplied",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-super-focacciona": {
     "photo": "assets/img/items/mezzogiorno-super-focacciona.webp",
-    "photoSource": "Il Chiosco (own photo)",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-super-focacciona.webp",
+    "photoSource": "Il Chiosco. The paper wrap and chips obscure the sandwich filling.",
     "photoAuthenticity": "cafe-credited",
+    "photoLicense": "Café supplied",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-uovo": {
     "photo": "assets/img/items/mezzogiorno-uovo.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-uovo.webp",
     "photoSource": "[personalgraphic.com](https://unsplash.com/photos/8oNpesw9idE) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/mezzogiorno-uovo.glb",
+      "usdz": "assets/models/realistic/mezzogiorno-uovo.usdz",
+      "authenticity": "representative",
+      "source": "https://sketchfab.com/3d-models/fried-egg-pbr-game-asset-8de2390c67b84532bd2b25318f656b99",
+      "credit": "Adapted from FRIED EGG PBR | GAME ASSET by ANCAP Assets",
+      "license": "CC-BY-4.0",
+      "dimensionsM": [
+        0.115,
+        0.0099,
+        0.12833
+      ],
+      "dimensionBasis": "Estimated dimensions for a representative serving.",
+      "appearance": "Textured fried egg. Cooking and portion are representative.",
+      "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
     }
   },
   "mezzogiorno-bacon": {
     "photo": "assets/img/items/mezzogiorno-bacon.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-bacon.webp",
     "photoSource": "[Lucas](https://unsplash.com/photos/7oBtznwaP6o) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-salmone-affumicato": {
-    "photo": "assets/img/items/mezzogiorno-salmone-affumicato.webp",
-    "photoSource": "[Abstral Official](https://unsplash.com/photos/dKhkCiD4zEQ) on Unsplash",
-    "photoAuthenticity": "representative",
+    "photo": "assets/img/menu-renders/mezzogiorno-salmone-affumicato.webp",
+    "thumbnail": "assets/img/menu-thumbs/menu-renders/mezzogiorno-salmone-affumicato.webp",
+    "photoSource": "Original ImageGen render of sliced smoked salmon. Replaces an image of a raw fillet.",
+    "photoAuthenticity": "generated-representative",
+    "photoLicense": "Original generated menu artwork",
     "model": {
       "status": "pending"
     }
   },
   "mezzogiorno-avocado": {
     "photo": "assets/img/items/mezzogiorno-avocado.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/mezzogiorno-avocado.webp",
     "photoSource": "[Lena Laurentez](https://unsplash.com/photos/DmA2TUPBV4o) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
-      "status": "pending"
+      "status": "ready",
+      "glb": "assets/models/realistic/mezzogiorno-avocado.glb",
+      "usdz": "assets/models/realistic/mezzogiorno-avocado.usdz",
+      "authenticity": "representative",
+      "source": "https://sketchfab.com/3d-models/half-avocado-36443c0fd59a4b98b3312401c6b9d50c",
+      "credit": "Adapted from Half avocado by svnfbgr",
+      "license": "CC-BY-4.0",
+      "dimensionsM": [
+        0.079,
+        0.06157,
+        0.13629
+      ],
+      "dimensionBasis": "Estimated dimensions for a representative serving.",
+      "appearance": "Photogrammetry of a cut avocado half. The pit is visible in the model. The café’s plating may differ.",
+      "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
     }
   },
   "bibite-kombucha-laverve": {
     "photo": "assets/img/items/bibite-kombucha-laverve.webp",
-    "photoSource": "[Annie Spratt](https://unsplash.com/photos/d0OnUJitzEQ) on Unsplash",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-kombucha-laverve.webp",
+    "photoSource": "Existing representative kombucha image by [Annie Spratt](https://unsplash.com/photos/d0OnUJitzEQ). Exact Laverve label unverified.",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-bibite-galvanina-bio": {
     "photo": "assets/img/items/bibite-bibite-galvanina-bio.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-bibite-galvanina-bio.webp",
     "photoSource": "[Jonathan J. Castellon](https://unsplash.com/photos/cTRfYn1-dHo) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-succo-di-frutta-looza": {
     "photo": "assets/img/items/bibite-succo-di-frutta-looza.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-succo-di-frutta-looza.webp",
     "photoSource": "[Jona Novak](https://unsplash.com/photos/A6c4cUoFrHg) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-spremuta": {
     "photo": "assets/img/items/bibite-spremuta.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-spremuta.webp",
     "photoSource": "[ABHISHEK HAJARE](https://unsplash.com/photos/kkrXVKK-jhg) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-bibite-in-vetro": {
     "photo": "assets/img/items/bibite-bibite-in-vetro.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-bibite-in-vetro.webp",
     "photoSource": "[Andrey Haimin](https://unsplash.com/photos/bpPJ2RSCyPE) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-coca-cola-vetro": {
     "photo": "assets/img/items/bibite-coca-cola-vetro.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-coca-cola-vetro.webp",
     "photoSource": "[Elvira Gimenez](https://unsplash.com/photos/8-AJzZqlnXQ) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-coca-cola-zero-vetro": {
-    "photo": "assets/img/items/bibite-coca-cola-zero-vetro.webp",
-    "photoSource": "[Mahbod Akhzami](https://unsplash.com/photos/IfXtq-nZOs4) on Unsplash",
-    "photoAuthenticity": "representative",
+    "photo": "assets/img/menu-sources/bibite-coca-cola-zero-vetro.webp",
+    "thumbnail": "assets/img/menu-thumbs/menu-sources/bibite-coca-cola-zero-vetro.webp",
+    "photoSource": "[Jorge Barrios on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Coca_Cola_Zero_bottle.png). Glass-bottle format. Packaging photographed in 2009. Resized and converted to WebP.",
+    "photoAuthenticity": "matching-package-photo",
+    "photoLicense": "Public domain dedication",
     "model": {
       "status": "pending"
     }
   },
   "bibite-estathe-limone": {
     "photo": "assets/img/items/bibite-estathe-limone.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-estathe-limone.webp",
     "photoSource": "[Pixzolo Photography](https://unsplash.com/photos/cLmCH3aygHk) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-estathe-pesca": {
     "photo": "assets/img/items/bibite-estathe-pesca.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-estathe-pesca.webp",
     "photoSource": "[Tkhao Khoang](https://unsplash.com/photos/IvyJqrkq1Zc) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-acquainbrick": {
     "photo": "assets/img/items/bibite-acquainbrick.webp",
-    "photoSource": "[Boxed Water Is Better](https://unsplash.com/photos/6RTh34xCS1M) on Unsplash",
-    "photoAuthenticity": "representative",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-acquainbrick.webp",
+    "photoSource": "Existing [Boxed Water Is Better](https://unsplash.com/photos/6RTh34xCS1M) image is a different carton brand.",
+    "photoAuthenticity": "mismatch",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-aperol-spritz": {
     "photo": "assets/img/items/bibite-aperol-spritz.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-aperol-spritz.webp",
     "photoSource": "[Viacheslav Shatunov](https://unsplash.com/photos/hu69KCZgBiw) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-campari-spritz": {
     "photo": "assets/img/items/bibite-campari-spritz.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-campari-spritz.webp",
     "photoSource": "[Lorenzo Rui](https://unsplash.com/photos/8ddqx94gPIo) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-select-spritz": {
     "photo": "assets/img/items/bibite-select-spritz.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-select-spritz.webp",
     "photoSource": "[Viacheslav Shatunov](https://unsplash.com/photos/hu69KCZgBiw) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-hugo-spritz": {
     "photo": "assets/img/items/bibite-hugo-spritz.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-hugo-spritz.webp",
     "photoSource": "[Hans Ott](https://unsplash.com/photos/JDKIIHs5qIo) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-americano": {
     "photo": "assets/img/items/bibite-americano.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-americano.webp",
     "photoSource": "[Lefteris kallergis](https://unsplash.com/photos/QsmdVT5pTMw) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-negroni": {
     "photo": "assets/img/items/bibite-negroni.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-negroni.webp",
     "photoSource": "[Marvin Meyer](https://unsplash.com/photos/h8gggTw2CO4) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-gin-tonic": {
     "photo": "assets/img/items/bibite-gin-tonic.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-gin-tonic.webp",
     "photoSource": "[Laure Noverraz](https://unsplash.com/photos/iL868JAIupY) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-vodka-tonic": {
     "photo": "assets/img/items/bibite-vodka-tonic.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-vodka-tonic.webp",
     "photoSource": "[Rosa Rafael](https://unsplash.com/photos/j5BRvjRt1h0) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-calice-di-vino": {
     "photo": "assets/img/items/bibite-calice-di-vino.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-calice-di-vino.webp",
     "photoSource": "[Meg von Haartman](https://unsplash.com/photos/ZUVDFbaXi4s) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "bibite-birra-alla-spina": {
     "photo": "assets/img/items/bibite-birra-alla-spina.webp",
+    "thumbnail": "assets/img/menu-thumbs/items/bibite-birra-alla-spina.webp",
     "photoSource": "[Giovanna Gomes](https://unsplash.com/photos/Qy2KMPRV3X4) on Unsplash",
     "photoAuthenticity": "representative",
+    "photoLicense": "Unsplash License",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-good-vibes": {
     "photo": "assets/img/cocktails/sig1.webp",
+    "thumbnail": "assets/img/cocktails/sig1.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-the-change": {
     "photo": "assets/img/cocktails/sig2.webp",
+    "thumbnail": "assets/img/cocktails/sig2.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-american-love": {
     "photo": "assets/img/cocktails/sig3.webp",
+    "thumbnail": "assets/img/cocktails/sig3.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-zafferoni": {
     "photo": "assets/img/cocktails/sig4.webp",
+    "thumbnail": "assets/img/cocktails/sig4.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-fig-storm": {
     "photo": "assets/img/cocktails/sig5.webp",
+    "thumbnail": "assets/img/cocktails/sig5.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-negroni-s-wife": {
     "photo": "assets/img/cocktails/sig6.webp",
+    "thumbnail": "assets/img/cocktails/sig6.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-daiquiri-frozen": {
     "photo": "assets/img/cocktails/sig7.webp",
+    "thumbnail": "assets/img/cocktails/sig7.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-queen-g": {
     "photo": "assets/img/cocktails/sig8.webp",
+    "thumbnail": "assets/img/cocktails/sig8.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-sun-kissed": {
     "photo": "assets/img/cocktails/sig9.webp",
+    "thumbnail": "assets/img/cocktails/sig9.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-purple-mirage": {
     "photo": "assets/img/cocktails/sig10.webp",
+    "thumbnail": "assets/img/cocktails/sig10.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-spritz": {
     "photo": "assets/img/classici/spritz.webp",
+    "thumbnail": "assets/img/classici/spritz.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-americano": {
     "photo": "assets/img/classici/americano.webp",
+    "thumbnail": "assets/img/classici/americano.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-negroni": {
     "photo": "assets/img/classici/negroni.webp",
+    "thumbnail": "assets/img/classici/negroni.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-margarita": {
     "photo": "assets/img/classici/margarita.webp",
+    "thumbnail": "assets/img/classici/margarita.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-mojito": {
     "photo": "assets/img/classici/mojito.webp",
+    "thumbnail": "assets/img/classici/mojito.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-mojito-fidel": {
     "photo": "assets/img/classici/mojito-fidel.webp",
+    "thumbnail": "assets/img/classici/mojito-fidel.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-tommy-s-mezcal": {
     "photo": "assets/img/classici/tommys.webp",
+    "thumbnail": "assets/img/classici/tommys.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-paloma": {
     "photo": "assets/img/classici/paloma.webp",
+    "thumbnail": "assets/img/classici/paloma.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-gin-tonic": {
     "photo": "assets/img/classici/gintonic.webp",
+    "thumbnail": "assets/img/classici/gintonic.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-vodka-tonic": {
     "photo": "assets/img/classici/vodkatonic.webp",
+    "thumbnail": "assets/img/classici/vodkatonic.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-cuba-libre": {
     "photo": "assets/img/classici/cubalibre.webp",
+    "thumbnail": "assets/img/classici/cubalibre.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-campari-shakerato": {
     "photo": "assets/img/classici/campari.webp",
+    "thumbnail": "assets/img/classici/campari.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-pina-colada": {
     "photo": "assets/img/classici/pinacolada.webp",
+    "thumbnail": "assets/img/classici/pinacolada.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-ngricca-house-gin": {
     "photo": "assets/img/gins/giolugin.webp",
+    "thumbnail": "assets/img/gins/giolugin.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-windspiel-premium-dry": {
     "photo": "assets/img/gins/giolugin.webp",
-    "photoSource": "Existing gin-card image (Giolu Gin). Correct Windspiel reference needed.",
+    "thumbnail": "assets/img/gins/giolugin.webp",
+    "photoSource": "Existing gin-card image shows Giolu Gin. A verified Windspiel image is needed.",
     "photoAuthenticity": "mismatch",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-electric-spirit-co": {
     "photo": "assets/img/gins/achroous.webp",
+    "thumbnail": "assets/img/gins/achroous.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-martin-miller-s-original": {
     "photo": "assets/img/gins/martinmiller.webp",
+    "thumbnail": "assets/img/gins/martinmiller.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-westbourne-strength": {
     "photo": "assets/img/gins/westbourne.webp",
+    "thumbnail": "assets/img/gins/westbourne.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-44-n-gin": {
     "photo": "assets/img/gins/44n.webp",
+    "thumbnail": "assets/img/gins/44n.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-gin-mare": {
     "photo": "assets/img/gins/ginmare.webp",
+    "thumbnail": "assets/img/gins/ginmare.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-gin-hendrick-s": {
     "photo": "assets/img/gins/hendricks.webp",
+    "thumbnail": "assets/img/gins/hendricks.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-gin-malfy-rosa": {
     "photo": "assets/img/gins/malfy.webp",
+    "thumbnail": "assets/img/gins/malfy.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-forst-vip-pils-spina-piccola": {
     "photo": "assets/img/beers/forst.webp",
+    "thumbnail": "assets/img/beers/forst.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-forst-vip-pils-spina-grande": {
     "photo": "assets/img/beers/forst.webp",
+    "thumbnail": "assets/img/beers/forst.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-forst-1857-33cl": {
-    "photo": "assets/img/beers/forst.webp",
-    "photoSource": "Existing cocktail-card image. Original source unverified.",
-    "photoAuthenticity": "unverified",
+    "photo": "assets/img/menu-sources/cocktail-forst-1857-33cl.webp",
+    "thumbnail": "assets/img/menu-thumbs/menu-sources/cocktail-forst-1857-33cl.webp",
+    "photoSource": "[Phyrexian on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Forst_1857_001.jpg). Forst 1857 bottle. Packaging photographed in 2010. Resized and converted to WebP.",
+    "photoAuthenticity": "matching-package-photo",
+    "photoLicense": "Public domain dedication",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-forst-0-0": {
     "photo": "assets/img/beers/forst.webp",
-    "photoSource": "Existing cocktail-card image. Original source unverified.",
+    "thumbnail": "assets/img/beers/forst.webp",
+    "photoSource": "Existing beer-card image is shared with Forst VIP Pils. Exact alcohol-free product unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-weihenstephan-helles-50cl": {
     "photo": "assets/img/beers/weihenstephan.webp",
+    "thumbnail": "assets/img/beers/weihenstephan.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-weihenstephan-weissbier-50cl": {
     "photo": "assets/img/beers/weihenstephan.webp",
-    "photoSource": "Existing cocktail-card image. Original source unverified.",
+    "thumbnail": "assets/img/beers/weihenstephan.webp",
+    "photoSource": "Existing beer-card image is shared with Weihenstephan Helles. Exact variant unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }
   },
   "cocktail-hobgoblin-ipa-50cl": {
     "photo": "assets/img/beers/hobgoblin.webp",
+    "thumbnail": "assets/img/beers/hobgoblin.webp",
     "photoSource": "Existing cocktail-card image. Original source unverified.",
     "photoAuthenticity": "unverified",
+    "photoLicense": "Existing photo rights unverified",
     "model": {
       "status": "pending"
     }

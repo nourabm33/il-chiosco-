@@ -5,10 +5,15 @@
   var MODEL_VIEWER = "https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js";
   var LOAD_LIMIT_MS = 18000;
   var MEDIA = window.IL_CHIOSCO_MEDIA || {};
+  var premium = Boolean(document.querySelector(".premium-menu"));
+  var DEFAULT_ORBIT = "25deg 64deg auto";
+  var OPENER = "[data-slug].has-media, .cocktail-card[data-slug], .order-item[data-slug]";
   var CUBE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.3 6.6 3.7L12 11.7 5.4 8 12 4.3ZM5 9.7l6 3.4v6.6l-6-3.4V9.7Zm8 10v-6.6l6-3.4v6.6l-6 3.4Z"/></svg>';
   var TEXT = {
     it: {
       photo: "Foto", model: "3D", ar: "Vedi sul tuo tavolo", close: "Chiudi", exitAR: "Esci dalla realtà aumentata",
+      previewAR: "Vedi in AR", reset: "Ripristina vista", previous: "Prodotto precedente", next: "Prodotto successivo",
+      representativePhoto: "Immagine rappresentativa.", mismatch: "Immagine indicativa. Confezione da verificare.",
       hint: "Trascina per ruotare · pizzica o scorri per ingrandire",
       loading: "Caricamento del modello 3D", pending: "Modello 3D in preparazione",
       failed: "Il modello 3D non si è caricato. Puoi continuare a vedere la foto.",
@@ -21,6 +26,8 @@
     },
     en: {
       photo: "Photo", model: "3D", ar: "View on your table", close: "Close", exitAR: "Exit augmented reality",
+      previewAR: "View in AR", reset: "Reset view", previous: "Previous product", next: "Next product",
+      representativePhoto: "Representative image.", mismatch: "Reference image. Packaging needs verification.",
       hint: "Drag to rotate · pinch or scroll to zoom",
       loading: "Loading the 3D model", pending: "3D model in preparation",
       failed: "The 3D model could not load. You can still view the photo.",
@@ -36,6 +43,7 @@
   function t(key) { return TEXT[document.documentElement.lang === "en" ? "en" : "it"][key]; }
   function mediaFor(slug) { return Object.hasOwn(MEDIA, slug) ? MEDIA[slug] : null; }
   function photoFor(slug) { return mediaFor(slug)?.photo || null; }
+  function thumbnailFor(slug) { return mediaFor(slug)?.thumbnail || photoFor(slug); }
   function modelFor(slug) {
     var model = mediaFor(slug)?.model;
     return model?.status === "ready" ? model : null;
@@ -65,7 +73,9 @@
         }
         var timeout = setTimeout(function () { finish(new Error("Viewer script timed out")); }, LOAD_LIMIT_MS);
         script.onload = function () {
-          finish(customElements.get("model-viewer") ? null : new Error("Viewer did not register"));
+          var definition = customElements.get("model-viewer");
+          if (premium && definition && "modelCacheSize" in definition) definition.modelCacheSize = 2;
+          finish(definition ? null : new Error("Viewer did not register"));
         };
         script.onerror = function () { finish(new Error("Viewer script failed")); };
         document.head.appendChild(script);
@@ -81,7 +91,7 @@
 
   function build() {
     modal = document.createElement("dialog");
-    modal.className = "xr-modal";
+    modal.className = premium ? "xr-modal xr-modal--premium" : "xr-modal";
     modal.setAttribute("aria-labelledby", "xrTitle");
     modal.innerHTML =
       '<div class="xr-modal__backdrop" data-close></div>' +
@@ -92,6 +102,7 @@
       '    <p class="xr-stage__missing" hidden></p>' +
       '    <div class="xr-stage__model"></div>' +
       '    <p class="xr-stage__hint" hidden></p>' +
+      '    <button class="xr-reset" type="button" hidden><span aria-hidden="true">↺</span></button>' +
       '    <div class="xr-progress" role="status" hidden><span></span><progress max="1" value="0" aria-hidden="true"></progress></div>' +
       '    <div class="xr-switch" role="group" hidden>' +
       '      <button type="button" data-mode="photo"></button>' +
@@ -100,10 +111,15 @@
       '  </div>' +
       '  <div class="xr-info">' +
       '    <span class="xr-info__kicker"></span>' +
-      '    <h3 class="xr-info__name" id="xrTitle"></h3>' +
+      '    <h3 class="xr-info__name" id="xrTitle" aria-live="polite"></h3>' +
       '    <p class="xr-info__desc"></p>' +
       '    <span class="xr-info__price"></span>' +
       '    <button class="btn btn--gold xr-ar" type="button" hidden>' + CUBE + '<span></span></button>' +
+      '    <div class="xr-browse" hidden>' +
+      '      <button type="button" data-step="-1">‹</button>' +
+      '      <span class="xr-browse__position" aria-live="polite"></span>' +
+      '      <button type="button" data-step="1">›</button>' +
+      '    </div>' +
       '    <p class="xr-info__phone" role="status" hidden></p>' +
       '    <p class="xr-info__note" role="status"></p>' +
       '    <a class="xr-info__credit" target="_blank" rel="noopener" hidden></a>' +
@@ -119,11 +135,26 @@
     els.photoButton = modal.querySelector('[data-mode="photo"]');
     els.modelButton = modal.querySelector('[data-mode="model"]');
     els.progress = modal.querySelector(".xr-progress");
+    els.reset = modal.querySelector(".xr-reset");
+    els.browse = modal.querySelector(".xr-browse");
+    els.reset.addEventListener("click", function () {
+      var viewer = current?.viewer;
+      if (!viewer || !current.loaded) return;
+      viewer.cameraOrbit = current.model.cameraOrbit || DEFAULT_ORBIT;
+      viewer.fieldOfView = current.initialFov + "deg";
+      viewer.jumpCameraToGoal();
+    });
 
     modal.addEventListener("click", function (event) {
       if (event.target.closest("[data-close]")) close();
       var button = event.target.closest("button[data-mode]");
       if (button) setMode(button.dataset.mode);
+      var step = event.target.closest("button[data-step]");
+      if (step && current?.siblings && !arIsPresenting()) {
+        var siblings = current.siblings;
+        var index = (siblings.index + Number(step.dataset.step) + siblings.cards.length) % siblings.cards.length;
+        open(itemFromCard(siblings.cards[index]), { cards: siblings.cards, index: index });
+      }
     });
     modal.addEventListener("cancel", function (event) {
       event.preventDefault();
@@ -149,9 +180,13 @@
     els.model.inert = mode === "photo";
     els.progress.hidden = mode !== "model" || current.loaded;
     els.hint.hidden = mode !== "model" || !current.loaded;
+    els.reset.hidden = !premium || mode !== "model" || !current.loaded;
     els.note.textContent = current.failed ? t("failed") :
       current.model?.authenticity === "representative" ? t("representative") :
       current.pending ? t("pending") : "";
+    if (premium && (mode === "photo" || current.failed) && current.photoNote) {
+      els.note.textContent = [t(current.photoNote), current.failed ? t("failed") : current.pending ? t("pending") : ""].filter(Boolean).join(" ");
+    }
     els.credit.hidden = mode !== "model" || !current.loaded || !current.model?.credit;
     updateAR(current);
   }
@@ -202,7 +237,7 @@
         "disable-pan": "",
         "interaction-prompt": "none",
         loading: "eager",
-        "camera-orbit": session.model.cameraOrbit || "25deg 64deg auto",
+        "camera-orbit": session.model.cameraOrbit || DEFAULT_ORBIT,
         "max-camera-orbit": "auto 86deg auto",
         "shadow-intensity": "0.85",
         "shadow-softness": "0.95",
@@ -237,6 +272,7 @@
         if (current !== session || session.failed) return;
         clearTimeout(session.timeout);
         session.loaded = true;
+        if (premium) session.initialFov = viewer.getFieldOfView();
         modal.dataset.state = "ready";
         setMode(modal.dataset.mode);
         // WebXR detection resolves asynchronously and has no public ready event.
@@ -261,14 +297,24 @@
     }).catch(function () { failModel(session); });
   }
 
-  function open(item) {
+  function open(item, siblings) {
     if (!modal) build();
-    if (modal.open) close();
-    if (modal.open) return;
-    lastFocus = document.activeElement;
+    if (modal.dataset.closing || arIsPresenting()) return;
+    if (modal.open && premium) {
+      releaseCurrent();
+    } else {
+      if (modal.open) close();
+      lastFocus = document.activeElement;
+    }
     var photo = photoFor(item.slug) || item.photo;
     var model = modelFor(item.slug);
-    var session = { model: model, pending: mediaFor(item.slug)?.model?.status === "pending" };
+    var media = mediaFor(item.slug);
+    var session = {
+      model: model,
+      pending: media?.model?.status === "pending",
+      photoNote: { "generated-representative": "representativePhoto", mismatch: "mismatch" }[media?.photoAuthenticity],
+      siblings: siblings,
+    };
     current = session;
 
     els.kicker.textContent = item.kicker || "";
@@ -279,7 +325,15 @@
     els.price.textContent = item.price || "";
     els.close.setAttribute("aria-label", t("close"));
     els.hint.textContent = t("hint");
-    els.ar.querySelector("span").textContent = t("ar");
+    els.ar.querySelector("span").textContent = t(premium ? "previewAR" : "ar");
+    els.reset.setAttribute("aria-label", t("reset"));
+    els.reset.title = t("reset");
+    els.browse.hidden = !siblings || siblings.cards.length < 2;
+    if (siblings) {
+      els.browse.firstElementChild.setAttribute("aria-label", t("previous"));
+      els.browse.lastElementChild.setAttribute("aria-label", t("next"));
+      els.browse.querySelector(".xr-browse__position").textContent = (siblings.index + 1) + " / " + siblings.cards.length;
+    }
     els.photoButton.textContent = t("photo");
     els.modelButton.textContent = t("model");
     els.switcher.hidden = !model;
@@ -297,26 +351,43 @@
     els.progress.querySelector("progress").value = 0;
     modal.dataset.state = model ? "loading" : "photo";
     setMode(model ? "model" : "photo");
-    modal.showModal();
+    if (!modal.open) modal.showModal();
+    modal.querySelector(".xr-info").scrollTop = 0;
     document.documentElement.classList.add("xr-lock");
     if (model) startModel(session, item.name || "");
   }
 
-  function close() {
-    if (!modal?.open) return;
-    var arStatus = current.viewer?.getAttribute("ar-status");
-    if (arStatus === "session-started" || arStatus === "object-placed") return;
-    clearTimeout(current.timeout);
-    clearInterval(current.capabilityCheck);
+  function arIsPresenting() {
+    var status = current?.viewer?.getAttribute("ar-status");
+    return status === "session-started" || status === "object-placed";
+  }
+
+  function releaseCurrent() {
+    clearTimeout(current?.timeout);
+    clearInterval(current?.capabilityCheck);
     current = null;
     els.model.replaceChildren();
-    modal.close();
-    document.documentElement.classList.remove("xr-lock");
-    lastFocus?.focus({ preventScroll: true });
+  }
+
+  function close() {
+    if (!modal?.open || modal.dataset.closing || arIsPresenting()) return;
+    function finish() {
+      releaseCurrent();
+      modal.close();
+      delete modal.dataset.closing;
+      document.documentElement.classList.remove("xr-lock");
+      lastFocus?.focus({ preventScroll: true });
+    }
+    if (premium && !matchMedia("(prefers-reduced-motion: reduce)").matches && modal.animate) {
+      modal.dataset.closing = "true";
+      modal.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 155, easing: "ease-in" }).finished.then(finish, finish);
+    } else {
+      finish();
+    }
   }
 
   function thumb(slug, alt) {
-    var photo = photoFor(slug);
+    var photo = premium ? thumbnailFor(slug) : photoFor(slug);
     return '<span class="xr-thumb">' +
       (photo ? '<img src="' + esc(photo) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async" />' : "") +
       (modelFor(slug) ? '<span class="xr-thumb__badge">' + CUBE + '3D</span>' : "") + "</span>";
@@ -346,28 +417,35 @@
     return { slug: el.getAttribute("data-slug"), name: q(".menu-item__name"), desc: q(".menu-item__desc"), price: q(".menu-item__price"), kicker: head ? head.textContent.trim() : "" };
   }
 
+  function itemFromCard(el) {
+    if (el.classList.contains("menu-item")) return itemFromStatic(el);
+    var q = function (sel) { var n = el.querySelector(sel); return n ? n.textContent.trim() : ""; };
+    var slug = el.dataset.slug;
+    var kicker = el.dataset.kicker || "";
+    if (el.classList.contains("cocktail-card")) {
+      var tag = el.querySelector(".cocktail-card__name .tag");
+      var name = q(".cocktail-card__name");
+      if (tag) name = name.replace(tag.textContent, "").trim();
+      var img = el.querySelector(".cocktail-card__media img");
+      return { slug: slug, name: name, desc: q(".cocktail-card__desc"), price: q(".cocktail-card__price"), kicker: kicker, photo: img?.getAttribute("src") };
+    }
+    return { slug: slug, name: q(".order-item__name"), desc: q(".order-item__desc"), price: q(".order-item__price"), kicker: kicker };
+  }
+
   function bindOpeners() {
-    function handler(e) {
-      var el = e.target.closest("[data-slug].has-media, .cocktail-card[data-slug], .order-item[data-slug]");
-      if (!el) return;
-      if (e.type === "keydown" && e.key !== "Enter" && e.key !== " ") return;
-      e.preventDefault();
-      if (el.classList.contains("menu-item")) return open(itemFromStatic(el));
-      var q = function (sel) { var n = el.querySelector(sel); return n ? n.textContent.trim() : ""; };
-      if (el.classList.contains("cocktail-card")) {
-        var tag = el.querySelector(".cocktail-card__name .tag");
-        var name = q(".cocktail-card__name");
-        if (tag) name = name.replace(tag.textContent, "").trim();
-        var img = el.querySelector(".cocktail-card__media img");
-        return open({ slug: el.getAttribute("data-slug"), name: name, desc: q(".cocktail-card__desc"), price: q(".cocktail-card__price"), kicker: el.getAttribute("data-kicker") || "", photo: img ? img.getAttribute("src") : null });
-      }
-      return open({ slug: el.getAttribute("data-slug"), name: q(".order-item__name"), desc: q(".order-item__desc"), price: q(".order-item__price"), kicker: el.getAttribute("data-kicker") || "" });
+    function handler(event) {
+      var el = event.target.closest(OPENER);
+      if (!el || (event.type === "keydown" && event.key !== "Enter" && event.key !== " ")) return;
+      event.preventDefault();
+      var panel = premium && el.closest(".menu-panel");
+      var cards = panel ? Array.from(panel.querySelectorAll(OPENER)) : null;
+      open(itemFromCard(el), cards ? { cards: cards, index: cards.indexOf(el) } : null);
     }
     document.addEventListener("click", handler);
     document.addEventListener("keydown", handler);
   }
 
-  window.IlChioscoViewer = { open: open, thumb: thumb, photo: photoFor, model: modelFor, cube: CUBE };
+  window.IlChioscoViewer = { open: open, thumb: thumb, photo: photoFor, thumbnail: thumbnailFor, model: modelFor, cube: CUBE };
   enhanceStaticMenu();
   bindOpeners();
 })();

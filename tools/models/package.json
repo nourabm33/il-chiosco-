@@ -5,13 +5,19 @@
   "description": "Media manifest, asset checks, and offline legacy model generator for Il Chiosco.",
   "scripts": {
     "build": "node generate.mjs",
-    "verify": "node media.mjs --check && node verify.mjs"
+    "verify": "node media.mjs --check && node thumbnails.mjs --check && node verify.mjs",
+    "media": "node media.mjs && node thumbnails.mjs"
   },
   "dependencies": {
     "three": "0.170.0"
   },
   "devDependencies": {
     "@gltf-transform/core": "4.5.1",
-    "gltf-validator": "2.0.0-dev.3.10"
+    "@gltf-transform/extensions": "4.5.1",
+    "@gltf-transform/functions": "4.5.1",
+    "gltf-validator": "2.0.0-dev.3.10",
+    "meshoptimizer": "1.3.0",
+    "mikktspace": "1.1.1",
+    "sharp": "0.35.5"
   }
 }

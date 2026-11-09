@@ -7,7 +7,11 @@
     "source": "https://sketchfab.com/3d-models/cup-of-coffee-f82264218618431d81b8a280076a786e",
     "credit": "Adapted from Cup of Coffee by senorp3dro",
     "license": "CC-BY-4.0",
-    "dimensionsM": [0.1160, 0.0508, 0.1160],
+    "dimensionsM": [
+      0.116,
+      0.0508,
+      0.116
+    ],
     "dimensionBasis": "Modeled cup and saucer dimensions. Café serviceware not measured.",
     "cameraOrbit": "-115deg 56deg auto",
     "arValidation": "Desktop 3D and format checks passed. Phone placement not verified."
@@ -20,7 +24,11 @@
     "source": "https://sketchfab.com/3d-models/cup-of-coffee-f82264218618431d81b8a280076a786e",
     "credit": "Adapted from Cup of Coffee by senorp3dro",
     "license": "CC-BY-4.0",
-    "dimensionsM": [0.1430, 0.0559, 0.1445],
+    "dimensionsM": [
+      0.143,
+      0.0559,
+      0.1445
+    ],
     "dimensionBasis": "Modeled cup and saucer dimensions. Café serviceware not measured.",
     "cameraOrbit": "-115deg 56deg auto",
     "arValidation": "Desktop 3D and format checks passed. Phone placement not verified."
@@ -33,8 +41,138 @@
     "source": "https://polyhaven.com/a/croissant",
     "credit": "Croissant by Greg Zaal and Dario Barresi (Poly Haven)",
     "license": "CC0-1.0",
-    "dimensionsM": [0.2000, 0.0620, 0.0755],
+    "dimensionsM": [
+      0.2,
+      0.062,
+      0.0755
+    ],
     "dimensionBasis": "Source scan bounds. Café portion not measured.",
     "arValidation": "Desktop 3D and format checks passed. Phone placement not verified."
+  },
+  "alba-apple-pie": {
+    "status": "ready",
+    "glb": "assets/models/realistic/alba-apple-pie.glb",
+    "usdz": "assets/models/realistic/alba-apple-pie.usdz",
+    "authenticity": "representative",
+    "source": "https://sketchfab.com/3d-models/apple-pie-slice-89599995536d4f1ba1998ff26697d915",
+    "credit": "Adapted from Apple Pie Slice by yanix",
+    "license": "CC-BY-4.0",
+    "dimensionsM": [
+      0.105,
+      0.04671,
+      0.05926
+    ],
+    "dimensionBasis": "Estimated dimensions for a representative serving.",
+    "appearance": "Photogrammetry of an apple pie slice. Portion size is estimated.",
+    "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
+  },
+  "alba-crumbl-cookies": {
+    "status": "ready",
+    "glb": "assets/models/realistic/alba-crumbl-cookies.glb",
+    "usdz": "assets/models/realistic/alba-crumbl-cookies.usdz",
+    "authenticity": "representative",
+    "source": "https://sketchfab.com/3d-models/moms-homemade-chocolate-chip-cookies-ad187b48edd24196bbf2ab14435c16d3",
+    "credit": "Adapted from Mom's Homemade Chocolate Chip Cookies by Casarome",
+    "license": "CC-BY-4.0",
+    "dimensionsM": [
+      0.102,
+      0.0202,
+      0.09826
+    ],
+    "dimensionBasis": "Estimated dimensions for a representative serving.",
+    "appearance": "Photogrammetry of a chocolate chip cookie as an example of the classic serving. The café’s decorated variants may differ.",
+    "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
+  },
+  "alba-muffin-cioccolato-yogurt-e-mirtilli": {
+    "status": "ready",
+    "glb": "assets/models/realistic/alba-muffin-cioccolato-yogurt-e-mirtilli.glb",
+    "usdz": "assets/models/realistic/alba-muffin-cioccolato-yogurt-e-mirtilli.usdz",
+    "authenticity": "representative",
+    "source": "https://sketchfab.com/3d-models/blueberry-muffin-e48f29f0714a4c70ac75a34cedf6b3bc",
+    "credit": "Adapted from Blueberry Muffin by Terrie Simmons-Ehrhardt",
+    "license": "CC-BY-4.0",
+    "dimensionsM": [
+      0.078,
+      0.05927,
+      0.07694
+    ],
+    "dimensionBasis": "Estimated dimensions for a representative serving.",
+    "appearance": "Photogrammetry of a blueberry muffin. Represents the blueberry choice. Recipe and yogurt content are not inferred.",
+    "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
+  },
+  "alba-pain-au-chocolat": {
+    "status": "ready",
+    "glb": "assets/models/realistic/alba-pain-au-chocolat.glb",
+    "usdz": "assets/models/realistic/alba-pain-au-chocolat.usdz",
+    "authenticity": "representative",
+    "source": "https://sketchfab.com/3d-models/pain-au-chocolat-df139869b8ff4fe790304ed9137dd1c6",
+    "credit": "Adapted from Pain au chocolat by MadeleineMirabelle",
+    "license": "CC-BY-4.0",
+    "dimensionsM": [
+      0.112,
+      0.06198,
+      0.12074
+    ],
+    "dimensionBasis": "Estimated dimensions for a representative serving.",
+    "appearance": "Textured model of the pastry with its chocolate filling.",
+    "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
+  },
+  "mezzogiorno-avocado-toast": {
+    "status": "ready",
+    "glb": "assets/models/realistic/mezzogiorno-avocado-toast.glb",
+    "usdz": "assets/models/realistic/mezzogiorno-avocado-toast.usdz",
+    "authenticity": "representative",
+    "source": "https://sketchfab.com/3d-models/avocado-toast-deed53db426a460d956319b301046785",
+    "credit": "Adapted from Avocado Toast by Richard.Parry",
+    "license": "CC-BY-4.0",
+    "dimensionsM": [
+      0.19,
+      0.03595,
+      0.166
+    ],
+    "dimensionBasis": "Estimated dimensions for a representative serving.",
+    "appearance": "Two toasted pieces with avocado and a fried egg. Combined from two licensed sources. Bread and portion size are representative.",
+    "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified.",
+    "additionalSources": [
+      {
+        "credit": "Fried Egg PBR by ANCAP Assets",
+        "source": "https://sketchfab.com/3d-models/fried-egg-pbr-game-asset-8de2390c67b84532bd2b25318f656b99",
+        "license": "CC-BY-4.0"
+      }
+    ]
+  },
+  "mezzogiorno-avocado": {
+    "status": "ready",
+    "glb": "assets/models/realistic/mezzogiorno-avocado.glb",
+    "usdz": "assets/models/realistic/mezzogiorno-avocado.usdz",
+    "authenticity": "representative",
+    "source": "https://sketchfab.com/3d-models/half-avocado-36443c0fd59a4b98b3312401c6b9d50c",
+    "credit": "Adapted from Half avocado by svnfbgr",
+    "license": "CC-BY-4.0",
+    "dimensionsM": [
+      0.079,
+      0.06157,
+      0.13629
+    ],
+    "dimensionBasis": "Estimated dimensions for a representative serving.",
+    "appearance": "Photogrammetry of a cut avocado half. The pit is visible in the model. The café’s plating may differ.",
+    "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
+  },
+  "mezzogiorno-uovo": {
+    "status": "ready",
+    "glb": "assets/models/realistic/mezzogiorno-uovo.glb",
+    "usdz": "assets/models/realistic/mezzogiorno-uovo.usdz",
+    "authenticity": "representative",
+    "source": "https://sketchfab.com/3d-models/fried-egg-pbr-game-asset-8de2390c67b84532bd2b25318f656b99",
+    "credit": "Adapted from FRIED EGG PBR | GAME ASSET by ANCAP Assets",
+    "license": "CC-BY-4.0",
+    "dimensionsM": [
+      0.115,
+      0.0099,
+      0.12833
+    ],
+    "dimensionBasis": "Estimated dimensions for a representative serving.",
+    "appearance": "Textured fried egg. Cooking and portion are representative.",
+    "arValidation": "Reviewed in Chromium from two angles. File checks passed. Phone placement not verified."
   }
 }

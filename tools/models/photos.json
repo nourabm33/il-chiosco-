@@ -1,0 +1,80 @@
+{
+  "alba-matcha-ube-latte": {
+    "photo": "assets/img/menu-renders/alba-matcha-ube-latte.webp",
+    "source": "Original ImageGen render of green matcha and purple ube milk. See PREMIUM-MENU.md.",
+    "authenticity": "generated-representative",
+    "license": "Original generated menu artwork"
+  },
+  "mezzogiorno-salmone-affumicato": {
+    "photo": "assets/img/menu-renders/mezzogiorno-salmone-affumicato.webp",
+    "source": "Original ImageGen render of sliced smoked salmon. Replaces an image of a raw fillet.",
+    "authenticity": "generated-representative",
+    "license": "Original generated menu artwork"
+  },
+  "mezzogiorno-club-sandwich-del-chiosco": {
+    "photo": "assets/img/menu-renders/mezzogiorno-club-sandwich-del-chiosco.webp",
+    "source": "Original ImageGen render based on the published menu ingredients and roasted potato side.",
+    "authenticity": "generated-representative",
+    "license": "Original generated menu artwork"
+  },
+  "alba-croissant-vegano-albicocca": {
+    "photo": "assets/img/menu-renders/alba-croissant-vegano-albicocca.webp",
+    "source": "Original ImageGen render of a split apricot-filled croissant.",
+    "authenticity": "generated-representative",
+    "license": "Original generated menu artwork"
+  },
+  "mezzogiorno-super-focacciona": {
+    "source": "Il Chiosco. The paper wrap and chips obscure the sandwich filling.",
+    "authenticity": "cafe-credited",
+    "license": "Café supplied"
+  },
+  "bibite-kombucha-laverve": {
+    "source": "Existing representative kombucha image by [Annie Spratt](https://unsplash.com/photos/d0OnUJitzEQ). Exact Laverve label unverified.",
+    "authenticity": "representative",
+    "license": "Unsplash License"
+  },
+  "bibite-coca-cola-zero-vetro": {
+    "photo": "assets/img/menu-sources/bibite-coca-cola-zero-vetro.webp",
+    "source": "[Jorge Barrios on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Coca_Cola_Zero_bottle.png). Glass-bottle format. Packaging photographed in 2009. Resized and converted to WebP.",
+    "authenticity": "matching-package-photo",
+    "license": "Public domain dedication"
+  },
+  "bibite-acquainbrick": {
+    "source": "Existing [Boxed Water Is Better](https://unsplash.com/photos/6RTh34xCS1M) image is a different carton brand.",
+    "authenticity": "mismatch",
+    "license": "Unsplash License"
+  },
+  "cocktail-windspiel-premium-dry": {
+    "source": "Existing gin-card image shows Giolu Gin. A verified Windspiel image is needed.",
+    "authenticity": "mismatch",
+    "license": "Existing photo rights unverified"
+  },
+  "cocktail-forst-1857-33cl": {
+    "photo": "assets/img/menu-sources/cocktail-forst-1857-33cl.webp",
+    "source": "[Phyrexian on Wikimedia Commons](https://commons.wikimedia.org/wiki/File:Forst_1857_001.jpg). Forst 1857 bottle. Packaging photographed in 2010. Resized and converted to WebP.",
+    "authenticity": "matching-package-photo",
+    "license": "Public domain dedication"
+  },
+  "cocktail-forst-0-0": {
+    "source": "Existing beer-card image is shared with Forst VIP Pils. Exact alcohol-free product unverified.",
+    "authenticity": "unverified",
+    "license": "Existing photo rights unverified"
+  },
+  "cocktail-weihenstephan-weissbier-50cl": {
+    "source": "Existing beer-card image is shared with Weihenstephan Helles. Exact variant unverified.",
+    "authenticity": "unverified",
+    "license": "Existing photo rights unverified"
+  },
+  "mezzogiorno-pan-tomate": {
+    "photo": "assets/img/menu-renders/mezzogiorno-pan-tomate.webp",
+    "source": "Original ImageGen render of pan de cristal with tomato pulp and herbs.",
+    "authenticity": "generated-representative",
+    "license": "Original generated menu artwork"
+  },
+  "mezzogiorno-il-chiosco-s-brunch-plate": {
+    "photo": "assets/img/menu-renders/mezzogiorno-il-chiosco-s-brunch-plate.webp",
+    "source": "Original ImageGen render of the fried eggs and espresso option, with bread, butter, jam and orange juice.",
+    "authenticity": "generated-representative",
+    "license": "Original generated menu artwork"
+  }
+}
