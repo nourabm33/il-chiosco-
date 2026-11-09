@@ -159,7 +159,8 @@
     }
     var tag = item.t ? '<span class="tag">' + item.t + "</span>" : "";
     var slug = slugify("cocktail-" + item.n) + (item.p.indexOf("/") > -1 ? "-grande" : "");
-    var xr = window.IlChioscoViewer ? '<span class="cocktail-card__xr">' + window.IlChioscoViewer.cube + "3D · AR</span>" : "";
+    var viewer = window.IlChioscoViewer;
+    var xr = viewer?.model(slug) ? '<span class="cocktail-card__xr">' + viewer.cube + "3D</span>" : "";
     return '' +
       '<article class="cocktail-card' + cls + ' reveal" data-slug="' + slug + '" data-kicker="' + KICKERS[key] + '" role="button" tabindex="0" style="transition-delay:' + (i % 4) * 0.08 + 's">' +
       '  <div class="cocktail-card__media" style="--c1:' + item.c[0] + ';--c2:' + item.c[1] + '">' + media + xr + '</div>' +

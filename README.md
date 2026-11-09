@@ -102,11 +102,12 @@ nothing is sent to the till.
 
 ## Photos and 3D / AR menu
 
-Every menu item (food, drinks, cocktails, gin and beers) has a photo and a 3D model. Tapping an item on the site menu or the table menu (`order.html`) opens a viewer with the photo, a 3D model you can rotate, and an "AR" button on phones that places the item on the table (Scene Viewer on Android, Quick Look on iPhone, via Google `<model-viewer>`).
+Both menus use the same product media manifest. Products with a reviewed replacement open in interactive 3D and offer table placement through Google model-viewer on supported devices. Products waiting for a replacement open with their existing photo.
 
-- Photos: `assets/img/items/<product-slug>.webp` (credits in `docs/PHOTO-CREDITS.md`); cocktail photos stay in `js/cocktails.js`.
-- Models: `assets/models/<product-slug>.glb` + `.usdz`, generated procedurally by `tools/models` (`cd tools/models && npm ci && npm run build`), one per product in `server/data/products.json`.
-- After adding or renaming a product, rebuild the models and run `node tools/models/media.mjs` to refresh `js/menu-media.js`.
+- [Product media inventory](docs/MENU-MEDIA-INVENTORY.md) tracks sources, physical dimensions and validation for every catalog slug.
+- [Production and device testing guide](docs/MENU-AR.md) describes asset intake, AR routing and how to test on a phone.
+- Run `node tools/models/media.mjs` after changing catalog media or adding a reviewed replacement in `tools/models/replacements.json`.
+
 
 ## Content source
 

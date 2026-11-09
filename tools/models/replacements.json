@@ -1,0 +1,40 @@
+{
+  "alba-espresso": {
+    "status": "ready",
+    "glb": "assets/models/realistic/alba-espresso.glb",
+    "usdz": "assets/models/realistic/alba-espresso.usdz",
+    "authenticity": "representative",
+    "source": "https://sketchfab.com/3d-models/cup-of-coffee-f82264218618431d81b8a280076a786e",
+    "credit": "Adapted from Cup of Coffee by senorp3dro",
+    "license": "CC-BY-4.0",
+    "dimensionsM": [0.1160, 0.0508, 0.1160],
+    "dimensionBasis": "Modeled cup and saucer dimensions. Café serviceware not measured.",
+    "cameraOrbit": "-115deg 56deg auto",
+    "arValidation": "Desktop 3D and format checks passed. Phone placement not verified."
+  },
+  "alba-cappuccino": {
+    "status": "ready",
+    "glb": "assets/models/realistic/alba-cappuccino.glb",
+    "usdz": "assets/models/realistic/alba-cappuccino.usdz",
+    "authenticity": "representative",
+    "source": "https://sketchfab.com/3d-models/cup-of-coffee-f82264218618431d81b8a280076a786e",
+    "credit": "Adapted from Cup of Coffee by senorp3dro",
+    "license": "CC-BY-4.0",
+    "dimensionsM": [0.1430, 0.0559, 0.1445],
+    "dimensionBasis": "Modeled cup and saucer dimensions. Café serviceware not measured.",
+    "cameraOrbit": "-115deg 56deg auto",
+    "arValidation": "Desktop 3D and format checks passed. Phone placement not verified."
+  },
+  "alba-croissant-lievito-madre-vuoto": {
+    "status": "ready",
+    "glb": "assets/models/realistic/alba-croissant-lievito-madre-vuoto.glb",
+    "usdz": "assets/models/realistic/alba-croissant-lievito-madre-vuoto.usdz",
+    "authenticity": "representative",
+    "source": "https://polyhaven.com/a/croissant",
+    "credit": "Croissant by Greg Zaal and Dario Barresi (Poly Haven)",
+    "license": "CC0-1.0",
+    "dimensionsM": [0.2000, 0.0620, 0.0755],
+    "dimensionBasis": "Source scan bounds. Café portion not measured.",
+    "arValidation": "Desktop 3D and format checks passed. Phone placement not verified."
+  }
+}
