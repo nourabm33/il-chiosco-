@@ -84,10 +84,7 @@ for (const panel of html.matchAll(panelRe)) {
 
 /* ---------- drinks, from js/cocktails.js ---------- */
 const drinksSource = fs.readFileSync(path.join(root, "js/cocktails.js"), "utf8");
-const dataBlock = drinksSource.slice(
-  drinksSource.indexOf("var DATA = {"),
-  drinksSource.indexOf("/* ---------- render ---------- */"),
-);
+const dataBlock = drinksSource.slice(drinksSource.indexOf("var DATA = {"));
 const labels = {
   signatures: "Signatures",
   classici: "I Classici",

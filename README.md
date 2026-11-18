@@ -35,13 +35,14 @@ npm start                 # http://localhost:3000
 ## Structure
 
 ```
-index.html        # all sections (hero, intro, food menu, cocktail menu, gallery, contact, footer)
+index.html        # marketing site and shared public menu
 order.html        # table menu for customers (browse only — orders go through the waiter)
 admin.html        # staff dashboard (queue, orders, table colours, QR codes)
 css/styles.css    # design system + responsive layout
-js/main.js        # nav, scroll reveal, menu tabs, gallery lightbox, parallax
+js/main.js        # marketing navigation, scroll reveal, gallery lightbox, parallax
 js/config.js      # backend address for the static copy (empty = same origin)
-js/order.js       # table menu (API, with the static product list as fallback)
+js/menu.js        # shared category navigation, product cards, and bilingual search
+js/viewer.js      # shared details and on-demand 3D/AR
 js/admin.js       # dashboard: queue controls, live updates
 server/           # Express API, Postgres schema, queue, POS integration layer
 docs/             # DEPLOY.md (hosting, env vars, test checklist), POS-INTEGRATION.md, CASSA-IN-CLOUD.md
@@ -51,8 +52,7 @@ assets/img/       # photography (counter, exterior, crowd, menu banners, cocktai
 ## Sections
 
 - **Home / Hero** — full-screen bar image, title, subtitle and three CTAs (Food menu / Cocktail menu / Menu al tavolo).
-- **Menu Il Chiosco** — tabbed *Alba · Mezzogiorno · Soft drink & Drink*, each opening with a photo banner, extracted from the food PDFs.
-- **Cocktail Menu** — tabbed *Signatures · Classici · Gin · Birre*, extracted from the cocktail PDF.
+- **Menu Il Chiosco** — food and drinks in one searchable catalogue. The Cocktail Menu link opens Aperitivo & Cocktail.
 - **Gallery** — lightbox gallery of the provided photos.
 - **Contact** — address, click-to-call, opening hours, embedded Google Map, Get Directions.
 
@@ -102,8 +102,9 @@ nothing is sent to the till.
 
 ## Photos and 3D / AR menu
 
-Both menus use the same product media manifest. Products with a reviewed replacement open in interactive 3D and offer table placement through Google model-viewer on supported devices. Products waiting for a replacement open with their existing photo.
+Both menus use the same product media manifest. Select **3D** in an eligible product's detail view to load its reviewed model. Compatible browsers can open AR through Google model-viewer. The menus display an illustrated fallback when the media inventory flags a mismatch or unverified usage rights.
 
+- [Customer menu redesign](docs/MENU-REDESIGN.md) documents the catalogue and photo decisions.
 - [Product media inventory](docs/MENU-MEDIA-INVENTORY.md) tracks sources, physical dimensions and validation for every catalog slug.
 - [Premium menu review and device checklist](docs/PREMIUM-MENU.md) includes current coverage, before-and-after captures and the workflow for preparing new assets.
 - Run `npm run media --prefix tools/models` after changing catalog media or adding a reviewed replacement in `tools/models/replacements.json`.
