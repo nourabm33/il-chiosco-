@@ -25,6 +25,12 @@
     "Forni & bakery chef": "Bakeries & pastry chefs",
 
     // menu head
+    "Il menu del Chiosco": "The Il Chiosco menu",
+    "Per ordinare, rivolgiti al cameriere.": "To place an order, please speak to your waiter.",
+    "Drink": "Aperitivo drinks",
+    "Best seller": "Bestsellers",
+    "Forst VIP Pils — spina · piccola": "Forst VIP Pils — draft · small",
+    "Forst VIP Pils — spina · grande": "Forst VIP Pils — draft · large",
     "Dall'alba al mezzogiorno": "From dawn to midday",
     "Ogni preparazione è espressa: ci sarà un po' di attesa, perché ogni caffè e ogni proposta food meritano cura.": "Everything is made to order: there may be a short wait, because every coffee and every dish deserves care.",
 
@@ -221,7 +227,7 @@
     ".info-row h4", ".contact__actions .btn",
     ".footer__brand p", ".footer__col h4",
     ".cap",
-    ".i18n"
+    ".i18n", "[data-translate]"
   ].join(",");
 
   var HTML_SELECTOR = ".intro__body h2, .info-row p";
@@ -229,6 +235,14 @@
   function norm(s) {
     return s.replace(/\s+/g, " ").trim();
   }
+  function translate(value, lang) {
+    if (!value) return "";
+    var key = norm(value);
+    var english = (lang || document.documentElement.lang) === "en";
+    return english && Object.hasOwn(TXT, key) ? TXT[key] : value;
+  }
+  window.IlChioscoI18n = { translate: translate };
+
   function normHtml(s) {
     return s.replace(/<br\s*\/?>/gi, "<br>").replace(/\s+/g, " ").trim();
   }
@@ -237,12 +251,7 @@
     document.querySelectorAll(TXT_SELECTOR).forEach(function (el) {
       if (el.getAttribute("data-it") === null) el.setAttribute("data-it", norm(el.textContent));
       var src = el.getAttribute("data-it");
-      if (lang === "en") {
-        var t = TXT[src];
-        if (t) el.textContent = t;
-      } else {
-        el.textContent = src;
-      }
+      el.textContent = translate(src, lang);
     });
   }
 
@@ -262,7 +271,7 @@
   var btn = document.getElementById("langToggle");
 
   function setLang(lang) {
-    document.documentElement.lang = lang;
+    document.documentElement.lang = lang === "en" ? "en" : "it";
     applyText(lang);
     applyHtml(lang);
     if (btn) {

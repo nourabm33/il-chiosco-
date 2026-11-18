@@ -20,11 +20,11 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/viewer.css?v=3" />
-  <link rel="stylesheet" href="css/menu.css" />
+  <link rel="stylesheet" href="css/menu.css?v=4" />
+  <link rel="stylesheet" href="css/viewer.css?v=4" />
 
   <!-- Structured data -->
   <script type="application/ld+json">
@@ -52,7 +52,7 @@
   }
   </script>
 </head>
-<body>
+<body class="site-body">
 
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
@@ -70,7 +70,7 @@
         <a href="#cocktail">Cocktail Menu</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-        <a href="order.html">Menu al tavolo</a>
+        <a href="order.html" data-translate>Menu al tavolo</a>
       </nav>
 
       <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch language">EN</button>
@@ -94,7 +94,7 @@
       <div class="hero__cta reveal in" data-delay="3">
         <a href="#menu" class="btn btn--gold">View Food Menu</a>
         <a href="#cocktail" class="btn btn--ghost">View Cocktail Menu</a>
-        <a href="order.html" class="btn btn--ghost">Menu al tavolo</a>
+        <a href="order.html" class="btn btn--ghost" data-translate>Menu al tavolo</a>
       </div>
     </div>
     <a href="#intro" class="hero__scroll" aria-label="Scorri">
@@ -130,24 +130,33 @@
   </section>
 
   <!-- ======================= MENU IL CHIOSCO ======================= -->
-  <section class="section premium-menu" id="menu">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Menu Il Chiosco</span>
-        <h2 class="section-title">Dall'alba al mezzogiorno</h2>
-        <div class="divider"></div>
-        <p>Ogni preparazione è espressa: ci sarà un po' di attesa, perché ogni caffè e ogni proposta food meritano cura.</p>
-      </div>
-
-      <div class="menu-tabs reveal" data-tabs="food">
-        <button class="menu-tab active" data-tab="alba">Alba</button>
-        <button class="menu-tab" data-tab="mezzogiorno">Mezzogiorno</button>
-        <button class="menu-tab" data-tab="bibite">Soft drink &amp; Drink</button>
-      </div>
-
+  <section class="catalogue-section catalogue-section--site" id="menu" aria-labelledby="menu-title">
+    <div id="cocktail"></div>
+    <div class="catalogue-shell">
+      <header class="catalogue-masthead">
+        <div class="catalogue-masthead__copy">
+          <p class="catalogue-masthead__location">Piazza Cavour · Ancona</p>
+          <h2 id="menu-title" data-translate>Il menu del Chiosco</h2>
+          <p data-translate>Ogni preparazione è espressa: ci sarà un po' di attesa, perché ogni caffè e ogni proposta food meritano cura.</p>
+        </div>
+        <img class="catalogue-masthead__image" src="assets/img/counter.jpg" width="338" height="423" alt="" loading="lazy" decoding="async" />
+      </header>
+    </div>
+    <div data-catalogue="site"></div>
+    <template id="catalogue-bartender">
+      <figure class="catalogue-bartender">
+        <img src="assets/img/cocktails/barista-davide.png" width="64" height="64" alt="" loading="lazy" decoding="async" />
+        <div>
+          <blockquote>Un cocktail non è solo un drink. È un ricordo che inizia dal primo sorso. Dopo oltre 20 anni dietro al bancone, il mio obiettivo è sempre lo stesso: creare esperienze che lascino il segno.</blockquote>
+          <figcaption>Davide Albanesi · Cocktails &amp; Dreams</figcaption>
+        </div>
+      </figure>
+    </template>
+    <noscript>
+      <div class="catalogue-shell catalogue-fallback">
       <!-- ALBA -->
       <div class="menu-panel active" id="panel-alba" data-group="food">
-        <div class="menu-banner reveal">
+        <div class="menu-banner">
           <img class="menu-banner__img" src="assets/img/menu/alba.webp" alt="Cappuccino con latte art al tavolo" loading="lazy" />
           <div class="menu-banner__body">
             <span class="menu-banner__kicker">Colazione &amp; coffee bar</span>
@@ -196,7 +205,7 @@
             <div class="menu-item" data-slug="alba-anise-cardamom-latte"><div class="menu-item__top"><span class="menu-item__name">Anise &amp; Cardamom Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
             <div class="menu-item" data-slug="alba-chai-latte"><div class="menu-item__top"><span class="menu-item__name">Chai Latte</span><span class="menu-item__dots"></span><span class="menu-item__price">4€</span></div></div>
           </div>
-          <figure class="menu-showcase reveal">
+          <figure class="menu-showcase">
             <img src="assets/img/menu/iced-specialty.webp" alt="Selezione specialty: matcha, fragola, cocco, ube e vaniglia" loading="lazy" />
             <figcaption>La nostra selezione Specialty</figcaption>
           </figure>
@@ -247,7 +256,7 @@
 
       <!-- MEZZOGIORNO -->
       <div class="menu-panel" id="panel-mezzogiorno" data-group="food">
-        <div class="menu-banner reveal">
+        <div class="menu-banner">
           <img class="menu-banner__img" src="assets/img/menu/mezzogiorno.webp" alt="Avocado toast con uovo" loading="lazy" />
           <div class="menu-banner__body">
             <span class="menu-banner__kicker">Brunch &amp; pranzo</span>
@@ -300,7 +309,7 @@
 
       <!-- SOFT DRINK & DRINK -->
       <div class="menu-panel" id="panel-bibite" data-group="food">
-        <div class="menu-banner reveal">
+        <div class="menu-banner">
           <img class="menu-banner__img" src="assets/img/menu/drink.webp" alt="Spritz servito con arancia" loading="lazy" />
           <div class="menu-banner__body">
             <span class="menu-banner__kicker">Bibite &amp; aperitivo</span>
@@ -343,64 +352,8 @@
 
         <div class="menu-foot"><p>All day, coffee lover club!</p></div>
       </div>
-    </div>
-  </section>
-
-  <!-- ======================= COCKTAIL MENU ======================= -->
-  <section class="section section--green premium-menu" id="cocktail">
-    <div class="container">
-      <div class="section-head reveal">
-        <span class="eyebrow">Drink Menu · Volume 1 — Summer Season</span>
-        <h2 class="section-title">Cocktail Menu</h2>
-        <div class="divider"></div>
-        <p>See it, pick it, taste it, repeat. La proposta di Davide tra signature d'autore, grandi classici, gin selezionati e birre artigianali.</p>
       </div>
-
-      <div class="menu-tabs reveal" data-tabs="drink">
-        <button class="menu-tab active" data-tab="signatures">Signatures</button>
-        <button class="menu-tab" data-tab="classici">Classici</button>
-        <button class="menu-tab" data-tab="gin">Gin</button>
-        <button class="menu-tab" data-tab="birre">Birre</button>
-      </div>
-
-      <!-- SIGNATURES -->
-      <div class="menu-panel active" id="panel-signatures" data-group="drink">
-        <div class="menu-cat__head reveal"><h3>Signatures</h3><span class="rule"></span></div>
-        <p class="menu-cat__note reveal">La proposta di Davide — cocktail d'autore, creati al bancone.</p>
-        <div class="cocktail-grid" id="cg-signatures"></div>
-
-        <div class="bartender reveal">
-          <img class="bartender__logo" src="assets/img/cocktails/barista-davide.png" alt="Davide — Barista" loading="lazy" />
-          <div>
-            <div class="bartender__mark">&ldquo;</div>
-            <p class="bartender__quote">Un cocktail non è solo un drink. È un ricordo che inizia dal primo sorso. Dopo oltre 20 anni dietro al bancone, il mio obiettivo è sempre lo stesso: creare esperienze che lascino il segno.</p>
-            <p class="bartender__name">Davide Albanesi · Cocktails &amp; Dreams</p>
-          </div>
-        </div>
-      </div>
-
-      <!-- CLASSICI -->
-      <div class="menu-panel" id="panel-classici" data-group="drink">
-        <div class="menu-cat__head reveal"><h3>I Classici</h3><span class="rule"></span></div>
-        <div class="cocktail-grid" id="cg-classici"></div>
-      </div>
-
-      <!-- GIN -->
-      <div class="menu-panel" id="panel-gin" data-group="drink">
-        <div class="gin-header reveal">
-          <img class="gin-header__img" src="assets/img/gins/giolugin-header.png" alt="GIOLUGIN — London Dry Gin di Ancona" loading="lazy" />
-        </div>
-        <div class="menu-cat__head reveal"><h3>I Gin</h3><span class="rule"></span></div>
-        <p class="menu-cat__note reveal">Il nostro gin è distillato da Ngricca, laboratorio artigianale marchigiano.</p>
-        <div class="cocktail-grid" id="cg-gin"></div>
-      </div>
-
-      <!-- BIRRE -->
-      <div class="menu-panel" id="panel-birre" data-group="drink">
-        <div class="menu-cat__head reveal"><h3>Le Birre</h3><span class="rule"></span></div>
-        <div class="cocktail-grid" id="cg-birre"></div>
-      </div>
-    </div>
+    </noscript>
   </section>
 
   <!-- ======================= GALLERY ======================= -->
@@ -523,10 +476,10 @@
     <button class="lightbox__nav next" id="lbNext" aria-label="Successivo">&#8250;</button>
   </div>
 
-  <script src="js/menu-media.js?v=3"></script>
-  <script src="js/viewer.js?v=3"></script>
-  <script src="js/cocktails.js?v=3"></script>
-  <script src="js/main.js?v=3"></script>
-  <script src="js/i18n.js"></script>
+  <script src="js/main.js?v=4" defer></script>
+  <script src="js/i18n.js?v=4" defer></script>
+  <script src="js/menu-media.js?v=3" defer></script>
+  <script src="js/viewer.js?v=4" defer></script>
+  <script src="js/menu.js?v=4" defer></script>
 </body>
 </html>

@@ -5,17 +5,15 @@
   var MODEL_VIEWER = "https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js";
   var LOAD_LIMIT_MS = 18000;
   var MEDIA = window.IL_CHIOSCO_MEDIA || {};
-  var premium = Boolean(document.querySelector(".premium-menu"));
   var DEFAULT_ORBIT = "25deg 64deg auto";
-  var OPENER = "[data-slug].has-media, .cocktail-card[data-slug], .order-item[data-slug]";
   var CUBE = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 3 7v10l9 5 9-5V7l-9-5Zm0 2.3 6.6 3.7L12 11.7 5.4 8 12 4.3ZM5 9.7l6 3.4v6.6l-6-3.4V9.7Zm8 10v-6.6l6-3.4v6.6l-6 3.4Z"/></svg>';
   var TEXT = {
     it: {
-      photo: "Foto", model: "3D", ar: "Vedi sul tuo tavolo", close: "Chiudi", exitAR: "Esci dalla realtà aumentata",
+      photo: "Foto", model: "3D", close: "Chiudi", exitAR: "Esci dalla realtà aumentata",
       previewAR: "Vedi in AR", reset: "Ripristina vista", previous: "Prodotto precedente", next: "Prodotto successivo",
-      representativePhoto: "Immagine rappresentativa.", mismatch: "Immagine indicativa. Confezione da verificare.",
+      representativePhoto: "Immagine rappresentativa.", illustration: "Illustrazione indicativa.", artwork: "Illustrazione", ingredients: "Ingredienti",
       hint: "Trascina per ruotare · pizzica o scorri per ingrandire",
-      loading: "Caricamento del modello 3D", pending: "Modello 3D in preparazione",
+      loading: "Caricamento del modello 3D",
       failed: "Il modello 3D non si è caricato. Puoi continuare a vedere la foto.",
       noPhoto: "Foto non disponibile.",
       unavailable: "La realtà aumentata non è disponibile su questo dispositivo o browser. Puoi esplorare il modello in 3D.",
@@ -25,11 +23,11 @@
       representative: "Modello rappresentativo. Aspetto e dimensioni della porzione possono variare.",
     },
     en: {
-      photo: "Photo", model: "3D", ar: "View on your table", close: "Close", exitAR: "Exit augmented reality",
+      photo: "Photo", model: "3D", close: "Close", exitAR: "Exit augmented reality",
       previewAR: "View in AR", reset: "Reset view", previous: "Previous product", next: "Next product",
-      representativePhoto: "Representative image.", mismatch: "Reference image. Packaging needs verification.",
+      representativePhoto: "Representative image.", illustration: "Illustration.", artwork: "Illustration", ingredients: "Ingredients",
       hint: "Drag to rotate · pinch or scroll to zoom",
-      loading: "Loading the 3D model", pending: "3D model in preparation",
+      loading: "Loading the 3D model",
       failed: "The 3D model could not load. You can still view the photo.",
       noPhoto: "Photo unavailable.",
       unavailable: "Augmented reality is unavailable on this device or browser. You can still explore the 3D model.",
@@ -42,11 +40,14 @@
 
   function t(key) { return TEXT[document.documentElement.lang === "en" ? "en" : "it"][key]; }
   function mediaFor(slug) { return Object.hasOwn(MEDIA, slug) ? MEDIA[slug] : null; }
-  function photoFor(slug) { return mediaFor(slug)?.photo || null; }
-  function thumbnailFor(slug) { return mediaFor(slug)?.thumbnail || photoFor(slug); }
+  function displayMedia(slug) {
+    var media = mediaFor(slug);
+    // The inventory flags known mismatches and images with unverified usage rights.
+    return ["mismatch", "unverified"].includes(media?.photoAuthenticity) ? null : media;
+  }
   function modelFor(slug) {
     var model = mediaFor(slug)?.model;
-    return model?.status === "ready" ? model : null;
+    return model?.status === "ready" && model.glb ? model : null;
   }
   function esc(value) {
     return String(value == null ? "" : value).replace(/[&<>"']/g, function (char) {
@@ -74,7 +75,7 @@
         var timeout = setTimeout(function () { finish(new Error("Viewer script timed out")); }, LOAD_LIMIT_MS);
         script.onload = function () {
           var definition = customElements.get("model-viewer");
-          if (premium && definition && "modelCacheSize" in definition) definition.modelCacheSize = 2;
+          if (definition && "modelCacheSize" in definition) definition.modelCacheSize = 2;
           finish(definition ? null : new Error("Viewer did not register"));
         };
         script.onerror = function () { finish(new Error("Viewer script failed")); };
@@ -91,7 +92,7 @@
 
   function build() {
     modal = document.createElement("dialog");
-    modal.className = premium ? "xr-modal xr-modal--premium" : "xr-modal";
+    modal.className = "xr-modal";
     modal.setAttribute("aria-labelledby", "xrTitle");
     modal.innerHTML =
       '<div class="xr-modal__backdrop" data-close></div>' +
@@ -99,7 +100,7 @@
       '  <button class="xr-card__close" type="button" data-close autofocus><span aria-hidden="true">×</span></button>' +
       '  <div class="xr-stage">' +
       '    <img class="xr-stage__photo" alt="" />' +
-      '    <p class="xr-stage__missing" hidden></p>' +
+      '    <div class="xr-stage__missing" hidden><span aria-hidden="true"></span><p></p></div>' +
       '    <div class="xr-stage__model"></div>' +
       '    <p class="xr-stage__hint" hidden></p>' +
       '    <button class="xr-reset" type="button" hidden><span aria-hidden="true">↺</span></button>' +
@@ -111,9 +112,11 @@
       '  </div>' +
       '  <div class="xr-info">' +
       '    <span class="xr-info__kicker"></span>' +
-      '    <h3 class="xr-info__name" id="xrTitle" aria-live="polite"></h3>' +
+      '    <h2 class="xr-info__name" id="xrTitle" aria-live="polite"></h2>' +
       '    <p class="xr-info__desc"></p>' +
       '    <span class="xr-info__price"></span>' +
+      '    <span class="xr-info__tag" hidden></span>' +
+      '    <p class="xr-info__ingredients" hidden></p>' +
       '    <button class="btn btn--gold xr-ar" type="button" hidden>' + CUBE + '<span></span></button>' +
       '    <div class="xr-browse" hidden>' +
       '      <button type="button" data-step="-1">‹</button>' +
@@ -126,7 +129,7 @@
       '  </div>' +
       '</article>';
     document.body.appendChild(modal);
-    ["photo", "missing", "model", "hint", "kicker", "name", "desc", "price", "phone", "note", "credit"].forEach(function (key) {
+    ["photo", "missing", "model", "hint", "kicker", "name", "desc", "price", "tag", "ingredients", "phone", "note", "credit"].forEach(function (key) {
       els[key] = modal.querySelector(".xr-stage__" + key + ", .xr-info__" + key);
     });
     els.ar = modal.querySelector(".xr-ar");
@@ -153,7 +156,8 @@
       if (step && current?.siblings && !arIsPresenting()) {
         var siblings = current.siblings;
         var index = (siblings.index + Number(step.dataset.step) + siblings.cards.length) % siblings.cards.length;
-        open(itemFromCard(siblings.cards[index]), { cards: siblings.cards, index: index });
+        show(itemFromCard(siblings.cards[index]), { cards: siblings.cards, index: index });
+        if (document.activeElement === document.body) els.close.focus();
       }
     });
     modal.addEventListener("cancel", function (event) {
@@ -162,6 +166,7 @@
     });
     els.photo.addEventListener("error", function () {
       els.photo.hidden = true;
+      els.photoButton.hidden = true;
       els.missing.hidden = false;
     });
     els.ar.addEventListener("click", function () {
@@ -180,15 +185,18 @@
     els.model.inert = mode === "photo";
     els.progress.hidden = mode !== "model" || current.loaded;
     els.hint.hidden = mode !== "model" || !current.loaded;
-    els.reset.hidden = !premium || mode !== "model" || !current.loaded;
-    els.note.textContent = current.failed ? t("failed") :
-      current.model?.authenticity === "representative" ? t("representative") :
-      current.pending ? t("pending") : "";
-    if (premium && (mode === "photo" || current.failed) && current.photoNote) {
-      els.note.textContent = [t(current.photoNote), current.failed ? t("failed") : current.pending ? t("pending") : ""].filter(Boolean).join(" ");
-    }
+    els.reset.hidden = mode !== "model" || !current.loaded;
+    var mediaNote = mode === "model" && current.loaded
+      ? current.model?.authenticity === "representative" && t("representative")
+      : current.photoNote && !els.photo.hidden && t(current.photoNote);
+    els.note.textContent = [mediaNote, current.failed && t("failed")].filter(Boolean).join(" ");
     els.credit.hidden = mode !== "model" || !current.loaded || !current.model?.credit;
     updateAR(current);
+    if (mode === "model" && !current.started) {
+      current.started = true;
+      modal.dataset.state = "loading";
+      startModel(current, els.name.textContent);
+    }
   }
 
   function updateAR(session) {
@@ -227,10 +235,9 @@
       session.viewer = viewer;
       var attributes = {
         src: session.model.glb,
-        "ios-src": session.model.usdz,
         alt: name + " 3D",
         ar: "",
-        "ar-modes": "webxr scene-viewer quick-look",
+        "ar-modes": session.model.usdz ? "webxr scene-viewer quick-look" : "webxr scene-viewer",
         "ar-scale": "fixed",
         "ar-placement": "floor",
         "camera-controls": "",
@@ -246,6 +253,7 @@
         "touch-action": "none",
       };
       for (var attribute in attributes) viewer.setAttribute(attribute, attributes[attribute]);
+      if (session.model.usdz) viewer.setAttribute("ios-src", session.model.usdz);
 
       var nativeButton = document.createElement("button");
       nativeButton.slot = "ar-button";
@@ -272,7 +280,7 @@
         if (current !== session || session.failed) return;
         clearTimeout(session.timeout);
         session.loaded = true;
-        if (premium) session.initialFov = viewer.getFieldOfView();
+        session.initialFov = viewer.getFieldOfView();
         modal.dataset.state = "ready";
         setMode(modal.dataset.mode);
         // WebXR detection resolves asynchronously and has no public ready event.
@@ -297,22 +305,17 @@
     }).catch(function () { failModel(session); });
   }
 
-  function open(item, siblings) {
+  function show(item, siblings) {
     if (!modal) build();
     if (modal.dataset.closing || arIsPresenting()) return;
-    if (modal.open && premium) {
-      releaseCurrent();
-    } else {
-      if (modal.open) close();
-      lastFocus = document.activeElement;
-    }
-    var photo = photoFor(item.slug) || item.photo;
+    if (modal.open) releaseCurrent();
+    else lastFocus = siblings.cards[siblings.index];
+    var media = displayMedia(item.slug);
+    var photo = media?.photo;
     var model = modelFor(item.slug);
-    var media = mediaFor(item.slug);
     var session = {
       model: model,
-      pending: media?.model?.status === "pending",
-      photoNote: { "generated-representative": "representativePhoto", mismatch: "mismatch" }[media?.photoAuthenticity],
+      photoNote: { representative: "representativePhoto", "generated-representative": "illustration" }[media?.photoAuthenticity],
       siblings: siblings,
     };
     current = session;
@@ -322,10 +325,14 @@
     els.name.textContent = item.name || "";
     els.desc.textContent = item.desc || "";
     els.desc.hidden = !item.desc;
-    els.price.textContent = item.price || "";
+    els.price.textContent = item.price;
+    els.tag.textContent = item.tag;
+    els.tag.hidden = !item.tag;
+    els.ingredients.textContent = item.ingredients ? t("ingredients") + " · " + item.ingredients : "";
+    els.ingredients.hidden = !item.ingredients;
     els.close.setAttribute("aria-label", t("close"));
     els.hint.textContent = t("hint");
-    els.ar.querySelector("span").textContent = t(premium ? "previewAR" : "ar");
+    els.ar.querySelector("span").textContent = t("previewAR");
     els.reset.setAttribute("aria-label", t("reset"));
     els.reset.title = t("reset");
     els.browse.hidden = !siblings || siblings.cards.length < 2;
@@ -345,16 +352,16 @@
     els.photo.hidden = !photo;
     if (photo) els.photo.src = photo;
     else els.photo.removeAttribute("src");
-    els.missing.textContent = t("noPhoto");
+    els.missing.querySelector("p").textContent = t("noPhoto");
+    els.missing.querySelector("span").replaceChildren(item.art.cloneNode(true));
     els.missing.hidden = !!photo;
     els.progress.querySelector("span").textContent = t("loading");
     els.progress.querySelector("progress").value = 0;
-    modal.dataset.state = model ? "loading" : "photo";
-    setMode(model ? "model" : "photo");
+    modal.dataset.state = "photo";
+    setMode("photo");
     if (!modal.open) modal.showModal();
     modal.querySelector(".xr-info").scrollTop = 0;
     document.documentElement.classList.add("xr-lock");
-    if (model) startModel(session, item.name || "");
   }
 
   function arIsPresenting() {
@@ -378,7 +385,7 @@
       document.documentElement.classList.remove("xr-lock");
       lastFocus?.focus({ preventScroll: true });
     }
-    if (premium && !matchMedia("(prefers-reduced-motion: reduce)").matches && modal.animate) {
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches && modal.animate) {
       modal.dataset.closing = "true";
       modal.animate([{ opacity: 1 }, { opacity: 0 }], { duration: 155, easing: "ease-in" }).finished.then(finish, finish);
     } else {
@@ -386,66 +393,35 @@
     }
   }
 
-  function thumb(slug, alt) {
-    var photo = premium ? thumbnailFor(slug) : photoFor(slug);
+  function thumb(slug, art) {
+    var media = displayMedia(slug);
+    var photo = media?.thumbnail || media?.photo;
+    var illustrative = media?.photoAuthenticity === "generated-representative";
     return '<span class="xr-thumb">' +
-      (photo ? '<img src="' + esc(photo) + '" alt="' + esc(alt) + '" loading="lazy" decoding="async" />' : "") +
+      '<span class="xr-thumb__art" aria-hidden="true">' + art + '</span>' +
+      (photo ? '<img src="' + esc(photo) + '" alt="" width="192" height="192" loading="lazy" decoding="async" />' : "") +
+      (illustrative ? '<span class="xr-thumb__note">' + t("artwork") + '</span>' : "") +
       (modelFor(slug) ? '<span class="xr-thumb__badge">' + CUBE + '3D</span>' : "") + "</span>";
   }
 
-  /* --- main site: static menu items carrying data-slug --- */
-  function enhanceStaticMenu() {
-    document.querySelectorAll(".menu-item[data-slug]").forEach(function (item) {
-      if (item.classList.contains("has-media")) return;
-      var slug = item.getAttribute("data-slug");
-      var body = document.createElement("div");
-      body.className = "menu-item__body";
-      while (item.firstChild) body.appendChild(item.firstChild);
-      var name = body.querySelector(".menu-item__name");
-      item.insertAdjacentHTML("afterbegin", thumb(slug, name ? name.textContent : ""));
-      item.appendChild(body);
-      item.classList.add("has-media");
-      item.setAttribute("role", "button");
-      item.setAttribute("tabindex", "0");
-    });
+  function itemFromCard(card) {
+    var text = function (className) { return card.querySelector(className)?.textContent || ""; };
+    return {
+      slug: card.dataset.slug,
+      kicker: card.dataset.kicker,
+      tag: card.dataset.tag,
+      ingredients: card.dataset.ingredients,
+      name: text(".catalogue-card__name"),
+      desc: text(".catalogue-card__description"),
+      price: text(".catalogue-card__price"),
+      art: card.querySelector(".xr-thumb__art svg"),
+    };
   }
 
-  function itemFromStatic(el) {
-    var q = function (sel) { var n = el.querySelector(sel); return n ? n.textContent.trim() : ""; };
-    var cat = el.closest(".menu-cat");
-    var head = cat && cat.querySelector(".menu-cat__head h3");
-    return { slug: el.getAttribute("data-slug"), name: q(".menu-item__name"), desc: q(".menu-item__desc"), price: q(".menu-item__price"), kicker: head ? head.textContent.trim() : "" };
+  function open(card) {
+    var cards = Array.from(card.closest(".catalogue-grid").querySelectorAll(".catalogue-card"));
+    show(itemFromCard(card), { cards: cards, index: cards.indexOf(card) });
   }
 
-  function itemFromCard(el) {
-    if (el.classList.contains("menu-item")) return itemFromStatic(el);
-    var q = function (sel) { var n = el.querySelector(sel); return n ? n.textContent.trim() : ""; };
-    var slug = el.dataset.slug;
-    var kicker = el.dataset.kicker || "";
-    if (el.classList.contains("cocktail-card")) {
-      var tag = el.querySelector(".cocktail-card__name .tag");
-      var name = q(".cocktail-card__name");
-      if (tag) name = name.replace(tag.textContent, "").trim();
-      var img = el.querySelector(".cocktail-card__media img");
-      return { slug: slug, name: name, desc: q(".cocktail-card__desc"), price: q(".cocktail-card__price"), kicker: kicker, photo: img?.getAttribute("src") };
-    }
-    return { slug: slug, name: q(".order-item__name"), desc: q(".order-item__desc"), price: q(".order-item__price"), kicker: kicker };
-  }
-
-  function bindOpeners() {
-    function handler(event) {
-      var el = event.target.closest(OPENER);
-      if (!el || (event.type === "keydown" && event.key !== "Enter" && event.key !== " ")) return;
-      event.preventDefault();
-      var panel = premium && el.closest(".menu-panel");
-      var cards = panel ? Array.from(panel.querySelectorAll(OPENER)) : null;
-      open(itemFromCard(el), cards ? { cards: cards, index: cards.indexOf(el) } : null);
-    }
-    document.addEventListener("click", handler);
-    document.addEventListener("keydown", handler);
-  }
-
-  window.IlChioscoViewer = { open: open, thumb: thumb, photo: photoFor, thumbnail: thumbnailFor, model: modelFor, cube: CUBE };
-  enhanceStaticMenu();
-  bindOpeners();
+  window.IlChioscoViewer = { open: open, thumb: thumb };
 })();

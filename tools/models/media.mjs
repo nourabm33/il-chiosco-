@@ -13,7 +13,7 @@ const slugify = (value) => value.toLowerCase().normalize("NFD").replace(/[\u0300
 
 const drinks = {};
 const cocktailScript = read("js/cocktails.js");
-const dataSection = cocktailScript.slice(cocktailScript.indexOf("var DATA = {"), cocktailScript.indexOf("/* ---------- render ---------- */"));
+const dataSection = cocktailScript.slice(cocktailScript.indexOf("var DATA = {"));
 for (const line of dataSection.split("\n")) {
   const name = line.match(/\bn:\s*"([^"]*)"/)?.[1];
   const photo = line.match(/\b(?:photo|cover):\s*"([^"]*)"/)?.[1];

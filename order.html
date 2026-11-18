@@ -3,46 +3,52 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#12382d" />
   <meta name="robots" content="noindex" />
   <title>Menu al tavolo · Il Chiosco | Taste &amp; Beyond</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Jost:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
-  <link rel="stylesheet" href="css/order.css" />
-  <link rel="stylesheet" href="css/viewer.css?v=2" />
+  <link rel="stylesheet" href="css/menu.css?v=4" />
+  <link rel="stylesheet" href="css/order.css?v=4" />
+  <link rel="stylesheet" href="css/viewer.css?v=4" />
 </head>
 <body class="order-body">
-
-<header class="order-nav">
-  <a href="index.html" class="order-nav__brand">
-    <span class="mark">Il Chiosco</span>
-    <span class="sub">Taste &amp; Beyond</span>
-  </a>
-  <div class="order-nav__right">
-    <span class="order-nav__table" id="tableBadge" hidden></span>
-    <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">EN</button>
-  </div>
-</header>
-
-<section class="order-screen">
-  <div class="order-container">
-    <h1 data-i18n="title">Menu al tavolo</h1>
-    <p class="order-notice" role="note">
-      <span class="order-notice__icon" aria-hidden="true">✦</span>
-      <span data-i18n="notice">Per ordinare, rivolgiti al cameriere.</span>
-    </p>
-
-    <div class="order-tabs" id="categoryTabs" role="tablist"></div>
-    <div id="menuList" class="menu-groups" aria-live="polite">
-      <p class="order-lead" data-i18n="loading">Caricamento menu…</p>
+  <header class="order-nav">
+    <div class="catalogue-shell order-nav__inner">
+      <a href="index.html" class="order-nav__brand">
+        <span class="mark">Il Chiosco</span>
+        <span class="sub">Taste &amp; Beyond</span>
+      </a>
+      <div class="order-nav__right">
+        <span class="order-nav__table" id="tableBadge" hidden></span>
+        <button class="lang-toggle" id="langToggle" type="button" aria-label="Switch to English">EN</button>
+      </div>
     </div>
-  </div>
-</section>
+  </header>
 
-<script src="js/config.js"></script>
-<script src="js/menu-media.js?v=2"></script>
-<script src="js/viewer.js?v=2"></script>
-<script src="js/order.js"></script>
+  <main class="catalogue-section catalogue-section--table">
+    <div class="catalogue-shell">
+      <header class="catalogue-masthead">
+        <div class="catalogue-masthead__copy">
+          <p class="catalogue-masthead__location">Piazza Cavour · Ancona</p>
+          <h1 data-translate>Menu al tavolo</h1>
+          <p data-translate>Per ordinare, rivolgiti al cameriere.</p>
+        </div>
+        <img class="catalogue-masthead__image" src="assets/img/counter.jpg" width="338" height="423" alt="" decoding="async" />
+      </header>
+      <noscript>
+        <p class="catalogue-message">Attiva JavaScript per consultare il menu, oppure chiedi al cameriere. / Enable JavaScript to browse the menu, or ask your waiter.</p>
+      </noscript>
+    </div>
+    <div data-catalogue="table"></div>
+  </main>
+
+  <script src="js/config.js" defer></script>
+  <script src="js/i18n.js?v=4" defer></script>
+  <script src="js/menu-media.js?v=3" defer></script>
+  <script src="js/viewer.js?v=4" defer></script>
+  <script src="js/menu.js?v=4" defer></script>
 </body>
 </html>
